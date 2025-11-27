@@ -1,0 +1,38 @@
+{
+  "name": "tongo-donation-demo",
+  "version": "1.0.0",
+  "description": "Private donation demo using Tongo Cash on Starknet",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:web": "vite build",
+    "dev": "bun run src/demo.ts",
+    "dev:web": "vite",
+    "serve": "bunx http-server . -p 8080",
+    "demo": "bun run build && bun run dist/demo.js",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "starknet",
+    "tongo",
+    "privacy",
+    "donations",
+    "zk"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fatsolutions/tongo-sdk": "^1.3.0",
+    "dotenv": "^17.2.3",
+    "get-starknet": "^3.3.3",
+    "get-starknet-core": "^3.3.5",
+    "starknet": "^8.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  }
+}
