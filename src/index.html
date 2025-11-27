@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tongo Private Donations - Support Ukraine</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2300ff00' opacity='0.2'/><text y='.9em' font-size='60' fill='%2300ff00' font-family='monospace'>[ENC]</text></svg>">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Courier New', monospace;
             background: #0a0e27;
@@ -18,8 +19,65 @@
             padding: 20px;
             line-height: 1.6;
         }
+
+        /* Hero Section */
+        .hero {
+            background: #0f1419;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .hero__content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero__title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .hero__subtitle {
+            font-size: 1.1em;
+            color: #00ddaa;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .hero__stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat__value {
+            font-size: 32px;
+        }
+
+        .stat__label {
+            font-size: 12px;
+            color: #00ddaa;
+        }
+
+        /* Container */
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             background: #0f1419;
             border: 2px solid #00ff00;
@@ -27,97 +85,223 @@
             border-radius: 4px;
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
         }
-        h1 {
-            text-align: center;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #00ff00;
-            font-size: 2.5em;
-        }
-        .ukraine-subtitle {
-            text-align: center;
-            color: #ffd700;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            text-shadow: 0 0 5px #ffd700;
-            border-top: 1px solid #0057b7;
-            border-bottom: 1px solid #0057b7;
-            padding: 10px;
-            background: rgba(0, 87, 183, 0.1);
-        }
-        .ukraine-accent {
-            color: #ffd700;
-            text-shadow: 0 0 5px #ffd700;
-        }
-        .ukraine-blue {
-            color: #0057b7;
-            text-shadow: 0 0 5px #0057b7;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .panel {
+
+        /* Cards */
+        .card {
             background: #1a2332;
             border: 1px solid #00ff00;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .card__header {
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card__header h2 {
+            font-size: 1.2em;
+            color: #00ff00;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .card__subtitle {
+            font-size: 0.85em;
+            color: #00ddaa;
+            margin: 8px 0 0 0;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        /* Balance Items */
+        .balance-item {
+            background: #0a0e27;
+            border: 1px solid #00ff00;
             padding: 15px;
+            margin-bottom: 12px;
             border-radius: 4px;
         }
-        .panel h2 {
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #00ff00;
-            padding-bottom: 10px;
+
+        .balance-item__label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #00ff00;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
+
+        .balance-item__value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #00ff00;
+            margin-bottom: 4px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .balance-item__hint {
+            font-size: 0.8em;
+            color: #00ddaa;
+            margin: 0;
+        }
+
+        /* Info Rows */
         .info-row {
             margin-bottom: 10px;
             font-size: 0.9em;
         }
+
         .label {
             color: #00ff00;
             font-weight: bold;
+            display: block;
+            margin-bottom: 4px;
         }
+
         .value {
             color: #00ddaa;
             word-break: break-all;
             font-size: 0.85em;
-        }
-        input, button {
             font-family: 'Courier New', monospace;
+        }
+
+        /* Inputs */
+        input, select {
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 0.9em;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
             background: #0f1419;
             color: #00ff00;
-            border: 1px solid #00ff00;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
+            font-family: 'Courier New', monospace;
             transition: all 0.3s;
-        }
-        input {
-            width: 100%;
             margin-bottom: 10px;
-            cursor: text;
         }
-        input:focus {
+
+        input:focus, select:focus {
             outline: none;
             box-shadow: 0 0 10px #00ff00;
         }
+
+        /* Quick Amount Buttons */
+        .quick-amounts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-btn {
+            padding: 16px;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            background: var(--bg-white);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .quick-btn:hover {
+            border-color: var(--ukraine-blue);
+            background: var(--bg-light);
+        }
+
+        .quick-btn.active {
+            border-color: var(--ukraine-blue);
+            background: var(--ukraine-blue);
+            color: white;
+        }
+
+        .quick-btn .amount {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .quick-btn .impact {
+            display: block;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* Buttons */
         button {
             width: 100%;
-            background: rgba(0, 255, 0, 0.1);
-            font-weight: bold;
-            text-transform: uppercase;
+            padding: 8px 12px;
             font-size: 0.9em;
+            font-weight: bold;
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
             margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
         }
-        button:hover {
+
+        button:hover:not(:disabled) {
             background: rgba(0, 255, 0, 0.2);
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
+
+        button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
+
+        button.secondary {
+            background: rgba(0, 255, 0, 0.05);
+            color: #00ff00;
+            border: 1px solid #00ff00;
+        }
+
+        button.secondary:hover:not(:disabled) {
+            background: rgba(0, 255, 0, 0.15);
+        }
+
+        button.danger {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+
+        /* Privacy Notice */
+        .privacy-notice {
+            font-size: 0.8em;
+            color: #00ddaa;
+            background: rgba(0, 221, 170, 0.1);
+            border: 1px solid #00ddaa;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 20px 0 0 0;
+            line-height: 1.6;
+        }
+
+        /* Logs */
         .log-panel {
             grid-column: 1 / -1;
             background: #0a0e27;
@@ -128,54 +312,67 @@
             overflow-y: auto;
             font-size: 0.85em;
         }
+
         .log-entry {
             margin-bottom: 8px;
             padding: 5px 0;
             border-left: 2px solid #00ff00;
             padding-left: 10px;
+            font-family: 'Courier New', monospace;
         }
+
         .log-success {
             color: #00ff00;
+            border-left-color: #00ff00;
         }
+
         .log-error {
             color: #ff0000;
+            border-left-color: #ff0000;
         }
+
         .log-info {
             color: #00ddaa;
+            border-left-color: #00ddaa;
         }
+
         .log-warn {
             color: #ffaa00;
+            border-left-color: #ffaa00;
         }
+
+        /* Status */
         .status {
             text-align: center;
             margin: 15px 0;
             padding: 10px;
             border: 1px solid #00ff00;
             border-radius: 4px;
+            font-weight: bold;
         }
+
         .status.loading {
             color: #ffaa00;
+            border-color: #ffaa00;
         }
+
         .status.success {
             color: #00ff00;
             background: rgba(0, 255, 0, 0.1);
+            border-color: #00ff00;
         }
-        .ukraine-flag {
-            display: inline-block;
-            width: 20px;
-            height: 15px;
-            background: linear-gradient(to bottom, #0057b7 0%, #0057b7 50%, #ffd700 50%, #ffd700 100%);
-            border: 1px solid #00ff00;
-            margin: 0 5px;
-            vertical-align: middle;
-        }
+
         .status.error {
             color: #ff0000;
             background: rgba(255, 0, 0, 0.1);
+            border-color: #ff0000;
         }
+
         .hidden {
             display: none;
         }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -183,14 +380,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
+
         .modal.active {
             display: flex;
         }
+
         .modal-content {
             background: #0f1419;
             border: 2px solid #00ff00;
@@ -201,10 +400,13 @@
             max-height: 80vh;
             overflow-y: auto;
         }
+
         .modal-content h2 {
             margin-bottom: 20px;
             color: #ffaa00;
+            font-size: 1.2em;
         }
+
         .modal-content .key-display {
             background: #0a0e27;
             padding: 15px;
@@ -213,41 +415,432 @@
             word-break: break-all;
             font-size: 0.9em;
             margin: 15px 0;
-        }
-        .modal-content button {
-            margin-top: 15px;
-        }
-        select {
             font-family: 'Courier New', monospace;
         }
+
+        /* Privacy Section */
+        .privacy-section {
+            margin: 60px 0;
+            padding: 40px;
+            background: var(--bg-white);
+            border-radius: 16px;
+        }
+
+        .privacy-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .privacy-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .privacy-card {
+            text-align: center;
+            padding: 24px;
+            background: var(--bg-light);
+            border-radius: 12px;
+        }
+
+        .privacy-card .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .privacy-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .privacy-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Balance Explainer */
+        .balance-explainer {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .balance-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .balance-card {
+            border-radius: 4px;
+            padding: 20px;
+            border: 1px solid #00ff00;
+            background: #1a2332;
+            transition: all 0.3s;
+        }
+
+        .balance-card:hover {
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .balance-card--current {
+            border-color: #00ff00;
+        }
+
+        .balance-card--pending {
+            border-color: #ffaa00;
+        }
+
+        .balance-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .balance-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #00ff00;
+            margin: 0 0 8px 0;
+        }
+
+        .balance-title .icon {
+            font-size: 20px;
+        }
+
+        .balance-subtitle {
+            font-size: 0.85em;
+            color: #00ddaa;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .balance-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00ff00;
+            margin-bottom: 16px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .balance-card--pending .balance-value {
+            color: #ffaa00;
+            text-shadow: 0 0 5px #ffaa00;
+        }
+
+        .balance-description {
+            margin-bottom: 16px;
+        }
+
+        .description-text {
+            font-size: 0.9em;
+            color: #00ddaa;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .description-text strong {
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .balance-card--pending .description-text strong {
+            color: #ffaa00;
+        }
+
+        .balance-action {
+            margin-bottom: 16px;
+        }
+
+        .balance-details {
+            background: #0a0e27;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            padding: 12px;
+        }
+
+        .balance-details summary {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85em;
+            color: #00ff00;
+        }
+
+        .balance-details ul {
+            margin: 12px 0 0 0;
+            padding-left: 20px;
+            font-size: 0.85em;
+            color: #00ddaa;
+            line-height: 1.6;
+        }
+
+        .balance-details li {
+            margin-bottom: 6px;
+        }
+
+        /* Flow Diagram */
+        .balance-flow {
+            background: #1a2332;
+            border-radius: 4px;
+            padding: 24px;
+            border: 1px solid #00ff00;
+            margin-bottom: 30px;
+        }
+
+        .balance-flow h3 {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 1.1em;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .flow-diagram--secondary {
+            opacity: 0.8;
+            border-top: 1px solid #00ff00;
+            padding-top: 24px;
+            margin-bottom: 0;
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flow-icon {
+            font-size: 28px;
+        }
+
+        .flow-label {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #00ff00;
+            text-align: center;
+        }
+
+        .flow-sublabel {
+            font-size: 0.75em;
+            color: #00ddaa;
+            text-align: center;
+        }
+
+        .flow-arrow {
+            font-size: 20px;
+            color: #00ff00;
+        }
+
+        /* Examples */
+        .example-section {
+            background: #1a2332;
+            border-radius: 4px;
+            padding: 24px;
+            border: 1px solid #00ff00;
+        }
+
+        .example-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .example h4 {
+            margin-bottom: 20px;
+            color: #ffaa00;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .example-step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #00ff00;
+        }
+
+        .example-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            background: #00ff00;
+            color: #0a0e27;
+            font-weight: bold;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #00ff00;
+            margin: 0 0 8px 0;
+            font-size: 0.95em;
+        }
+
+        .step-detail {
+            font-size: 0.85em;
+            color: #00ddaa;
+            margin: 0 0 12px 0;
+        }
+
+        .step-result {
+            background: #0a0e27;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            color: #00ff00;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero__title {
+                font-size: 32px;
+            }
+
+            .hero__subtitle {
+                font-size: 16px;
+            }
+
+            .hero__stats {
+                gap: 30px;
+            }
+
             .grid {
                 grid-template-columns: 1fr;
             }
-            h1 {
-                font-size: 1.8em;
+
+            .quick-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .balance-section {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-diagram {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .example-step {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-num {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .hero {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+
+            .hero__content {
+                flex: 1;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>TONGO PRIVATE DONATIONS <span class="ukraine-flag"></span> <span class="ukraine-blue">UKRAINE</span></h1>
-        <div class="ukraine-subtitle">
-            <strong>Zero-Knowledge Private Donations for Ukraine</strong><br>
-            <span style="font-size: 0.9em;">Support Ukraine with anonymous, encrypted donations on Starknet</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">Support Ukraine Privately</h1>
+            <p class="hero__subtitle">
+                Send anonymous donations using zero-knowledge proofs.
+                Your support, completely private. Your impact, completely real.
+            </p>
+            <div class="hero__stats">
+                <div class="stat">
+                    <span class="stat__value">[+]</span>
+                    <span class="stat__label">Donations Protected</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__value">[ENC]</span>
+                    <span class="stat__label">Privacy Guaranteed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__value">[>>]</span>
+                    <span class="stat__label">Instant Transfer</span>
+                </div>
+            </div>
         </div>
-        
+    </section>
+
+    <div class="container">
         <!-- Wallet Connection Panel -->
-        <div class="panel" style="grid-column: 1 / -1; margin-bottom: 20px;">
-            <h2>Wallet Connection</h2>
+        <div class="card" style="margin-bottom: 24px;">
+            <div class="card__header">
+                <h2>Wallet Connection</h2>
+                <p class="card__subtitle">Connect your Starknet wallet to start sending private donations</p>
+            </div>
             <p style="color: #00ddaa; font-size: 0.85em; margin-bottom: 15px; line-height: 1.5;">
                 Connect your Starknet wallet (Braavos or Argent X) to send private donations to Ukraine. 
-                Your wallet will be used to sign transactions, but donation amounts remain <span class="ukraine-accent">private and encrypted</span> using zero-knowledge proofs.
+                Your wallet will be used to sign transactions, but donation amounts remain <strong style="color: #00ff00;">private and encrypted</strong> using zero-knowledge proofs.
             </p>
             <div class="info-row">
                 <span class="label">Network:</span>
-                <select id="networkSelect" style="background: #0f1419; color: #00ff00; border: 1px solid #00ff00; padding: 5px; margin-left: 10px;">
+                <select id="networkSelect">
                     <option value="mainnet" selected>Mainnet</option>
                     <option value="sepolia">Sepolia Testnet</option>
                 </select>
@@ -257,51 +850,237 @@
                 <div class="value" id="walletAddress">Not connected</div>
             </div>
             <button id="connectWalletBtn">Connect Wallet</button>
-            <button id="disconnectWalletBtn" class="hidden" style="background: rgba(255, 0, 0, 0.2);">Disconnect</button>
+            <button id="disconnectWalletBtn" class="hidden secondary danger">Disconnect</button>
         </div>
         
-        <div class="grid">
-            <!-- Account Status -->
-            <div class="panel">
-                <h2>Account Status</h2>
-                <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Your Tongo account information for sending donations to Ukraine. The Tongo Public Key is your anonymous identity for receiving donations. 
-                    Current Balance shows available funds you can withdraw or donate to Ukraine. Pending Balance shows funds 
-                    awaiting rollover (received donations that need to be processed).
-                </p>
+        <!-- Account Overview -->
+        <div class="card" style="margin-bottom: 24px;">
+            <div class="card__header">
+                <h2>Account Overview</h2>
+                <p class="card__subtitle">Your Tongo account information for sending donations to Ukraine</p>
+            </div>
                 <div class="info-row">
                     <span class="label">Tongo Public Key:</span>
                     <div class="value" id="publicKey">Not initialized</div>
                 </div>
                 <div class="info-row">
-                    <span class="label">Starknet Address:</span>
-                    <div class="value" id="starknetAddress">Not connected</div>
+                <span class="label">Starknet Address:</span>
+                <div class="value" id="starknetAddress">Not connected</div>
                 </div>
                 <div class="info-row">
-                    <span class="label">Wallet Balance:</span>
-                    <div class="value" id="walletBalance">-</div>
+                <span class="label">Wallet Balance:</span>
+                <div class="value" id="walletBalance">-</div>
                 </div>
-                <div class="info-row">
-                    <span class="label">Tongo Current Balance:</span>
-                    <div class="value" id="currentBalance">0</div>
-                </div>
-                <div class="info-row">
-                    <span class="label">Tongo Pending Balance:</span>
-                    <div class="value" id="pendingBalance">0</div>
-                </div>
-                <button onclick="refreshState()" id="refreshBtn" disabled>Refresh State</button>
+            <button onclick="refreshState()" id="refreshBtn" disabled class="secondary">Refresh State</button>
             </div>
 
+        <!-- Balance Explainer -->
+        <div class="balance-explainer">
+            <div class="balance-section">
+                <div class="balance-card balance-card--current">
+                    <div class="balance-header">
+                        <h3 class="balance-title">
+                            <span class="icon">[READY]</span>
+                            Current Balance
+                        </h3>
+                        <p class="balance-subtitle">Money YOU can send</p>
+                    </div>
+                    
+                    <div class="balance-value" id="currentBalanceDisplay">0.00 USDC</div>
+                    
+                    <div class="balance-description">
+                        <p class="description-text">
+                            This is your <strong>spendable</strong> encrypted balance. You can send donations 
+                            from this amount right now.
+                        </p>
+                    </div>
+
+                    <div class="balance-action">
+                        <button class="secondary" onclick="document.getElementById('donationAmount').focus()">Send Donation</button>
+                    </div>
+
+                    <details class="balance-details">
+                        <summary>How it works</summary>
+                        <ul>
+                            <li>You fund this account with USDC</li>
+                            <li>Amount is encrypted with ZK proofs</li>
+                            <li>You can send anonymous donations anytime</li>
+                            <li>Decreases each time you send</li>
+                        </ul>
+                    </details>
+                </div>
+
+                <div class="balance-card balance-card--pending">
+                    <div class="balance-header">
+                        <h3 class="balance-title">
+                            <span class="icon">[PENDING]</span>
+                            Pending Balance
+                        </h3>
+                        <p class="balance-subtitle">Money OTHERS sent to you</p>
+                    </div>
+                    
+                    <div class="balance-value" id="pendingBalanceDisplay">0.00 USDC</div>
+                    
+                    <div class="balance-description">
+                        <p class="description-text">
+                            This is encrypted money that <strong>other people sent to you</strong>. 
+                            You need to "rollover" it to use it.
+                        </p>
+                    </div>
+
+                    <div class="balance-action">
+                        <button class="secondary" onclick="rollover()" id="rolloverBtn" disabled>Rollover (nothing to rollover)</button>
+                    </div>
+
+                    <details class="balance-details">
+                        <summary>How it works</summary>
+                        <ul>
+                            <li>Someone sends you an anonymous donation</li>
+                            <li>It arrives in your Pending balance</li>
+                            <li>Click "Rollover" to move it to Current balance</li>
+                            <li>Then you can spend it or send it forward</li>
+                            <li>Complete chain of anonymous giving</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Visual Flow Diagram -->
+            <div class="balance-flow">
+                <h3>How Donations Flow Through Your Account</h3>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="flow-icon">[FUND]</div>
+                        <div class="flow-label">You fund USDC</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">[ENCRYPT]</div>
+                        <div class="flow-label">Current Balance</div>
+                        <div class="flow-sublabel">(Ready to spend)</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">[SEND]</div>
+                        <div class="flow-label">Send Donation</div>
+                        <div class="flow-sublabel">(Anonymous)</div>
+                    </div>
+                </div>
+
+                <div class="flow-diagram flow-diagram--secondary">
+                    <div class="flow-step">
+                        <div class="flow-icon">[RECV]</div>
+                        <div class="flow-label">Receive Donation</div>
+                        <div class="flow-sublabel">(Anonymous)</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">[WAIT]</div>
+                        <div class="flow-label">Pending Balance</div>
+                        <div class="flow-sublabel">(Waiting)</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">[ROLL]</div>
+                        <div class="flow-label">Rollover</div>
+                        <div class="flow-sublabel">(Move to Current)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-World Example -->
+            <div class="example-section">
+                <h3>Real-World Example: Helping Ukraine Relief Fund</h3>
+                
+                <div class="example">
+                    <div class="example-step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <p class="step-title">You fund your account</p>
+                            <p class="step-detail">
+                                You send $50 USDC to Tongo
+                            </p>
+                            <div class="step-result">
+                                [+] Current Balance: $50<br>
+                                [+] Pending Balance: $0
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <p class="step-title">You send $20 anonymously</p>
+                            <p class="step-detail">
+                                You donate $20 to a relief recipient
+                            </p>
+                            <div class="step-result">
+                                [+] Current Balance: $30<br>
+                                [+] Pending Balance: $0
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <p class="step-title">Someone sends you $15</p>
+                            <p class="step-detail">
+                                An anonymous donor sends you funds to forward
+                            </p>
+                            <div class="step-result">
+                                [+] Current Balance: $30<br>
+                                [+] Pending Balance: $15
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <p class="step-title">You rollover pending</p>
+                            <p class="step-detail">
+                                You click "Rollover" to move it to Current
+                            </p>
+                            <div class="step-result">
+                                [+] Current Balance: $45<br>
+                                [+] Pending Balance: $0
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-step">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <p class="step-title">You forward $15</p>
+                            <p class="step-detail">
+                                You send the $15 to another relief organization
+                            </p>
+                            <div class="step-result">
+                                [+] Current Balance: $30<br>
+                                [+] Pending Balance: $0<br>
+                                [+] Nobody knows any amounts!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
             <!-- Fund Account -->
-            <div class="panel">
-                <h2>Fund Account</h2>
+            <div class="card">
+                <div class="card__header">
+                    <h2>Fund Account</h2>
+                    <p class="card__subtitle">Transfer tokens to your private donation account</p>
+                </div>
                 <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
                     Transfer tokens from your connected wallet into your Tongo account to prepare for donations to Ukraine. 
-                    <span class="ukraine-blue">Sepolia uses STRK tokens</span>, while 
-                    <span class="ukraine-accent">Mainnet uses USDC tokens</span>. 
+                    <span style="color: #0057b7;">Sepolia uses STRK tokens</span>, while 
+                    <span style="color: #ffd700;">Mainnet uses USDC tokens</span>. 
                     This creates a private balance that can be used for anonymous donations. The funding transaction itself is public on-chain, 
                     but once funds are in your Tongo account, all subsequent donations using this balance are 
-                    <span class="ukraine-accent">zero-knowledge encrypted</span> (amounts are hidden).
+                    <span style="color: #ffd700;">zero-knowledge encrypted</span> (amounts are hidden).
                 </p>
                 <input 
                     type="number" 
@@ -310,18 +1089,24 @@
                     min="0.1"
                     step="0.1"
                 >
-                <button onclick="fundAccount()" id="fundButton">Fund Account</button>
+                <button onclick="fundAccount()" id="fundButton">Fund Private Account</button>
+                <p class="privacy-notice">
+                    [+] Your donation amount stays completely private<br>
+                    [+] No one sees your identity or donation size<br>
+                    [+] Direct support for Ukraine
+                </p>
             </div>
 
             <!-- Send Donation -->
-            <div class="panel">
-                <h2>Send Private Donation to Ukraine</h2>
+            <div class="card">
+                <div class="card__header">
+                    <h2>Send Private Donation</h2>
+                    <p class="card__subtitle">Send anonymous donations to Ukraine</p>
+                </div>
                 <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Send an anonymous donation to Ukraine using a recipient's Tongo public key. The donation amount is 
-                    <span class="ukraine-accent">zero-knowledge encrypted</span> on-chain, meaning only you and the recipient know the amount. 
-                    The transaction appears on-chain but the value is hidden using cryptographic proofs. 
-                    Enter the recipient's Tongo public key (base58 format) and the amount to send. 
-                    <span class="ukraine-blue">Your donation supports Ukraine while maintaining privacy.</span>
+                    Send an anonymous donation using a recipient's Tongo public key. The donation amount is 
+                    <span style="color: #ffd700;">zero-knowledge encrypted</span> on-chain, meaning only you and the recipient know the amount. 
+                    The transaction appears on-chain but the value is hidden using cryptographic proofs.
                 </p>
                 <input 
                     type="text" 
@@ -339,10 +1124,13 @@
             </div>
 
             <!-- Withdraw -->
-            <div class="panel">
-                <h2>Withdraw Funds</h2>
+            <div class="card">
+                <div class="card__header">
+                    <h2>Withdraw Funds</h2>
+                    <p class="card__subtitle">Withdraw tokens back to your wallet</p>
+                </div>
                 <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Withdraw STRK tokens from your Tongo account back to your connected wallet. 
+                    Withdraw tokens from your Tongo account back to your connected wallet. 
                     Only funds in your Current Balance can be withdrawn. If you have a Pending Balance, 
                     use the Rollover function first to move it to Current Balance before withdrawing.
                 </p>
@@ -357,36 +1145,24 @@
             </div>
 
             <!-- Transaction Status -->
-            <div class="panel">
-                <h2>Transaction Status</h2>
-                <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Current status of your donation operations to Ukraine. Shows loading state during transactions and success/error 
-                    messages when operations complete. Check here to see if your donation transaction is processing.
-                </p>
+            <div class="card">
+                <div class="card__header">
+                    <h2>Transaction Status</h2>
+                    <p class="card__subtitle">Current operation status</p>
+                </div>
                 <div id="status" class="status hidden"></div>
             </div>
-
-            <!-- Rollover -->
-            <div class="panel">
-                <h2>Rollover Balance</h2>
-                <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Move funds from Pending Balance to Current Balance. When you receive a private donation, 
-                    it first appears in Pending Balance. Rollover makes these funds available for withdrawal 
-                    or sending to others. This operation requires a transaction fee.
-                </p>
-                <button onclick="rollover()">Rollover Pending Balance</button>
             </div>
 
             <!-- Logs -->
             <div class="log-panel">
-                <h2 style="margin-bottom: 10px;">Operation Logs</h2>
-                <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Detailed log of all donation operations to Ukraine, transactions, and status messages. Use this to track 
-                    what's happening with your donations and debug any issues. <span class="ukraine-accent">All donations are private and encrypted.</span>
-                </p>
+            <h2 style="margin-bottom: 10px;">Operation Logs</h2>
+            <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
+                Detailed log of all donation operations to Ukraine, transactions, and status messages. Use this to track 
+                what's happening with your donations and debug any issues. <span style="color: #ffd700;">All donations are private and encrypted.</span>
+            </p>
                 <div id="logs"></div>
             </div>
-        </div>
     </div>
 
     <!-- Tongo Key Backup Modal -->
@@ -719,8 +1495,10 @@
                 document.getElementById('starknetAddress').textContent = 'Not connected';
                 document.getElementById('publicKey').textContent = 'Not initialized';
                 const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
-                document.getElementById('currentBalance').textContent = `0 ${tokenName}`;
-                document.getElementById('pendingBalance').textContent = `0 ${tokenName}`;
+                document.getElementById('currentBalanceDisplay').textContent = `0.00 ${tokenName}`;
+                document.getElementById('pendingBalanceDisplay').textContent = `0.00 ${tokenName}`;
+                document.getElementById('rolloverBtn').disabled = true;
+                document.getElementById('rolloverBtn').textContent = 'Rollover (nothing to rollover)';
                 
                 // Disable buttons
                 document.getElementById('refreshBtn').disabled = true;
@@ -1004,7 +1782,7 @@
                 console.log('[DEBUG] Address Consistency Check:', {
                     walletAddress,
                     serviceAddress,
-                    match: match ? '✅ MATCH' : '❌ MISMATCH',
+                    match: match ? '[OK] MATCH' : '[ERROR] MISMATCH',
                 });
                 return match;
             },
@@ -1037,7 +1815,7 @@
                 const tokenDecimals = currentNetwork === 'mainnet' ? 6 : 18; // USDC has 6 decimals, STRK has 18
                 
                 setStatus('Funding...', 'loading');
-                addLog(`💰 Funding ${amountInput.toFixed(2)} ${tokenSymbol}...`, 'info');
+                addLog(`[FUND] Funding ${amountInput.toFixed(2)} ${tokenSymbol}...`, 'info');
                 addLog(`Note: ${currentNetwork === 'mainnet' ? 'Mainnet uses USDC tokens (6 decimals)' : 'Sepolia uses STRK tokens (18 decimals)'}`, 'info');
                 addLog('Please approve ' + tokenSymbol + ' and confirm fund transaction in your wallet', 'info');
                 
@@ -1055,7 +1833,7 @@
                 
                 const tx = await service.fundDonationAccount(amountToken);
                 
-                addLog(`✅ Fund tx submitted! Hash: ${tx.slice(0, 20)}...`, 'success');
+                addLog(`[OK] Fund tx submitted! Hash: ${tx.slice(0, 20)}...`, 'success');
                 const explorerUrl = currentNetwork === 'mainnet' 
                     ? `https://starkscan.co/tx/${tx}` 
                     : `https://sepolia.starkscan.co/tx/${tx}`;
@@ -1064,29 +1842,29 @@
                 document.getElementById('fundAmount').value = '';
                 
                 // Wait for tx to be indexed
-                addLog('⏳ Waiting for transaction confirmation...', 'info');
+                addLog('[WAIT] Waiting for transaction confirmation...', 'info');
                 await new Promise(r => setTimeout(r, 4000));
                 
                 // Refresh state
-                addLog('🔄 Refreshing account state...', 'info');
+                addLog('[REFRESH] Refreshing account state...', 'info');
                 await refreshState();
                 
-                setStatus(`✅ Funded successfully with ${tokenSymbol}!`, 'success');
-                addLog(`💰 Your Tongo account balance updated`, 'success');
+                setStatus(`[OK] Funded successfully with ${tokenSymbol}!`, 'success');
+                addLog(`[BALANCE] Your Tongo account balance updated`, 'success');
             } catch (error) {
                 const errorMsg = error instanceof Error ? error.message : 'Unknown error';
                 console.error('[FUND] Error:', error);
                 
-                addLog(`❌ Fund failed: ${errorMsg}`, 'error');
+                addLog(`[ERROR] Fund failed: ${errorMsg}`, 'error');
                 
                 // Determine token name for error messages
                 const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
                 
                 // Provide debugging hints
                 if (errorMsg.includes('NotOwner') || errorMsg.includes('NowOwner')) {
-                    addLog('💡 Check: 1) You have ' + tokenName + ' on ' + currentNetwork + ', 2) Network is "' + (currentNetwork === 'mainnet' ? 'Mainnet' : 'Sepolia') + '" (not ' + (currentNetwork === 'mainnet' ? 'testnet' : 'mainnet') + '), 3) Reload page', 'warn');
+                    addLog('[HINT] Check: 1) You have ' + tokenName + ' on ' + currentNetwork + ', 2) Network is "' + (currentNetwork === 'mainnet' ? 'Mainnet' : 'Sepolia') + '" (not ' + (currentNetwork === 'mainnet' ? 'testnet' : 'mainnet') + '), 3) Reload page', 'warn');
                 } else if (errorMsg.includes('Insufficient balance')) {
-                    addLog('💡 You need more ' + tokenName + '. Send ' + tokenName + ' from exchange to your wallet on ' + currentNetwork + '.', 'warn');
+                    addLog('[HINT] You need more ' + tokenName + '. Send ' + tokenName + ' from exchange to your wallet on ' + currentNetwork + '.', 'warn');
                 } else if (errorMsg.includes('Proof') || errorMsg.includes('proof')) {
                     addLog('Tongo proof verification failed. Try regenerating your Tongo key.', 'warn');
                     addLog('Refresh the page and connect wallet again', 'warn');
@@ -1094,7 +1872,7 @@
                     addLog('You rejected the transaction in your wallet', 'info');
                 }
                 
-                setStatus('❌ Fund failed', 'error');
+                setStatus('[ERROR] Fund failed', 'error');
             }
         };
 
@@ -1128,39 +1906,39 @@
                 // Convert to proper decimals
                 const amountToken = BigInt(Math.floor(amount * Math.pow(10, tokenDecimals)));
                 
-                addLog(`💸 Sending ${amount.toFixed(2)} ${tokenName} (amount hidden on-chain)...`, 'info');
-                addLog('🔒 This donation will be ZK-encrypted. Amount is HIDDEN!', 'info');
+                addLog(`[SEND] Sending ${amount.toFixed(2)} ${tokenName} (amount hidden on-chain)...`, 'info');
+                addLog('[ENCRYPT] This donation will be ZK-encrypted. Amount is HIDDEN!', 'info');
                 addLog('Please approve the transaction in your wallet', 'info');
                 
                 const tx = await service.sendPrivateDonation(recipient, amountToken);
                 
-                addLog(`✅ Donation sent! TX: ${tx.slice(0, 20)}...`, 'success');
+                addLog(`[OK] Donation sent! TX: ${tx.slice(0, 20)}...`, 'success');
                 const explorerUrl = currentNetwork === 'mainnet' 
                     ? `https://starkscan.co/tx/${tx}` 
                     : `https://sepolia.starkscan.co/tx/${tx}`;
                 addLog(`View on Starkscan: ${explorerUrl}`, 'info');
-                addLog('🔒 Amount is encrypted on-chain', 'info');
+                addLog('[ENCRYPT] Amount is encrypted on-chain', 'info');
                 document.getElementById('recipientKey').value = '';
                 document.getElementById('donationAmount').value = '';
                 
                 // Wait a bit for transaction to be indexed
                 await new Promise(r => setTimeout(r, 3000));
                 await refreshState();
-                setStatus('✅ Donation sent privately!', 'success');
+                setStatus('[OK] Donation sent privately!', 'success');
             } catch (error) {
                 const errorMsg = error instanceof Error ? error.message : 'Unknown error';
                 console.error('[SEND] Error:', error);
-                addLog(`❌ Donation failed: ${errorMsg}`, 'error');
+                addLog(`[ERROR] Donation failed: ${errorMsg}`, 'error');
                 
                 if (errorMsg.includes('Insufficient balance')) {
-                    addLog('💡 You don\'t have enough balance in your Tongo account. Fund first!', 'warn');
+                    addLog('[HINT] You don\'t have enough balance in your Tongo account. Fund first!', 'warn');
                 } else if (errorMsg.includes('parse') || errorMsg.includes('public key')) {
                     addLog('Check recipient public key format (base58 TongoAddress or hex)', 'warn');
                 } else if (errorMsg.includes('user rejected') || errorMsg.includes('cancelled')) {
                     addLog('Transaction cancelled by user', 'info');
                 }
                 
-                setStatus('❌ Donation failed', 'error');
+                setStatus('[ERROR] Donation failed', 'error');
             }
         };
 
@@ -1186,12 +1964,12 @@
                 
                 const amountToken = BigInt(Math.floor(amount * Math.pow(10, tokenDecimals)));
                 
-                addLog(`💰 Withdrawing ${amount.toFixed(2)} ${tokenName}...`, 'info');
+                addLog(`[WITHDRAW] Withdrawing ${amount.toFixed(2)} ${tokenName}...`, 'info');
                 addLog('Please approve the transaction in your wallet', 'info');
                 
                 const tx = await service.withdrawDonations(amountToken);
                 
-                addLog(`✅ Withdrawn! TX: ${tx.slice(0, 20)}...`, 'success');
+                addLog(`[OK] Withdrawn! TX: ${tx.slice(0, 20)}...`, 'success');
                 const explorerUrl = currentNetwork === 'mainnet'
                     ? `https://starkscan.co/tx/${tx}`
                     : `https://sepolia.starkscan.co/tx/${tx}`;
@@ -1201,7 +1979,7 @@
                 // Wait a bit for transaction to be indexed
                 await new Promise(r => setTimeout(r, 3000));
                 await refreshState();
-                setStatus('✅ Withdrawn successfully!', 'success');
+                setStatus('[OK] Withdrawn successfully!', 'success');
             } catch (error) {
                 const errorMsg = error instanceof Error ? error.message : 'Unknown error';
                 addLog(`Withdrawal failed: ${errorMsg}`, 'error');
@@ -1256,8 +2034,10 @@
                 const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
                 document.getElementById('publicKey').textContent = 'Not initialized';
                 document.getElementById('walletBalance').textContent = '-';
-                document.getElementById('currentBalance').textContent = `0 ${tokenName}`;
-                document.getElementById('pendingBalance').textContent = `0 ${tokenName}`;
+                document.getElementById('currentBalanceDisplay').textContent = `0.00 ${tokenName}`;
+                document.getElementById('pendingBalanceDisplay').textContent = `0.00 ${tokenName}`;
+                document.getElementById('rolloverBtn').disabled = true;
+                document.getElementById('rolloverBtn').textContent = 'Rollover (nothing to rollover)';
                 return;
             }
             
@@ -1289,8 +2069,20 @@
             const currentBalanceStr = (Number(state.currentBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
             const pendingBalanceStr = (Number(state.pendingBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
             
-            document.getElementById('currentBalance').textContent = `${currentBalanceStr} ${tokenName}`;
-            document.getElementById('pendingBalance').textContent = `${pendingBalanceStr} ${tokenName}`;
+            // Update new balance display elements
+            document.getElementById('currentBalanceDisplay').textContent = `${currentBalanceStr} ${tokenName}`;
+            document.getElementById('pendingBalanceDisplay').textContent = `${pendingBalanceStr} ${tokenName}`;
+            
+            // Update rollover button state
+            const rolloverBtn = document.getElementById('rolloverBtn');
+            const pendingBalanceNum = Number(state.pendingBalance);
+            if (pendingBalanceNum > 0) {
+                rolloverBtn.disabled = false;
+                rolloverBtn.textContent = `Rollover ${pendingBalanceStr} ${tokenName}`;
+            } else {
+                rolloverBtn.disabled = true;
+                rolloverBtn.textContent = 'Rollover (nothing to rollover)';
+            }
             
             // Update wallet balance
             try {
