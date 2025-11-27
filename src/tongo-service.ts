@@ -8,8 +8,14 @@ import { TongoDonationState, TongoOperation } from './types';
 import { pubKeyBase58ToAffine } from '@fatsolutions/tongo-sdk/dist/types.js';
 
 /**
- * Pad Starknet address to 66 characters (0x + 64 hex)
- * This is CRITICAL for ZK proof validation - addresses must be consistently formatted
+ * Pads a Starknet address to 66 characters (0x + 64 hex digits).
+ * Required for consistent ZK proof validation in Tongo SDK.
+ * 
+ * @param address - The address to pad (e.g., 0x6a6826b1...)
+ * @returns Padded address (0x06a6826b1...)
+ * 
+ * @example
+ * padAddress('0x6a6826b1...') // '0x06a6826b1...'
  */
 function padAddress(address: string): string {
   if (!address) return address;
