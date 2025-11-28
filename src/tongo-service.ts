@@ -631,20 +631,50 @@ export class TongoService {
    */
   async sendPrivateDonation(
     recipientPublicKey: string,
-    amountInTongo: bigint
+    amountInToken: bigint  // ← CHANGE: Now receives token amount (USDC/STRK decimals)
   ): Promise<string> {
-    console.log(
-      `[TRANSFER] Sending private donation of ${amountInTongo} to ${recipientPublicKey}`
-    );
+    // Determine if we're on mainnet (USDC) or testnet (STRK)
+    const isMainnet = this.strkAddress.toLowerCase() === 
+      '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8';
+    const tokenName = isMainnet ? 'USDC' : 'STRK';
+    const tokenDecimals = isMainnet ? 6 : 18;
+
+    // Convert token amount to Tongo internal units (just like fund does!)
+    const amountInTongo = await this.tongoAccount.erc20ToTongo(amountInToken);
+
+    console.log('[TRANSFER] Sending private donation:', {
+      inputTokenAmount: amountInToken.toString(),
+      tongoAmount: amountInTongo.toString(),
+      tokenName,
+      recipient: recipientPublicKey.slice(0, 30) + '...'
+    });
 
     try {
-    // Get current state to validate balance
-    const accountState = await this.tongoAccount.state();
-    if (accountState.balance < amountInTongo) {
-      throw new Error(
-        `Insufficient balance: ${accountState.balance} < ${amountInTongo}`
-      );
-    }
+      // Get current state to validate balance
+      const accountState = await this.tongoAccount.state();
+      
+      console.log('[TRANSFER] Balance check:', {
+        currentBalance: accountState.balance.toString(),
+        amountToSend: amountInTongo.toString(),
+        sufficient: accountState.balance >= amountInTongo
+      });
+
+      if (accountState.balance < amountInTongo) {
+        // Convert back to human-readable for error message
+        try {
+          const balanceToken = await this.tongoAccount.tongoToErc20(accountState.balance);
+          const amountToken = await this.tongoAccount.tongoToErc20(amountInTongo);
+          const balanceHuman = (Number(balanceToken) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals <= 6 ? 2 : 6);
+          const amountHuman = (Number(amountToken) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals <= 6 ? 2 : 6);
+          throw new Error(
+            `Insufficient balance: You have ${balanceHuman} ${tokenName} but tried to send ${amountHuman} ${tokenName}`
+          );
+        } catch (e) {
+          throw new Error(
+            `Insufficient balance: ${accountState.balance} < ${amountInTongo}`
+          );
+        }
+      }
 
     // Convert recipient public key string to PubKey format
     const recipientPubKey = this.parsePublicKey(recipientPublicKey);
@@ -888,18 +918,25 @@ export class TongoService {
       const tokenName = isMainnet ? 'USDC' : 'STRK';
       const tokenDecimals = isMainnet ? 6 : 18;
       
-      // Handle balance - Tongo stores encrypted balances
-      // For USDC (6 decimals) or STRK (18 decimals), convert to display units
+      // Handle balance - Tongo stores in INTERNAL UNITS, not token decimals!
       if (accountState && ('balance' in accountState)) {
         const balanceValue = accountState.balance;
         if (balanceValue !== undefined && balanceValue !== null) {
           const balance = typeof balanceValue === 'bigint' 
             ? balanceValue 
             : BigInt(String(balanceValue));
-          // Store as-is (encrypted balance), display will divide by token decimals
-          // Convert to wei/micros for consistent internal storage
-          this.state.currentBalance = balance * BigInt(Math.pow(10, tokenDecimals));
-          console.log(`[REFRESH] Current balance (encrypted, ${tokenDecimals}-decimal ${tokenName}):`, (Number(balance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6), tokenName);
+          
+          // Store RAW Tongo balance (don't multiply by decimals!)
+          this.state.currentBalance = balance;
+          
+          // Convert to token amount for display
+          try {
+            const tokenAmount = await this.tongoAccount.tongoToErc20(balance);
+            const displayAmount = (Number(tokenAmount) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
+            console.log(`[REFRESH] Current balance (Tongo internal units): ${balance.toString()}, equivalent to ${displayAmount} ${tokenName}`);
+          } catch (e) {
+            console.log(`[REFRESH] Current balance (Tongo internal units): ${balance.toString()}`);
+          }
         } else {
           this.state.currentBalance = 0n;
           console.log('[REFRESH] Balance is null/undefined, setting to 0');
@@ -916,9 +953,18 @@ export class TongoService {
           const pending = typeof pendingValue === 'bigint' 
             ? pendingValue 
             : BigInt(String(pendingValue));
-          // Store as-is (encrypted balance), convert to wei/micros for display
-          this.state.pendingBalance = pending * BigInt(Math.pow(10, tokenDecimals));
-          console.log(`[REFRESH] Pending balance (encrypted, ${tokenDecimals}-decimal ${tokenName}):`, (Number(pending) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6), tokenName);
+          
+          // Store RAW Tongo balance (don't multiply!)
+          this.state.pendingBalance = pending;
+          
+          // Convert to token amount for display
+          try {
+            const tokenAmount = await this.tongoAccount.tongoToErc20(pending);
+            const displayAmount = (Number(tokenAmount) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
+            console.log(`[REFRESH] Pending balance (Tongo internal units): ${pending.toString()}, equivalent to ${displayAmount} ${tokenName}`);
+          } catch (e) {
+            console.log(`[REFRESH] Pending balance (Tongo internal units): ${pending.toString()}`);
+          }
         } else {
           this.state.pendingBalance = 0n;
           console.log('[REFRESH] Pending is null/undefined, setting to 0');
@@ -1014,6 +1060,41 @@ export class TongoService {
         `Failed to parse public key: ${error instanceof Error ? error.message : String(error)}. ` +
         `Supported formats: base58 TongoAddress or hex 0x<x64hex><y64hex>`
       );
+    }
+  }
+
+  /**
+   * Convert Tongo internal units to human-readable token amount
+   */
+  async tongoToDisplayAmount(tongoAmount: bigint): Promise<string> {
+    try {
+      // Use SDK's conversion (reverse of erc20ToTongo)
+      const tokenAmount = await this.tongoAccount.tongoToErc20(tongoAmount);
+      const isMainnet = this.strkAddress.toLowerCase() === 
+        '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8';
+      const tokenDecimals = isMainnet ? 6 : 18;
+      const tokenName = isMainnet ? 'USDC' : 'STRK';
+      
+      return `${(Number(tokenAmount) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals <= 6 ? 2 : 6)} ${tokenName}`;
+    } catch (e) {
+      // Fallback: assume 1:1 ratio with basic formatting
+      return `${tongoAmount.toString()} units`;
+    }
+  }
+
+  /**
+   * Get maximum sendable amount in token units
+   */
+  async getMaxSendableAmount(): Promise<{ tongoUnits: bigint; tokenAmount: bigint; display: string }> {
+    const accountState = await this.tongoAccount.state();
+    const tongoUnits = accountState.balance;
+    
+    try {
+      const tokenAmount = await this.tongoAccount.tongoToErc20(tongoUnits);
+      const display = await this.tongoToDisplayAmount(tongoUnits);
+      return { tongoUnits, tokenAmount, display };
+    } catch (e) {
+      return { tongoUnits, tokenAmount: tongoUnits, display: `${tongoUnits} units` };
     }
   }
 }

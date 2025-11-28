@@ -7,12 +7,16 @@
   "scripts": {
     "build": "tsc",
     "build:web": "vite build",
+    "build:deploy": "vite build",
     "dev": "bun run src/demo.ts",
     "dev:web": "vite",
     "serve": "bunx http-server . -p 8080",
     "demo": "bun run build && bun run dist/demo.js",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "deploy": "bun run build:deploy && npx wrangler pages deploy dist --project-name=tongo-ukraine",
+    "deploy:login": "npx wrangler login",
+    "deploy:build": "bun run build:deploy"
   },
   "keywords": [
     "starknet",
@@ -24,6 +28,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@atomiqlabs/chain-starknet": "^7.0.23",
+    "@atomiqlabs/sdk": "^7.0.6",
     "@fatsolutions/tongo-sdk": "^1.3.0",
     "dotenv": "^17.2.3",
     "get-starknet": "^3.3.3",

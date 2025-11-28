@@ -787,6 +787,205 @@
             }
         }
 
+        /* Lightning Section Styles */
+        #lightning-section {
+            background: linear-gradient(135deg, #FF9500 0%, #FF6B00 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+            border: 2px solid #FF9500;
+        }
+
+        #lightning-section h3 {
+            margin: 0 0 8px 0;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        #lightning-section .hint {
+            opacity: 0.9;
+            margin: 0 0 20px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .quick-amounts-lightning {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .quick-btn-lightning {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .quick-btn-lightning:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .quick-btn-lightning.active {
+            background: white;
+            color: #FF6B00;
+        }
+
+        #lightning-amount-usd {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        #lightning-amount-usd::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .conversion {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0 0 16px 0;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        #generate-invoice-btn {
+            width: 100%;
+            padding: 16px;
+            background: white;
+            color: #FF6B00;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+        }
+
+        #generate-invoice-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #generate-invoice-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Invoice Display */
+        #invoice-display {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #1a1a1a;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .invoice-header h4 {
+            margin: 0;
+            color: #1a1a1a;
+        }
+
+        .expires-in {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .invoice-string {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .invoice-string input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .invoice-string .btn-secondary {
+            padding: 10px 16px;
+            background: #0057B8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        .status-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid #FFB800;
+            margin-bottom: 16px;
+        }
+
+        .status-icon {
+            font-size: 24px;
+        }
+
+        .status-text {
+            font-weight: 500;
+        }
+
+        .swap-details {
+            border-top: 1px solid #eee;
+            padding-top: 16px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .detail-row span:first-child {
+            color: #666;
+        }
+
+        .detail-row span:last-child {
+            font-weight: 600;
+        }
+
         @media (min-width: 1025px) {
             .hero {
                 display: flex;
@@ -987,84 +1186,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Real-World Example -->
-            <div class="example-section">
-                <h3>Real-World Example: Helping Ukraine Relief Fund</h3>
-                
-                <div class="example">
-                    <div class="example-step">
-                        <div class="step-num">1</div>
-                        <div class="step-content">
-                            <p class="step-title">You fund your account</p>
-                            <p class="step-detail">
-                                You send $50 USDC to Tongo
-                            </p>
-                            <div class="step-result">
-                                [+] Current Balance: $50<br>
-                                [+] Pending Balance: $0
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="example-step">
-                        <div class="step-num">2</div>
-                        <div class="step-content">
-                            <p class="step-title">You send $20 anonymously</p>
-                            <p class="step-detail">
-                                You donate $20 to a relief recipient
-                            </p>
-                            <div class="step-result">
-                                [+] Current Balance: $30<br>
-                                [+] Pending Balance: $0
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="example-step">
-                        <div class="step-num">3</div>
-                        <div class="step-content">
-                            <p class="step-title">Someone sends you $15</p>
-                            <p class="step-detail">
-                                An anonymous donor sends you funds to forward
-                            </p>
-                            <div class="step-result">
-                                [+] Current Balance: $30<br>
-                                [+] Pending Balance: $15
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="example-step">
-                        <div class="step-num">4</div>
-                        <div class="step-content">
-                            <p class="step-title">You rollover pending</p>
-                            <p class="step-detail">
-                                You click "Rollover" to move it to Current
-                            </p>
-                            <div class="step-result">
-                                [+] Current Balance: $45<br>
-                                [+] Pending Balance: $0
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="example-step">
-                        <div class="step-num">5</div>
-                        <div class="step-content">
-                            <p class="step-title">You forward $15</p>
-                            <p class="step-detail">
-                                You send the $15 to another relief organization
-                            </p>
-                            <div class="step-result">
-                                [+] Current Balance: $30<br>
-                                [+] Pending Balance: $0<br>
-                                [+] Nobody knows any amounts!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="grid">
@@ -1097,6 +1218,85 @@
                 </p>
             </div>
 
+            <!-- Lightning Donation Section -->
+            <div id="lightning-section" class="card" style="display: none;">
+                <div class="card__header">
+                    <h3>⚡ Donate with Bitcoin Lightning</h3>
+                    <p class="hint">Instant, low-fee Bitcoin donations</p>
+                </div>
+                
+                <!-- Amount Input -->
+                <div class="input-group">
+                    <label style="color: white; margin-bottom: 8px; display: block;">Amount (USD equivalent)</label>
+                    <div class="quick-amounts-lightning">
+                        <button class="quick-btn-lightning" data-usd="5">$5</button>
+                        <button class="quick-btn-lightning" data-usd="10">$10</button>
+                        <button class="quick-btn-lightning" data-usd="25">$25</button>
+                        <button class="quick-btn-lightning" data-usd="50">$50</button>
+                    </div>
+                    <input type="number" id="lightning-amount-usd" placeholder="Custom amount (USD)" min="1" step="1" />
+                    <p class="conversion" id="sats-conversion">≈ 0 sats</p>
+                </div>
+                
+                <!-- Generate Invoice Button -->
+                <button id="generate-invoice-btn" class="btn-primary">
+                    ⚡ Generate Lightning Invoice
+                </button>
+                
+                <!-- Invoice Display (hidden until generated) -->
+                <div id="invoice-display" style="display: none;">
+                    <div class="invoice-header">
+                        <h4>Pay this Lightning Invoice</h4>
+                        <p class="expires-in">Expires in: <span id="invoice-expiry">--:--</span></p>
+                    </div>
+                    
+                    <!-- QR Code -->
+                    <div id="qr-code-container" class="qr-container">
+                        <!-- QR code will be inserted here -->
+                    </div>
+                    
+                    <!-- Invoice String (copyable) -->
+                    <div class="invoice-string">
+                        <input type="text" id="invoice-text" readonly />
+                        <button id="copy-invoice-btn" class="btn-secondary">📋 Copy</button>
+                    </div>
+                    
+                    <!-- Status -->
+                    <div id="lightning-status" class="status-box">
+                        <span class="status-icon">⏳</span>
+                        <span class="status-text">Waiting for payment...</span>
+                    </div>
+                    
+                    <!-- Swap Details -->
+                    <div class="swap-details">
+                        <div class="detail-row">
+                            <span>You pay:</span>
+                            <span id="swap-input">-- sats</span>
+                        </div>
+                        
+                        <!-- Show intermediate step for mainnet -->
+                        <div class="detail-row" id="strk-step" style="display: none;">
+                            <span>→ Receive (STRK):</span>
+                            <span id="swap-strk">-- STRK</span>
+                        </div>
+                        <div class="detail-row" id="usdc-step" style="display: none;">
+                            <span>→ Swap to (USDC):</span>
+                            <span id="swap-usdc">~-- USDC</span>
+                        </div>
+                        
+                        <div class="detail-row" style="font-weight: 600; color: #0057B8;">
+                            <span>Final to Tongo:</span>
+                            <span id="swap-output">-- USDC</span>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <span>Network fee:</span>
+                            <span id="swap-fee">-- sats</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Send Donation -->
             <div class="card">
                 <div class="card__header">
@@ -1108,6 +1308,14 @@
                     <span style="color: #ffd700;">zero-knowledge encrypted</span> on-chain, meaning only you and the recipient know the amount. 
                     The transaction appears on-chain but the value is hidden using cryptographic proofs.
                 </p>
+                
+                <!-- Max amount display -->
+                <div class="max-amount-row" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; padding: 8px; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">
+                    <span style="color: #00ddaa; font-size: 0.85em;">Available to send:</span>
+                    <span id="maxSendableAmount" style="color: #00ff00; font-weight: bold;">--</span>
+                    <button onclick="setMaxSendAmount()" style="padding: 4px 8px; font-size: 0.75em; background: rgba(0,255,0,0.2); border: 1px solid #00ff00; border-radius: 4px; color: #00ff00; cursor: pointer;">MAX</button>
+                </div>
+                
                 <input 
                     type="text" 
                     id="recipientKey" 
@@ -1184,8 +1392,26 @@
 
     <script type="module">
         import { TongoService } from './tongo-service.ts';
-        import { connectWallet as connectWalletSDK, disconnectWallet as disconnectWalletSDK, getConnectedAccount, createProvider, getNetworkConfig } from './wallet-config.ts';
+        import { connectWallet as connectWalletSDK, disconnectWallet as disconnectWalletSDK, getConnectedAccount, createProvider, getNetworkConfig, NETWORKS } from './wallet-config.ts';
         import { getOrCreateTongoKey, hasTongoKey, saveTongoKey } from './tongo-key-manager.ts';
+        import { 
+            initializeSwapper,
+            createLightningToStarknetSwap,
+            waitForLightningPaymentAndClaim,
+            getLightningSwapLimits,
+            getClaimableSwaps,
+            createStarknetSigner,
+            usdToSats,
+            satsToUSD,
+            fetchBTCPrice,
+            isAtomiqAvailable,
+            getAtomiqError
+        } from './lightning-service.ts';
+        import { 
+            buildStrkToUsdcSwap,
+            formatUsdcAmount,
+            formatStrkAmount
+        } from './avnu-service.ts';
         
         let service = null;
         let isInitialized = false;
@@ -1434,8 +1660,23 @@
                 document.getElementById('connectWalletBtn').classList.add('hidden');
                 document.getElementById('disconnectWalletBtn').classList.remove('hidden');
                 
+                // Initialize Lightning (but don't fail if Atomiq is down)
+                try {
+                    await showLightningSection();
+                } catch (lightningError) {
+                    console.warn('[CONNECT] Lightning initialization failed (non-critical):', lightningError);
+                    addLog('[LIGHTNING] ⚠️ Lightning service unavailable - you can still use USDC donations', 'warn');
+                }
+                
                 // Initialize Tongo service
                 await initializeTongoService();
+                
+                // Try to recover pending swaps (but don't fail if Atomiq is down)
+                try {
+                    await recoverPendingSwaps();
+                } catch (recoveryError) {
+                    console.warn('[CONNECT] Swap recovery skipped:', recoveryError);
+                }
                 
             } catch (error) {
                 // Clear loading indicator on error
@@ -1500,6 +1741,11 @@
                 document.getElementById('rolloverBtn').disabled = true;
                 document.getElementById('rolloverBtn').textContent = 'Rollover (nothing to rollover)';
                 
+                // Hide Lightning section and cleanup
+                const lightningSection = document.getElementById('lightning-section');
+                if (lightningSection) lightningSection.style.display = 'none';
+                cleanupLightningState();
+                
                 // Disable buttons
                 document.getElementById('refreshBtn').disabled = true;
                 
@@ -1509,6 +1755,563 @@
                 addLog(`Disconnect failed: ${error.message}`, 'error');
             }
         };
+
+        // ============================================
+        // LIGHTNING DONATIONS
+        // ============================================
+        
+        // Current BTC price (fetched from API)
+        let btcPriceUSD = 95000;
+        
+        // Active swap state
+        let activeSwap = null;
+        let expiryInterval = null;
+        
+        // Show Lightning section when wallet is connected
+        async function showLightningSection() {
+            const section = document.getElementById('lightning-section');
+            if (!section) return;
+            
+            section.style.display = 'block';
+            
+            // Show loading state initially
+            const originalContent = section.innerHTML;
+            
+            try {
+                addLog('[LIGHTNING] Initializing Atomiq service...', 'info');
+                
+                const swapper = await initializeSwapper(currentNetwork);
+                
+                if (!swapper || !isAtomiqAvailable()) {
+                    // Atomiq is unavailable - show alternative options
+                    const error = getAtomiqError() || 'Service unavailable';
+                    console.warn('[LIGHTNING] Atomiq not available:', error);
+                    addLog(`[LIGHTNING] ⚠️ Lightning service temporarily unavailable: ${error}`, 'warn');
+                    
+                    // Update UI to show unavailable state with alternatives
+                    section.innerHTML = `
+                        <div class="card__header">
+                            <h3>⚡ Donate with Bitcoin Lightning</h3>
+                            <p class="hint">Instant, low-fee Bitcoin donations</p>
+                        </div>
+                        
+                        <div style="background: rgba(255, 184, 0, 0.2); padding: 16px; border-radius: 8px; margin: 16px 0; border: 2px solid #FFB800;">
+                            <p style="margin: 0 0 8px 0; color: white; font-weight: 600;">⚠️ <strong>Lightning service temporarily unavailable</strong></p>
+                            <p style="margin: 0; font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
+                                The Atomiq intermediary nodes are offline. This is a temporary issue on their end.
+                            </p>
+                        </div>
+                        
+                        <p style="margin-top: 16px; color: white; font-weight: 600;"><strong>Alternative: Bridge Bitcoin manually</strong></p>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+                            <a href="https://app.garden.finance/swap/?from=BTC&to=STARKNET_USDC" 
+                               target="_blank"
+                               style="display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.2); border-radius: 10px; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s;">
+                                <span style="font-size: 24px;">🌱</span>
+                                <div>
+                                    <strong>Garden Finance</strong><br>
+                                    <small style="opacity: 0.8;">Bridge native BTC → USDC</small>
+                                </div>
+                            </a>
+                            
+                            <a href="https://starkgate.starknet.io" 
+                               target="_blank"
+                               style="display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.2); border-radius: 10px; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s;">
+                                <span style="font-size: 24px;">🌉</span>
+                                <div>
+                                    <strong>StarkGate</strong><br>
+                                    <small style="opacity: 0.8;">Bridge from Ethereum</small>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <p style="font-size: 0.85em; opacity: 0.8; margin-top: 16px; color: rgba(255, 255, 255, 0.9);">
+                            After bridging, return here to fund your Tongo account with USDC.
+                        </p>
+                    `;
+                    return;
+                }
+                
+                // Atomiq is available - restore normal UI if it was replaced
+                if (section.innerHTML !== originalContent && !section.querySelector('#lightning-amount-usd')) {
+                    // Reload the page or restore original content
+                    // For now, just log that it's available
+                    addLog('[LIGHTNING] ✅ Atomiq service ready', 'success');
+                } else {
+                    addLog('[LIGHTNING] ✅ Atomiq service ready', 'success');
+                }
+                
+            } catch (error) {
+                console.error('[LIGHTNING] Error initializing:', error);
+                const errorMsg = error instanceof Error ? error.message : String(error);
+                addLog(`[LIGHTNING] Error: ${errorMsg}`, 'error');
+                
+                // Show unavailable state on error too
+                if (!isAtomiqAvailable()) {
+                    section.innerHTML = `
+                        <div class="card__header">
+                            <h3>⚡ Donate with Bitcoin Lightning</h3>
+                            <p class="hint">Service temporarily unavailable</p>
+                        </div>
+                        <div style="background: rgba(255, 184, 0, 0.2); padding: 16px; border-radius: 8px; margin: 16px 0;">
+                            <p style="margin: 0; color: white;">⚠️ Lightning service is temporarily unavailable. Please use regular USDC funding instead.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        // Recover pending swaps on page load
+        async function recoverPendingSwaps() {
+            if (!isAtomiqAvailable()) {
+                console.log('[LIGHTNING] Skipping swap recovery - Atomiq not available');
+                return;
+            }
+            
+            if (!walletAccount) return;
+            
+            try {
+                const swapper = await initializeSwapper(currentNetwork);
+                if (!swapper) return;
+                
+                const claimable = await getClaimableSwaps(currentNetwork);
+                
+                if (claimable && claimable.length > 0) {
+                    console.log('[LIGHTNING] Found claimable swaps:', claimable);
+                    addLog(`⚠️ Found ${claimable.length} pending swap(s) to recover`, 'warn');
+                    // TODO: Show recovery UI to user
+                    // For now, just log it
+                }
+            } catch (error) {
+                // Don't show error to user - Lightning is optional
+                console.warn('[LIGHTNING] Could not check for pending swaps:', error);
+            }
+        }
+        
+        // Fetch BTC price on initialization
+        async function initializeBTCPrice() {
+            try {
+                btcPriceUSD = await fetchBTCPrice();
+                console.log('[LIGHTNING] BTC price fetched:', btcPriceUSD);
+            } catch (error) {
+                console.warn('[LIGHTNING] Could not fetch BTC price, using fallback:', error);
+                btcPriceUSD = 95000;
+            }
+        }
+        
+        // Quick amount buttons
+        document.querySelectorAll('.quick-btn-lightning[data-usd]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const usd = parseInt((e.target).dataset.usd || '0');
+                const input = document.getElementById('lightning-amount-usd');
+                if (input) {
+                    input.value = usd.toString();
+                    updateSatsConversion(usd);
+                    
+                    // Highlight selected
+                    document.querySelectorAll('.quick-btn-lightning').forEach(b => b.classList.remove('active'));
+                    (e.target).classList.add('active');
+                }
+            });
+        });
+        
+        // Update sats conversion on input change
+        const lightningAmountInput = document.getElementById('lightning-amount-usd');
+        if (lightningAmountInput) {
+            lightningAmountInput.addEventListener('input', (e) => {
+                const usd = parseFloat((e.target).value) || 0;
+                updateSatsConversion(usd);
+            });
+        }
+        
+        function updateSatsConversion(usd) {
+            const sats = usdToSats(usd, btcPriceUSD);
+            const conversionEl = document.getElementById('sats-conversion');
+            if (conversionEl) {
+                conversionEl.textContent = `≈ ${sats.toLocaleString()} sats`;
+            }
+        }
+        
+        // Generate Lightning Invoice
+        const generateInvoiceBtn = document.getElementById('generate-invoice-btn');
+        if (generateInvoiceBtn) {
+            generateInvoiceBtn.addEventListener('click', async () => {
+                // Check if Atomiq is available first
+                if (!isAtomiqAvailable()) {
+                    const error = getAtomiqError() || 'Service unavailable';
+                    addLog(`[LIGHTNING] ⚠️ Lightning service unavailable: ${error}`, 'error');
+                    alert('Lightning service is temporarily unavailable. Please use regular USDC funding or try again later.');
+                    return;
+                }
+                
+                const amountInput = document.getElementById('lightning-amount-usd');
+                const usdAmount = parseFloat(amountInput?.value || '0');
+                
+                if (!usdAmount || usdAmount < 1) {
+                    alert('Please enter a valid amount (minimum $1)');
+                    return;
+                }
+                if (!walletAccount) {
+                    alert('Please connect your wallet first');
+                    return;
+                }
+                
+                const btn = document.getElementById('generate-invoice-btn');
+                btn.disabled = true;
+                btn.textContent = '⏳ Generating...';
+                
+                try {
+                    // Convert USD to satoshis
+                    const amountSats = usdToSats(usdAmount, btcPriceUSD);
+                    
+                    console.log('[LIGHTNING] Creating swap for', amountSats, 'sats (~$' + usdAmount + ')');
+                    addLog(`[LIGHTNING] Creating swap for ${amountSats.toLocaleString()} sats (~$${usdAmount})`, 'info');
+                    
+                    // Create the Lightning → Starknet swap
+                    const swapDetails = await createLightningToStarknetSwap(
+                        amountSats,
+                        walletAccount.address,
+                        currentNetwork
+                    );
+                    
+                    activeSwap = swapDetails;
+                    
+                    // Display invoice
+                    displayInvoice(swapDetails);
+                    
+                    // Start listening for payment
+                    listenForPayment(swapDetails);
+                    
+                } catch (error) {
+                    console.error('[LIGHTNING] Error creating swap:', error);
+                    const errorMsg = error instanceof Error ? error.message : String(error);
+                    
+                    // Check if it's an API/network error
+                    if (errorMsg.includes('404') || errorMsg.includes('network') || errorMsg.includes('fetch') || errorMsg.includes('unavailable')) {
+                        addLog(`[LIGHTNING] Atomiq API unavailable. Please try again later.`, 'error');
+                        alert('Lightning service is temporarily unavailable. Please try again later or use regular USDC funding.');
+                    } else {
+                        addLog(`[LIGHTNING] Failed to create invoice: ${errorMsg}`, 'error');
+                        alert('Failed to create Lightning invoice: ' + errorMsg);
+                    }
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = '⚡ Generate Lightning Invoice';
+                }
+            });
+        }
+        
+        function displayInvoice(swapDetails) {
+            // Show invoice section
+            const invoiceDisplay = document.getElementById('invoice-display');
+            if (invoiceDisplay) invoiceDisplay.style.display = 'block';
+            
+            // Set invoice text
+            const invoiceText = document.getElementById('invoice-text');
+            if (invoiceText) invoiceText.value = swapDetails.lightningInvoice;
+            
+            // Generate QR code (using a simple library or API)
+            const qrContainer = document.getElementById('qr-code-container');
+            if (qrContainer) {
+                // Use QR code API
+                qrContainer.innerHTML = `
+                    <img 
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(swapDetails.qrCodeData)}" 
+                        alt="Lightning Invoice QR Code"
+                        style="width: 200px; height: 200px; border-radius: 8px;"
+                    />
+                `;
+            }
+            
+            // Display swap details
+            const inputEl = document.getElementById('swap-input');
+            const outputEl = document.getElementById('swap-output');
+            const feeEl = document.getElementById('swap-fee');
+            const strkStep = document.getElementById('strk-step');
+            const usdcStep = document.getElementById('usdc-step');
+            const strkEl = document.getElementById('swap-strk');
+            const usdcEl = document.getElementById('swap-usdc');
+            
+            // Log raw output for debugging
+            console.log('[LIGHTNING-DEBUG] Raw output from SDK:', {
+                raw: swapDetails.outputAmount,
+                decimals: swapDetails.outputDecimals,
+                token: swapDetails.outputToken,
+                needsSwapToUsdc: swapDetails.needsSwapToUsdc,
+                estimatedUsdc: swapDetails.estimatedUsdcAmount
+            });
+            
+            if (inputEl) inputEl.textContent = `${Number(swapDetails.inputSats).toLocaleString()} sats`;
+            
+            // Show STRK → USDC conversion for mainnet
+            if (swapDetails.needsSwapToUsdc) {
+                // Mainnet: Show full flow
+                if (strkStep) strkStep.style.display = 'flex';
+                if (usdcStep) usdcStep.style.display = 'flex';
+                if (strkEl) strkEl.textContent = `${formatStrkAmount(BigInt(swapDetails.outputAmount))} STRK`;
+                if (usdcEl && swapDetails.estimatedUsdcAmount) {
+                    usdcEl.textContent = `~${formatUsdcAmount(BigInt(swapDetails.estimatedUsdcAmount))} USDC`;
+                }
+                if (outputEl) {
+                    const usdcValue = swapDetails.estimatedUsdcAmount 
+                        ? formatUsdcAmount(BigInt(swapDetails.estimatedUsdcAmount))
+                        : '--';
+                    outputEl.textContent = `~${usdcValue} USDC`;
+                }
+            } else {
+                // Sepolia: Direct STRK
+                if (strkStep) strkStep.style.display = 'none';
+                if (usdcStep) usdcStep.style.display = 'none';
+                if (outputEl) {
+                    outputEl.textContent = `${formatStrkAmount(BigInt(swapDetails.outputAmount))} STRK`;
+                }
+            }
+            
+            if (feeEl) feeEl.textContent = `${Number(swapDetails.fee).toLocaleString()} sats`;
+            
+            // Start expiry countdown
+            startExpiryCountdown(swapDetails.expiryTimestamp);
+        }
+        
+        function startExpiryCountdown(expiryTimestamp) {
+            // Cleanup existing interval
+            if (expiryInterval) {
+                clearInterval(expiryInterval);
+                expiryInterval = null;
+            }
+            
+            const updateExpiry = () => {
+                const remaining = Math.max(0, expiryTimestamp - Date.now());
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                
+                const expiryEl = document.getElementById('invoice-expiry');
+                if (expiryEl) {
+                    expiryEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    if (remaining <= 60000) {
+                        expiryEl.style.color = '#E74C3C'; // Red when < 1 min
+                    }
+                }
+                
+                if (remaining <= 0) {
+                    if (expiryInterval) {
+                        clearInterval(expiryInterval);
+                        expiryInterval = null;
+                    }
+                    updateLightningStatus('expired', 'Invoice expired');
+                }
+            };
+            
+            updateExpiry();
+            expiryInterval = setInterval(updateExpiry, 1000);
+        }
+        
+        // Cleanup Lightning state
+        function cleanupLightningState() {
+            if (expiryInterval) {
+                clearInterval(expiryInterval);
+                expiryInterval = null;
+            }
+            activeSwap = null;
+        }
+        
+        async function listenForPayment(swapDetails) {
+            // Guard against wallet disconnection
+            if (!walletAccount) {
+                updateLightningStatus('error', 'Wallet disconnected');
+                addLog('[LIGHTNING] Wallet disconnected during payment wait', 'error');
+                return;
+            }
+            
+            updateLightningStatus('waiting', 'Waiting for Lightning payment...');
+            
+            try {
+                // Create Starknet signer from wallet
+                const config = NETWORKS[currentNetwork];
+                const signer = createStarknetSigner(walletAccount);
+                
+                // Wait for payment and claim
+                const result = await waitForLightningPaymentAndClaim(
+                    swapDetails.swap,
+                    signer,
+                    (status, details) => {
+                        console.log('[LIGHTNING] Status update:', status, details);
+                        
+                        switch (status) {
+                            case 'waiting':
+                                updateLightningStatus('waiting', 'Waiting for Lightning payment...');
+                                break;
+                            case 'received':
+                                updateLightningStatus('received', 'Payment received! Claiming STRK...');
+                                addLog('[LIGHTNING] Payment received!', 'success');
+                                break;
+                            case 'committed':
+                                updateLightningStatus('processing', 'Processing on Starknet...');
+                                addLog('[LIGHTNING] Commit transaction sent', 'info');
+                                break;
+                            case 'claimed':
+                                updateLightningStatus('success', 'STRK claimed! Preparing to fund Tongo...');
+                                addLog('[LIGHTNING] STRK claimed successfully!', 'success');
+                                break;
+                            case 'swapping':
+                                updateLightningStatus('swapping', 'Swapping STRK → USDC...');
+                                break;
+                            case 'confirming':
+                                updateLightningStatus('confirming', 'Waiting for swap confirmation...');
+                                break;
+                            case 'expired':
+                                updateLightningStatus('expired', 'Invoice expired');
+                                addLog('[LIGHTNING] Invoice expired', 'warn');
+                                break;
+                            case 'error':
+                                updateLightningStatus('error', details?.message || 'An error occurred');
+                                addLog(`[LIGHTNING] Error: ${details?.message || 'Unknown error'}`, 'error');
+                                break;
+                        }
+                    }
+                );
+                
+                if (result.success) {
+                    // Now fund Tongo with the received tokens!
+                    await fundTongoWithReceivedTokens(swapDetails.outputAmount, swapDetails.needsSwapToUsdc);
+                } else {
+                    addLog(`[LIGHTNING] Swap failed: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                console.error('[LIGHTNING] Payment error:', error);
+                const errorMsg = error instanceof Error ? error.message : String(error);
+                updateLightningStatus('error', errorMsg);
+                addLog(`[LIGHTNING] Error: ${errorMsg}`, 'error');
+            }
+        }
+        
+        async function fundTongoWithReceivedTokens(strkAmount, needsSwapToUsdc) {
+            try {
+                if (!service) {
+                    throw new Error('Tongo service not initialized');
+                }
+                if (!walletAccount) {
+                    throw new Error('Wallet not connected');
+                }
+
+                // MAINNET: Need to swap STRK → USDC first
+                if (needsSwapToUsdc && currentNetwork === 'mainnet') {
+                    updateLightningStatus('swapping', 'Swapping STRK → USDC via AVNU...');
+                    addLog('[LIGHTNING] Swapping STRK to USDC for Tongo...', 'info');
+                    const strkBigInt = BigInt(strkAmount);
+                    
+                    // Get swap calls from AVNU
+                    const swapCalls = await buildStrkToUsdcSwap(
+                        strkBigInt,
+                        walletAccount.address,
+                        0.01 // 1% slippage
+                    );
+
+                    // Execute swap
+                    addLog('[LIGHTNING] Executing AVNU swap...', 'info');
+                    addLog('Please approve the swap transaction in your wallet', 'info');
+                    const provider = createProvider(currentNetwork);
+                    const swapTx = await walletAccount.execute(swapCalls);
+                    addLog(`[LIGHTNING] Swap TX: ${swapTx.transaction_hash}`, 'info');
+                    
+                    // Wait for swap confirmation
+                    updateLightningStatus('confirming', 'Waiting for swap confirmation...');
+                    await provider.waitForTransaction(swapTx.transaction_hash);
+                    addLog('[LIGHTNING] Swap confirmed! USDC received.', 'success');
+                    
+                    // Small delay to ensure balance is updated
+                    await new Promise(r => setTimeout(r, 2000));
+                    
+                    // Now fund Tongo with USDC
+                    updateLightningStatus('funding', 'Funding Tongo with USDC...');
+                    
+                    // Get the USDC balance (should now have the swapped amount)
+                    const usdcBalance = await service.getWalletBalance();
+                    addLog(`[LIGHTNING] USDC balance: ${(Number(usdcBalance) / 1e6).toFixed(2)} USDC`, 'info');
+                    
+                    // Fund Tongo with USDC
+                    const txHash = await service.fundDonationAccount(usdcBalance);
+                    
+                    updateLightningStatus('complete', `Success! TX: ${txHash.substring(0, 20)}...`);
+                    addLog(`[LIGHTNING] Tongo funded! TX: ${txHash}`, 'success');
+                } else {
+                    // SEPOLIA: Direct STRK funding (no swap needed)
+                    updateLightningStatus('funding', 'Funding Tongo with STRK...');
+                    addLog('[LIGHTNING] Funding Tongo with STRK (testnet)...', 'info');
+                    const amountBigInt = BigInt(strkAmount);
+                    const txHash = await service.fundDonationAccount(amountBigInt);
+                    updateLightningStatus('complete', `Success! TX: ${txHash.substring(0, 20)}...`);
+                    addLog(`[LIGHTNING] Tongo funded! TX: ${txHash}`, 'success');
+                }
+
+                // Refresh balances
+                await service.refreshState();
+                await updateState();
+                
+                // Cleanup state
+                cleanupLightningState();
+                
+                // Clear invoice display after success
+                setTimeout(() => {
+                    const invoiceDisplay = document.getElementById('invoice-display');
+                    if (invoiceDisplay) invoiceDisplay.style.display = 'none';
+                }, 5000);
+            } catch (error) {
+                console.error('[LIGHTNING] Fund error:', error);
+                const errorMsg = error instanceof Error ? error.message : String(error);
+                updateLightningStatus('error', errorMsg);
+                addLog(`[LIGHTNING] Error: ${errorMsg}`, 'error');
+            }
+        }
+        
+        function updateLightningStatus(status, message) {
+            const statusBox = document.getElementById('lightning-status');
+            const statusIcon = statusBox?.querySelector('.status-icon');
+            const statusText = statusBox?.querySelector('.status-text');
+            
+            if (!statusBox || !statusIcon || !statusText) return;
+            
+            const icons = {
+                waiting: '⏳',
+                received: '✅',
+                processing: '⚙️',
+                funding: '🔐',
+                complete: '🎉',
+                expired: '⏰',
+                error: '❌'
+            };
+            
+            const colors = {
+                waiting: '#FFB800',
+                received: '#2ECC71',
+                processing: '#0057B8',
+                funding: '#0057B8',
+                complete: '#2ECC71',
+                expired: '#E74C3C',
+                error: '#E74C3C'
+            };
+            
+            statusIcon.textContent = icons[status] || '❓';
+            statusText.textContent = message;
+            statusBox.style.borderColor = colors[status] || '#ccc';
+        }
+        
+        // Copy invoice to clipboard
+        const copyInvoiceBtn = document.getElementById('copy-invoice-btn');
+        if (copyInvoiceBtn) {
+            copyInvoiceBtn.addEventListener('click', () => {
+                const invoiceText = document.getElementById('invoice-text');
+                if (invoiceText) {
+                    navigator.clipboard.writeText(invoiceText.value);
+                    const btn = document.getElementById('copy-invoice-btn');
+                    if (btn) {
+                        btn.textContent = '✅ Copied!';
+                        setTimeout(() => { btn.textContent = '📋 Copy'; }, 2000);
+                    }
+                }
+            });
+        }
 
         // Initialize Tongo service
         async function initializeTongoService() {
@@ -1664,7 +2467,21 @@
                         `${walletAccount.address.slice(0, 10)}...${walletAccount.address.slice(-8)}`;
                     document.getElementById('connectWalletBtn').classList.add('hidden');
                     document.getElementById('disconnectWalletBtn').classList.remove('hidden');
+                    // Initialize Lightning (but don't fail if Atomiq is down)
+                    try {
+                        await showLightningSection();
+                    } catch (lightningError) {
+                        console.warn('[CONNECT] Lightning initialization failed (non-critical):', lightningError);
+                    }
+                    
                     await initializeTongoService();
+                    
+                    // Try to recover pending swaps (but don't fail if Atomiq is down)
+                    try {
+                        await recoverPendingSwaps();
+                    } catch (recoveryError) {
+                        console.warn('[CONNECT] Swap recovery skipped:', recoveryError);
+                    }
                 } else {
                     addLog('Connect your wallet to start', 'info');
                 }
@@ -2045,7 +2862,7 @@
                 setStatus('Refreshing state...', 'loading');
                 addLog('Refreshing account state...', 'info');
                 await service.refreshState();
-                await updateState(); // Now async to fetch wallet balance
+                await updateState(); // Now async to fetch wallet balance and update max sendable
                 addLog('State refreshed', 'success');
                 setStatus('State refreshed', 'success');
             } catch (error) {
@@ -2066,22 +2883,39 @@
             const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
             const tokenDecimals = currentNetwork === 'mainnet' ? 6 : 18; // USDC has 6 decimals, STRK has 18
             
-            const currentBalanceStr = (Number(state.currentBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
-            const pendingBalanceStr = (Number(state.pendingBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
-            
-            // Update new balance display elements
-            document.getElementById('currentBalanceDisplay').textContent = `${currentBalanceStr} ${tokenName}`;
-            document.getElementById('pendingBalanceDisplay').textContent = `${pendingBalanceStr} ${tokenName}`;
-            
-            // Update rollover button state
-            const rolloverBtn = document.getElementById('rolloverBtn');
-            const pendingBalanceNum = Number(state.pendingBalance);
-            if (pendingBalanceNum > 0) {
-                rolloverBtn.disabled = false;
-                rolloverBtn.textContent = `Rollover ${pendingBalanceStr} ${tokenName}`;
-            } else {
-                rolloverBtn.disabled = true;
-                rolloverBtn.textContent = 'Rollover (nothing to rollover)';
+            // Convert Tongo units to token amounts for display
+            try {
+                // Use helper methods to convert Tongo units to token amounts
+                const currentDisplay = await service.tongoToDisplayAmount(state.currentBalance);
+                const pendingDisplay = state.pendingBalance > 0n 
+                    ? await service.tongoToDisplayAmount(state.pendingBalance)
+                    : `0.00 ${tokenName}`;
+                
+                // Extract numeric values from display strings for rollover button
+                const currentBalanceStr = currentDisplay.split(' ')[0];
+                const pendingBalanceStr = pendingDisplay.split(' ')[0];
+                
+                // Update new balance display elements
+                document.getElementById('currentBalanceDisplay').textContent = currentDisplay;
+                document.getElementById('pendingBalanceDisplay').textContent = pendingDisplay;
+                
+                // Update rollover button state
+                const rolloverBtn = document.getElementById('rolloverBtn');
+                const pendingBalanceNum = Number(state.pendingBalance);
+                if (pendingBalanceNum > 0) {
+                    rolloverBtn.disabled = false;
+                    rolloverBtn.textContent = `Rollover ${pendingDisplay}`;
+                } else {
+                    rolloverBtn.disabled = true;
+                    rolloverBtn.textContent = 'Rollover (nothing to rollover)';
+                }
+            } catch (e) {
+                // Fallback: use raw values if conversion fails
+                console.warn('[UPDATE-STATE] Could not convert Tongo units, using raw values:', e);
+                const currentBalanceStr = (Number(state.currentBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
+                const pendingBalanceStr = (Number(state.pendingBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
+                document.getElementById('currentBalanceDisplay').textContent = `${currentBalanceStr} ${tokenName}`;
+                document.getElementById('pendingBalanceDisplay').textContent = `${pendingBalanceStr} ${tokenName}`;
             }
             
             // Update wallet balance
@@ -2092,6 +2926,52 @@
             } catch (error) {
                 console.error('[UPDATE-STATE] Failed to fetch wallet balance:', error);
                 document.getElementById('walletBalance').textContent = 'Error';
+            }
+            
+            // Update max sendable amount
+            await updateMaxSendable();
+        }
+        
+        // Update max sendable display
+        async function updateMaxSendable() {
+            if (!service) return;
+            
+            try {
+                const max = await service.getMaxSendableAmount();
+                const display = document.getElementById('maxSendableAmount');
+                if (display) {
+                    display.textContent = max.display;
+                }
+            } catch (e) {
+                console.warn('[UI] Could not get max sendable:', e);
+                const display = document.getElementById('maxSendableAmount');
+                if (display) {
+                    display.textContent = '--';
+                }
+            }
+        }
+        
+        // Set max amount in input field
+        window.setMaxSendAmount = async function() {
+            if (!service) {
+                addLog('Service not initialized. Please connect wallet first.', 'error');
+                return;
+            }
+            
+            try {
+                const max = await service.getMaxSendableAmount();
+                const tokenDecimals = currentNetwork === 'mainnet' ? 6 : 18;
+                const humanAmount = Number(max.tokenAmount) / Math.pow(10, tokenDecimals);
+                
+                const input = document.getElementById('donationAmount');
+                if (input) {
+                    input.value = humanAmount.toFixed(tokenDecimals <= 6 ? 2 : 6);
+                    addLog(`Set max amount: ${humanAmount.toFixed(tokenDecimals <= 6 ? 2 : 6)} ${currentNetwork === 'mainnet' ? 'USDC' : 'STRK'}`, 'info');
+                }
+            } catch (e) {
+                const errorMsg = e instanceof Error ? e.message : String(e);
+                addLog('Could not set max amount: ' + errorMsg, 'error');
+                console.error('[SET-MAX] Error:', e);
             }
         }
 

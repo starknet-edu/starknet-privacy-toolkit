@@ -3,8 +3,9 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: './src',
+  publicDir: '../public',
   build: {
-    outDir: '../dist-web',
+    outDir: '../dist',
     emptyOutDir: true,
     rollupOptions: {
       external: (id) => {
