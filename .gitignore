@@ -41,8 +41,16 @@ zk-badges/**/Prover.toml
 
 # Garaga generated files
 donation_badge_verifier/src/lib.cairo
+donation_badge_verifier/target/
 *.sierra
 *.casm
+
+# Generated calldata files
+zk-badges/calldata.json
+zk-badges/calldata.txt
+
+# Vendor dependencies (if using submodules or vendoring)
+vendor/
 
 # Python virtual environments
 garaga-env/
