@@ -1,0 +1,27 @@
+{
+  "network": "sepolia",
+  "rpc_url": "https://starknet-sepolia.g.alchemy.com/starknet/version/rpc/v0_10/cf52O0RwFy1mEB0uoYsel",
+  "deployer_account": "0x771d5e7e86ab8324bb10c46e2d0d5a4c1876fe5154b84d46bef3550a9eb8e95",
+  "last_updated": "2025-12-01T04:40:00Z",
+  "contracts": {
+    "UltraKeccakHonkVerifier": {
+      "class_hash": "0x0452c8c1056191135eda331133447090237687dbc1526db2c54175cbd7506d4",
+      "address": "0x022b20fef3764d09293c5b377bc399ae7490e60665797ec6654d478d74212669",
+      "declaration_tx": "0x7717fb2f4fd9ada89ea2c5495353ed1417d5dfbabe16e3aef9587f748f6470e",
+      "deployment_tx": "0x0477d20fbe568a07563dd09fa69240a3c382e8d15609cce7a8c16c921fb095e7",
+      "artifact": "donation_badge_verifier/target/release/donation_badge_verifier_UltraKeccakHonkVerifier.compiled_contract_class.json"
+    },
+    "DonationBadge": {
+      "class_hash": "0x04bedab69579e1f888f408aa5a96462228ba94b91c736367664c0cb41460c36c",
+      "address": "0x077ca6f2ee4624e51ed6ea6d5ca292889ca7437a0c887bf0d63f055f42ad7010",
+      "declaration_tx": "0x055f21b6b382f00d1f5b028fc16317de0571c421e7ee03a8533ca2b2e8a1d47d",
+      "deployment_tx": "0x048a87e408dd2153a1c092a1fb163b1aad698d0cefc8e942de4456a4ba383ced",
+      "artifact": "donation_badge_verifier/target/release/donation_badge_verifier_DonationBadge.compiled_contract_class.json"
+    }
+  },
+  "notes": [
+    "Compiled with Scarb 2.9.2 / Cairo 2.5.x using Garaga v0.15.5 verifier outputs.",
+    "Proof calldata generated with Noir 1.0.0-beta.1 + Barretenberg 0.67.0."
+  ]
+}
+
