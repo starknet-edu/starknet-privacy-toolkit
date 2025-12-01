@@ -34,3 +34,29 @@ test-*.ts
 *.tmp
 *.temp
 
+# Noir/Barretenberg generated files
+zk-badges/**/target/
+zk-badges/**/*.bin
+zk-badges/**/Prover.toml
+
+# Garaga generated files
+donation_badge_verifier/src/lib.cairo
+*.sierra
+*.casm
+
+# Python virtual environments
+garaga-env/
+venv/
+.env
+
+# Secrets - NEVER commit these
+.secrets
+*.pem
+*private*key*
+donation_badge_verifier/.secrets
+
+# Starknet credentials (if contains private keys)
+# Note: snfoundry.toml is tracked but should not contain private keys
+
+
+
