@@ -1,6 +1,6 @@
-# Verified Donor Badge Demo (Starknet Privacy Toolkit)
+# Starknet Privacy Toolkit (Tongo + Verified Donor Badges)
 
-This repository hosts an end-to-end reference implementation of Starknet privacy tooling. It combines two production-grade demos:
+This repository hosts an end-to-end reference implementation of Starknet privacy tooling. It combines two reference demos that share the same UI and contracts:
 1. A “Verified Donor Badge” flow that uses Noir circuits, Barretenberg proofs, Garaga-generated Cairo verifiers, and a Starknet badge contract to prove a donor met a threshold without revealing the amount.
 2. The Tongo private donation experience, showing how to fund, send, rollover, and withdraw encrypted balances on Starknet Mainnet (USDC) and Sepolia (STRK).
 
