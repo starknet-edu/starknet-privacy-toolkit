@@ -1,8 +1,13 @@
 import { $ } from "bun";
 import { writeFileSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import { buildPoseidon } from "circomlibjs";
 
 let poseidon: any = null;
+const apiDir = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(apiDir, "..");
+const circuitDir = path.join(repoRoot, "zk-badges", "donation_badge");
 
 async function getPoseidon() {
   if (!poseidon) {
@@ -11,8 +16,10 @@ async function getPoseidon() {
   return poseidon;
 }
 
+const port = Number(process.env.PORT || 3001);
+
 const server = Bun.serve({
-  port: 3001,
+  port,
   async fetch(req) {
     const headers = {
       "Access-Control-Allow-Origin": "*",
@@ -42,17 +49,16 @@ threshold = ${threshold}
 badge_tier = ${badgetier}
 donation_commitment = "${commitment}"
 `;
-        writeFileSync("/workspaces/tongo-ukraine-donations/zk-badges/donation_badge/Prover.toml", proverToml);
+        writeFileSync(path.join(circuitDir, "Prover.toml"), proverToml);
 
-        const dir = "/workspaces/tongo-ukraine-donations/zk-badges/donation_badge";
         console.log("Running nargo execute...");
-        await $`cd ${dir} && nargo execute witness`.quiet();
+        await $`cd ${circuitDir} && nargo execute witness`.quiet();
         console.log("Running bb prove...");
-        await $`cd ${dir} && bb prove_ultra_keccak_honk -b ./target/donation_badge.json -w ./target/witness.gz -o ./target/proof`.quiet();
+        await $`cd ${circuitDir} && bb prove_ultra_keccak_honk -b ./target/donation_badge.json -w ./target/witness.gz -o ./target/proof`.quiet();
         console.log("Running bb write_vk...");
-        await $`cd ${dir} && bb write_vk_ultra_keccak_honk -b ./target/donation_badge.json -o ./target/vk`.quiet();
+        await $`cd ${circuitDir} && bb write_vk_ultra_keccak_honk -b ./target/donation_badge.json -o ./target/vk`.quiet();
         console.log("Running garaga calldata...");
-        const result = await $`cd ${dir} && /workspaces/tongo-ukraine-donations/garaga-env/bin/garaga calldata --system ultra_keccak_honk --vk ./target/vk --proof ./target/proof --format array`.text();
+        const result = await $`cd ${circuitDir} && garaga calldata --system ultra_keccak_honk --vk ./target/vk --proof ./target/proof --format array`.text();
 
         console.log("Proof generated successfully!");
         return new Response(JSON.stringify({ calldata: result.trim(), commitment, success: true }), { headers });

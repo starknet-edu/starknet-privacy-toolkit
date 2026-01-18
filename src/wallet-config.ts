@@ -1,47 +1,22 @@
 import { RpcProvider, Account } from 'starknet';
 import type { StarknetWindowObject } from 'get-starknet';
+import { TONGO_NETWORKS, getTongoNetworkConfig, type Network, type TongoNetworkConfig } from './tongo-config';
 
 /**
  * Network configuration for Starknet
  */
-export type Network = 'sepolia' | 'mainnet';
-
-export interface NetworkConfig {
-  name: string;
-  rpcUrl: string;
-  tongoContractAddress: string;
-  strkAddress: string;
-  chainId: string;
-}
+export type NetworkConfig = TongoNetworkConfig;
 
 /**
  * Network configurations
  */
-export const NETWORKS: Record<Network, NetworkConfig> = {
-  sepolia: {
-    name: 'Sepolia Testnet',
-    rpcUrl: 'https://starknet-sepolia.g.alchemy.com/starknet/version/rpc/v0_9/cf52O0RwFy1mEB0uoYsel',
-    // STRK wrapper (1:1 rate for testing)
-    tongoContractAddress: '0x00b4cca30f0f641e01140c1c388f55641f1c3fe5515484e622b6cb91d8cee585',
-    strkAddress: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
-    chainId: 'SN_SEPOLIA'
-  },
-  mainnet: {
-    name: 'Starknet Mainnet',
-    rpcUrl: 'https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_10/cf52O0RwFy1mEB0uoYsel',
-    // Tongo contract (Nov 14, 2024 - compatible with SDK v1.3.0)
-    tongoContractAddress: '0x72098b84989a45cc00697431dfba300f1f5d144ae916e98287418af4e548d96',
-    // USDC mainnet address (NOT STRK!)
-    strkAddress: '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8',
-    chainId: 'SN_MAIN'
-  }
-};
+export const NETWORKS: Record<Network, NetworkConfig> = TONGO_NETWORKS;
 
 /**
  * Get network configuration
  */
 export function getNetworkConfig(network: Network = 'mainnet'): NetworkConfig {
-  return NETWORKS[network];
+  return getTongoNetworkConfig(network);
 }
 
 /**
@@ -82,12 +57,13 @@ async function initializeGetStarknet() {
 }
 
 // Pre-load module when this file is imported (in browser)
-if (typeof window !== 'undefined') {
-  // Initialize in background, don't wait for it
-  initializeGetStarknet().catch(err => {
-    console.warn('[wallet-config] Failed to pre-initialize get-starknet:', err);
-  });
-}
+// DISABLED: This can trigger wallet popups on some browsers
+// We'll load get-starknet lazily when the user clicks Connect
+// if (typeof window !== 'undefined') {
+//   initializeGetStarknet().catch(err => {
+//     console.warn('[wallet-config] Failed to pre-initialize get-starknet:', err);
+//   });
+// }
 
 export async function connectWallet(): Promise<Account | null> {
   if (typeof window === 'undefined') {
@@ -279,7 +255,8 @@ export async function disconnectWallet(): Promise<void> {
 }
 
 /**
- * Browser-only: Get connected wallet account
+ * Browser-only: Get connected wallet account (silent check - no popups)
+ * This ONLY checks if a wallet is already connected, does NOT trigger connection
  */
 export async function getConnectedAccount(): Promise<Account | null> {
   if (typeof window === 'undefined') {
@@ -287,26 +264,35 @@ export async function getConnectedAccount(): Promise<Account | null> {
   }
 
   try {
-    // Check window.starknet first (faster - directly injected by wallet)
+    // ONLY check directly injected wallets - no get-starknet calls
+    // This prevents any wallet popups or weird behavior on page load
+    
+    // Check Braavos first
+    const braavos = (window as any).starknet_braavos;
+    if (braavos?.isConnected && braavos?.account?.address) {
+      console.log('[wallet-config] Found existing Braavos connection');
+      return braavos.account as Account;
+    }
+
+    // Check ArgentX
+    const argentX = (window as any).starknet_argentX;
+    if (argentX?.isConnected && argentX?.account?.address) {
+      console.log('[wallet-config] Found existing ArgentX connection');
+      return argentX.account as Account;
+    }
+
+    // Check generic starknet object (some wallets use this)
     const starknet = (window as any).starknet;
-    if (starknet?.isConnected && starknet?.account) {
+    if (starknet?.isConnected && starknet?.account?.address) {
       console.log('[wallet-config] Found existing connection via window.starknet');
       return starknet.account as Account;
     }
 
-    // Otherwise try get-starknet (slower but more reliable)
-    const { connect } = await initializeGetStarknet();
-    const wallet = await connect({ modalMode: 'silent' });
-    
-    if (wallet?.isConnected && wallet?.account) {
-      console.log('[wallet-config] Found existing connection via get-starknet');
-      return wallet.account as Account;
-    }
-
+    // Don't call get-starknet connect() here - it can trigger popups
     console.log('[wallet-config] No existing wallet connection found');
     return null;
   } catch (error) {
-    console.log('[wallet-config] No existing wallet connection (this is normal if not connected)');
+    console.log('[wallet-config] Error checking existing connection:', error);
     return null;
   }
 }

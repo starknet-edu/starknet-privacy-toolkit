@@ -16,7 +16,7 @@ export interface DonationRecord {
 }
 
 export interface TongoOperation {
-  type: 'fund' | 'transfer' | 'rollover' | 'withdraw';
+  type: 'fund' | 'transfer' | 'rollover' | 'withdraw' | 'ragequit';
   amount: bigint;
   recipient?: string;
   proof?: any;

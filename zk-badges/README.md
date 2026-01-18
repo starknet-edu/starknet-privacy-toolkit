@@ -46,5 +46,5 @@ Outputs land under `donation_badge/target/` and the calldata files at the repo r
 
 - Large artifacts (`target/`, calldata files) are gitignored—keep them local.
 - The circuit intentionally matches the verifier generated in `donation_badge_verifier/`; re-run `garaga` after any circuit change.
-- For detailed troubleshooting (bb/garaga versions, Linux recommendations), see `../BADGE_SETUP.md`.
+- If you hit toolchain issues, re-check the pinned versions and prefer Linux/Codespaces for `bb`.
 

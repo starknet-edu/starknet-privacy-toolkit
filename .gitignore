@@ -33,6 +33,13 @@ test-*.ts
 # Temporary files
 *.tmp
 *.temp
+tools/
+tmp/
+temp-commitment/
+zk-artifacts.zip
+zk-proof-artifacts.zip
+.cursor/
+.cursorrules
 
 # Noir/Barretenberg generated files
 zk-badges/**/target/

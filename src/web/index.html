@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tongo Private Donations - Support Ukraine</title>
+    <title>Tongo Private Tutorial - Quickstart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/cooper-hewitt" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/junicode" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2300ff00' opacity='0.2'/><text y='.9em' font-size='60' fill='%2300ff00' font-family='monospace'>[ENC]</text></svg>">
     <style>
         * {
@@ -12,51 +17,183 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #0c0a18;
+            --surface: #110f1d;
+            --card: #141126;
+            --card-border: rgba(243, 242, 241, 0.08);
+            --text: #f3f2f1;
+            --muted: rgba(243, 242, 241, 0.7);
+            --accent: #5b7ecf;
+            --accent-2: #8b5cf6;
+            --accent-3: #3b82f6;
+            --accent-soft: rgba(91, 126, 207, 0.18);
+            --success: #35c7ff;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
         body {
-            font-family: 'Courier New', monospace;
-            background: #0a0e27;
-            color: #00ff00;
-            padding: 20px;
+            font-family: 'Martian Mono', monospace;
+            background: var(--bg);
+            color: var(--text);
+            padding: 24px;
             line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .font-display {
+            font-family: 'Cooper Hewitt Heavy', 'Cooper Hewitt', system-ui, sans-serif;
+            font-weight: 800;
+        }
+
+        .font-subheading {
+            font-family: 'Junicode', Georgia, serif;
         }
 
         /* Hero Section */
         .hero {
-            background: #0f1419;
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            padding: 40px 20px;
-            text-align: center;
+            background: radial-gradient(1200px 600px at 20% -10%, rgba(91, 126, 207, 0.25), transparent 60%),
+                        radial-gradient(900px 500px at 90% 10%, rgba(139, 92, 246, 0.18), transparent 60%),
+                        var(--surface);
+            border: 1px solid var(--card-border);
+            color: var(--text);
+            padding: 40px 32px;
+            text-align: left;
             margin-bottom: 30px;
-            border-radius: 4px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+            position: relative;
         }
 
         .hero__content {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0;
+        }
+
+        .hero__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
         }
 
         .hero__title {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px #00ff00;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            background: linear-gradient(90deg, #f3f2f1 0%, #b8c7f1 45%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero__subtitle {
-            font-size: 1.1em;
-            color: #00ddaa;
-            margin-bottom: 30px;
+            font-size: 1.15em;
+            color: var(--muted);
+            margin-bottom: 24px;
             line-height: 1.5;
+            font-family: 'Junicode', Georgia, serif;
+            max-width: 720px;
         }
 
         .hero__stats {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
+            gap: 16px;
+            margin-top: 16px;
             flex-wrap: wrap;
+        }
+
+        .hero__actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .hero__actions a {
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            border: 1px solid rgba(91, 126, 207, 0.6);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #6b8edf, #7c3aed);
+            border-color: rgba(123, 58, 237, 0.6);
+            box-shadow: 0 10px 26px rgba(91, 126, 207, 0.35);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--card-border);
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hero__meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 0.85em;
+        }
+
+        .hero__meta span {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .hero__links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 14px;
+            font-size: 0.85em;
+            color: var(--muted);
+        }
+
+        .hero__links a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .hero__links a:hover {
+            border-color: rgba(91, 126, 207, 0.6);
         }
 
         .stat {
@@ -64,59 +201,67 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 12px 16px;
+            min-width: 160px;
         }
 
         .stat__value {
-            font-size: 32px;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .stat__label {
             font-size: 12px;
-            color: #00ddaa;
+            color: var(--muted);
         }
 
         /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: #0f1419;
-            border: 2px solid #00ff00;
-            padding: 20px;
-            border-radius: 4px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            background: var(--surface);
+            border: 1px solid var(--card-border);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
         }
 
         /* Cards */
         .card {
-            background: #1a2332;
-            border: 1px solid #00ff00;
+            background: var(--card);
+            border: 1px solid var(--card-border);
             padding: 20px;
             margin-bottom: 20px;
-            border-radius: 4px;
-            transition: all 0.3s;
+            border-radius: 14px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            border-color: rgba(79, 70, 229, 0.45);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
         }
 
         .card__header {
-            border-bottom: 2px solid #00ff00;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .card__header h2 {
             font-size: 1.2em;
-            color: #00ff00;
+            color: var(--text);
             margin: 0;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .card__subtitle {
             font-size: 0.85em;
-            color: #00ddaa;
+            color: var(--muted);
             margin: 8px 0 0 0;
+            font-family: 'Junicode', Georgia, serif;
         }
 
         /* Grid Layout */
@@ -129,11 +274,11 @@
 
         /* Balance Items */
         .balance-item {
-            background: #0a0e27;
-            border: 1px solid #00ff00;
+            background: #0b1220;
+            border: 1px solid var(--card-border);
             padding: 15px;
             margin-bottom: 12px;
-            border-radius: 4px;
+            border-radius: 10px;
         }
 
         .balance-item__label {
@@ -141,22 +286,21 @@
             align-items: center;
             gap: 10px;
             font-size: 0.9em;
-            color: #00ff00;
+            color: var(--text);
             margin-bottom: 8px;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .balance-item__value {
             font-size: 1.8em;
             font-weight: bold;
-            color: #00ff00;
+            color: var(--text);
             margin-bottom: 4px;
-            text-shadow: 0 0 5px #00ff00;
         }
 
         .balance-item__hint {
             font-size: 0.8em;
-            color: #00ddaa;
+            color: var(--muted);
             margin: 0;
         }
 
@@ -167,36 +311,202 @@
         }
 
         .label {
-            color: #00ff00;
-            font-weight: bold;
+            color: var(--muted);
+            font-weight: 600;
             display: block;
             margin-bottom: 4px;
+            font-family: 'Junicode', Georgia, serif;
         }
 
         .value {
-            color: #00ddaa;
+            color: var(--text);
             word-break: break-all;
             font-size: 0.85em;
-            font-family: 'Courier New', monospace;
+            font-family: ui-monospace, SFMono-Regular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        }
+
+        .value-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .value-row .value {
+            flex: 1;
+        }
+
+        .inline-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        button.small {
+            padding: 6px 10px;
+            font-size: 0.7em;
+            margin-bottom: 0;
+        }
+
+        .input-status {
+            font-size: 0.75em;
+            margin: -4px 0 12px 0;
+            color: var(--muted);
+        }
+
+        .input-status.valid {
+            color: var(--success);
+        }
+
+        .input-status.invalid {
+            color: var(--danger);
+        }
+
+        .input-status.warn {
+            color: var(--warning);
+        }
+
+        .danger-hint {
+            font-size: 0.8em;
+            color: var(--danger);
+            margin-top: 8px;
+        }
+
+        .text-muted {
+            color: var(--muted);
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .text-success {
+            color: var(--success);
+        }
+
+        .text-warning {
+            color: var(--warning);
+        }
+
+        .text-danger {
+            color: var(--danger);
+        }
+
+        .max-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(91, 126, 207, 0.35);
+            border-radius: 10px;
+        }
+
+        .max-row span {
+            font-size: 0.85em;
+        }
+
+        .max-row .max-value {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .notice {
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            color: var(--text);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.85em;
+        }
+
+        .notice code {
+            color: var(--text);
+        }
+
+        .tutorial-steps {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            margin: 10px 0 0 0;
+            padding: 0;
+        }
+
+        .tutorial-step {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: #0b1220;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .tutorial-step .step-index {
+            font-weight: bold;
+            color: var(--accent);
+            min-width: 70px;
+        }
+
+        .tutorial-step .step-text {
+            color: var(--muted);
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        .faq details {
+            background: #0b1220;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+
+        .faq summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text);
+            list-style: none;
+        }
+
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq summary::after {
+            content: '+';
+            float: right;
+            color: var(--muted);
+        }
+
+        .faq details[open] summary::after {
+            content: '−';
+        }
+
+        .faq p {
+            color: var(--muted);
+            font-size: 0.9em;
+            margin-top: 10px;
+            line-height: 1.5;
         }
 
         /* Inputs */
         input, select {
             width: 100%;
-            padding: 8px 12px;
+            padding: 10px 12px;
             font-size: 0.9em;
-            border: 1px solid #00ff00;
-            border-radius: 4px;
-            background: #0f1419;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            transition: all 0.3s;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            background: #0b1220;
+            color: var(--text);
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
             margin-bottom: 10px;
         }
 
         input:focus, select:focus {
             outline: none;
-            box-shadow: 0 0 10px #00ff00;
+            border-color: rgba(79, 70, 229, 0.7);
+            box-shadow: 0 0 0 3px var(--accent-soft);
         }
 
         /* Quick Amount Buttons */
@@ -209,9 +519,9 @@
 
         .quick-btn {
             padding: 16px;
-            border: 2px solid var(--border-light);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
-            background: var(--bg-white);
+            background: #0b1220;
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: left;
@@ -219,14 +529,14 @@
         }
 
         .quick-btn:hover {
-            border-color: var(--ukraine-blue);
-            background: var(--bg-light);
+            border-color: rgba(79, 70, 229, 0.6);
+            background: rgba(79, 70, 229, 0.1);
         }
 
         .quick-btn.active {
-            border-color: var(--ukraine-blue);
-            background: var(--ukraine-blue);
-            color: white;
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #fff;
         }
 
         .quick-btn .amount {
@@ -245,23 +555,23 @@
         /* Buttons */
         button {
             width: 100%;
-            padding: 8px 12px;
+            padding: 10px 14px;
             font-size: 0.9em;
-            font-weight: bold;
-            background: rgba(0, 255, 0, 0.1);
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            border-radius: 4px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            border: 1px solid rgba(91, 126, 207, 0.6);
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
             margin-bottom: 10px;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
+            font-family: inherit;
         }
 
         button:hover:not(:disabled) {
-            background: rgba(0, 255, 0, 0.2);
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            background: linear-gradient(135deg, #6b8edf, #7c3aed);
+            border-color: rgba(123, 58, 237, 0.6);
+            box-shadow: 0 10px 26px rgba(91, 126, 207, 0.35);
         }
 
         button:active:not(:disabled) {
@@ -274,40 +584,102 @@
         }
 
         button.secondary {
-            background: rgba(0, 255, 0, 0.05);
-            color: #00ff00;
-            border: 1px solid #00ff00;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--card-border);
         }
 
         button.secondary:hover:not(:disabled) {
-            background: rgba(0, 255, 0, 0.15);
+            background: rgba(148, 163, 184, 0.1);
         }
 
         button.danger {
-            background: rgba(255, 0, 0, 0.2);
-            color: #ff0000;
-            border-color: #ff0000;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            border-color: rgba(239, 68, 68, 0.4);
         }
 
         /* Privacy Notice */
         .privacy-notice {
             font-size: 0.8em;
-            color: #00ddaa;
-            background: rgba(0, 221, 170, 0.1);
-            border: 1px solid #00ddaa;
+            color: var(--muted);
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.25);
             padding: 12px;
-            border-radius: 4px;
+            border-radius: 10px;
             margin: 20px 0 0 0;
             line-height: 1.6;
+        }
+
+        /* Operation Status Banners */
+        .operation-status {
+            margin-top: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .operation-status.loading {
+            background: rgba(79, 70, 229, 0.15);
+            border: 1px solid rgba(79, 70, 229, 0.4);
+            color: #a5b4fc;
+        }
+        
+        .operation-status.success {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #6ee7b7;
+        }
+        
+        .operation-status.error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+        }
+        
+        .operation-status .status-icon {
+            font-size: 1.2em;
+        }
+        
+        .operation-status .status-message {
+            flex: 1;
+        }
+        
+        .operation-status .status-link {
+            color: inherit;
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        
+        .operation-status .status-link:hover {
+            opacity: 1;
+        }
+        
+        .operation-status.loading .status-icon {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Logs */
         .log-panel {
             grid-column: 1 / -1;
-            background: #0a0e27;
-            border: 1px solid #00ff00;
+            background: #0b1220;
+            border: 1px solid var(--card-border);
             padding: 15px;
-            border-radius: 4px;
+            border-radius: 12px;
             max-height: 400px;
             overflow-y: auto;
             font-size: 0.85em;
@@ -316,55 +688,145 @@
         .log-entry {
             margin-bottom: 8px;
             padding: 5px 0;
-            border-left: 2px solid #00ff00;
+            border-left: 2px solid var(--accent);
             padding-left: 10px;
-            font-family: 'Courier New', monospace;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
         }
 
         .log-success {
-            color: #00ff00;
-            border-left-color: #00ff00;
+            color: var(--success);
+            border-left-color: var(--success);
         }
 
         .log-error {
-            color: #ff0000;
-            border-left-color: #ff0000;
+            color: var(--danger);
+            border-left-color: var(--danger);
         }
 
         .log-info {
-            color: #00ddaa;
-            border-left-color: #00ddaa;
+            color: var(--muted);
+            border-left-color: var(--muted);
         }
 
         .log-warn {
-            color: #ffaa00;
-            border-left-color: #ffaa00;
+            color: var(--warning);
+            border-left-color: var(--warning);
         }
 
-        /* Badge Styles */
-        .badge-display {
+        /* Badge Section - Modern Design */
+        /* Badge Section - Horizontal Layout */
+        .badge-section-grid {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+            align-items: stretch;
+        }
+        
+        @media (max-width: 600px) {
+            .badge-section-grid {
+                flex-direction: column;
+            }
+        }
+        
+        .badge-current-card {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(79, 70, 229, 0.05) 100%);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 20px;
-            background: rgba(0, 255, 0, 0.05);
-            border: 2px solid #00ff00;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 1.2em;
+            gap: 14px;
+            min-width: 180px;
         }
-
-        .badge-display #badge-icon {
-            font-size: 3em;
+        
+        .badge-current-card .badge-icon-large {
+            font-size: 2.5em;
+            filter: drop-shadow(0 2px 8px rgba(79, 70, 229, 0.3));
         }
-
-        .badge-display #badge-name {
-            font-weight: bold;
-            color: #00ff00;
+        
+        .badge-current-card .badge-tier-name {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        
+        .badge-current-card .badge-description {
+            font-size: 0.75em;
+            color: var(--muted);
+            line-height: 1.3;
+        }
+        
+        .badge-tiers-preview {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .badge-tiers-preview {
+                flex-direction: column;
+            }
+        }
+        
+        .badge-tier-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            flex: 1;
+        }
+        
+        .badge-tier-item:hover {
+            background: rgba(79, 70, 229, 0.1);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .badge-tier-item.active {
+            background: rgba(79, 70, 229, 0.15);
+            border-color: var(--accent);
+        }
+        
+        .badge-tier-item .tier-icon {
+            font-size: 1.3em;
+        }
+        
+        .badge-tier-item .tier-info {
+            flex: 1;
+        }
+        
+        .badge-tier-item .tier-name {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9em;
+        }
+        
+        .badge-tier-item .tier-threshold {
+            font-size: 0.75em;
+            color: var(--muted);
+        }
+        
+        .badge-tier-item .tier-check {
+            color: var(--accent);
+            font-size: 1em;
         }
 
         .badge-claim-form {
-            margin-top: 20px;
+            margin-top: 24px;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .badge-claim-form h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            color: var(--text);
         }
 
         .badge-claim-form .form-group {
@@ -374,39 +836,123 @@
         .badge-claim-form label {
             display: block;
             margin-bottom: 8px;
-            color: #00ddaa;
-            font-weight: bold;
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.9em;
         }
 
         .badge-claim-form input,
         .badge-claim-form select {
             width: 100%;
-            padding: 10px;
-            background: rgba(0, 255, 0, 0.05);
-            border: 1px solid #00ff00;
-            border-radius: 4px;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
+            padding: 12px 14px;
+            background: rgba(11, 18, 32, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
         }
 
         .badge-claim-form input:focus,
         .badge-claim-form select:focus {
             outline: none;
-            border-color: #00ddaa;
-            box-shadow: 0 0 10px rgba(0, 221, 170, 0.3);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+            background: rgba(11, 18, 32, 1);
         }
 
         .badge-claim-form small {
             display: block;
-            margin-top: 4px;
-            color: #888;
+            margin-top: 6px;
+            color: #666;
             font-size: 0.8em;
+            line-height: 1.4;
+        }
+        
+        .badge-claim-form button {
+            width: 100%;
+            margin-top: 8px;
+        }
+        
+        .badge-status-inline {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .badge-status-inline.checking {
+            background: rgba(234, 179, 8, 0.1);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #fbbf24;
+        }
+        
+        .badge-status-inline.online {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #6ee7b7;
+        }
+        
+        .badge-status-inline.offline {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+        
+        .badge-status-inline .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .badge-status-inline.checking .status-dot {
+            background: #fbbf24;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .badge-status-inline.online .status-dot {
+            background: #10b981;
+        }
+        
+        .badge-status-inline.offline .status-dot {
+            background: #ef4444;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .badge-proof-result {
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+            text-align: center;
+        }
+        
+        .badge-proof-result.success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .badge-proof-result.loading {
+            background: rgba(79, 70, 229, 0.1);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+        }
+        
+        .badge-proof-result.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
         .status-message {
             padding: 12px;
-            border-radius: 4px;
+            border-radius: 10px;
             margin-top: 12px;
             font-size: 0.9em;
             line-height: 1.5;
@@ -417,26 +963,28 @@
             text-align: center;
             margin: 15px 0;
             padding: 10px;
-            border: 1px solid #00ff00;
-            border-radius: 4px;
-            font-weight: bold;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            font-weight: 600;
+            color: var(--text);
+            background: rgba(15, 23, 42, 0.6);
         }
 
         .status.loading {
-            color: #ffaa00;
-            border-color: #ffaa00;
+            color: var(--warning);
+            border-color: rgba(245, 158, 11, 0.4);
         }
 
         .status.success {
-            color: #00ff00;
-            background: rgba(0, 255, 0, 0.1);
-            border-color: #00ff00;
+            color: var(--success);
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.35);
         }
 
         .status.error {
-            color: #ff0000;
-            background: rgba(255, 0, 0, 0.1);
-            border-color: #ff0000;
+            color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.35);
         }
 
         .hidden {
@@ -462,10 +1010,10 @@
         }
 
         .modal-content {
-            background: #0f1419;
-            border: 2px solid #00ff00;
+            background: var(--surface);
+            border: 1px solid var(--card-border);
             padding: 30px;
-            border-radius: 4px;
+            border-radius: 14px;
             max-width: 600px;
             width: 90%;
             max-height: 80vh;
@@ -474,33 +1022,33 @@
 
         .modal-content h2 {
             margin-bottom: 20px;
-            color: #ffaa00;
+            color: var(--text);
             font-size: 1.2em;
         }
 
         .modal-content .key-display {
-            background: #0a0e27;
+            background: #0b1220;
             padding: 15px;
-            border: 1px solid #00ff00;
-            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
             word-break: break-all;
             font-size: 0.9em;
             margin: 15px 0;
-            font-family: 'Courier New', monospace;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
         }
 
         /* Privacy Section */
         .privacy-section {
             margin: 60px 0;
             padding: 40px;
-            background: var(--bg-white);
+            background: var(--surface);
             border-radius: 16px;
         }
 
         .privacy-section h2 {
             font-size: 32px;
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--text);
             margin-bottom: 40px;
             text-align: center;
         }
@@ -514,7 +1062,7 @@
         .privacy-card {
             text-align: center;
             padding: 24px;
-            background: var(--bg-light);
+            background: #0b1220;
             border-radius: 12px;
         }
 
@@ -526,13 +1074,13 @@
         .privacy-card h3 {
             font-size: 18px;
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--text);
             margin-bottom: 12px;
         }
 
         .privacy-card p {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--muted);
             line-height: 1.5;
         }
 
@@ -551,23 +1099,24 @@
         }
 
         .balance-card {
-            border-radius: 4px;
+            border-radius: 12px;
             padding: 20px;
-            border: 1px solid #00ff00;
-            background: #1a2332;
-            transition: all 0.3s;
+            border: 1px solid var(--card-border);
+            background: var(--card);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .balance-card:hover {
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            border-color: rgba(79, 70, 229, 0.45);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
         }
 
         .balance-card--current {
-            border-color: #00ff00;
+            border-color: rgba(79, 70, 229, 0.5);
         }
 
         .balance-card--pending {
-            border-color: #ffaa00;
+            border-color: rgba(245, 158, 11, 0.5);
         }
 
         .balance-header {
@@ -581,8 +1130,8 @@
             align-items: center;
             gap: 10px;
             font-size: 1.1em;
-            font-weight: bold;
-            color: #00ff00;
+            font-weight: 600;
+            color: var(--text);
             margin: 0 0 8px 0;
         }
 
@@ -592,22 +1141,20 @@
 
         .balance-subtitle {
             font-size: 0.85em;
-            color: #00ddaa;
+            color: var(--muted);
             margin: 0;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .balance-value {
             font-size: 2em;
             font-weight: bold;
-            color: #00ff00;
+            color: var(--text);
             margin-bottom: 16px;
-            text-shadow: 0 0 5px #00ff00;
         }
 
         .balance-card--pending .balance-value {
-            color: #ffaa00;
-            text-shadow: 0 0 5px #ffaa00;
+            color: var(--warning);
         }
 
         .balance-description {
@@ -616,18 +1163,18 @@
 
         .description-text {
             font-size: 0.9em;
-            color: #00ddaa;
+            color: var(--muted);
             line-height: 1.6;
             margin: 0;
         }
 
         .description-text strong {
             font-weight: bold;
-            color: #00ff00;
+            color: var(--text);
         }
 
         .balance-card--pending .description-text strong {
-            color: #ffaa00;
+            color: var(--warning);
         }
 
         .balance-action {
@@ -635,24 +1182,24 @@
         }
 
         .balance-details {
-            background: #0a0e27;
-            border: 1px solid #00ff00;
-            border-radius: 4px;
+            background: #0b1220;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
             padding: 12px;
         }
 
         .balance-details summary {
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 0.85em;
-            color: #00ff00;
+            color: var(--text);
         }
 
         .balance-details ul {
             margin: 12px 0 0 0;
             padding-left: 20px;
             font-size: 0.85em;
-            color: #00ddaa;
+            color: var(--muted);
             line-height: 1.6;
         }
 
@@ -662,10 +1209,10 @@
 
         /* Flow Diagram */
         .balance-flow {
-            background: #1a2332;
-            border-radius: 4px;
+            background: #0b1220;
+            border-radius: 12px;
             padding: 24px;
-            border: 1px solid #00ff00;
+            border: 1px solid var(--card-border);
             margin-bottom: 30px;
         }
 
@@ -673,8 +1220,8 @@
             text-align: center;
             margin-bottom: 24px;
             font-size: 1.1em;
-            color: #00ff00;
-            font-weight: bold;
+            color: var(--text);
+            font-weight: 600;
         }
 
         .flow-diagram {
@@ -688,7 +1235,7 @@
 
         .flow-diagram--secondary {
             opacity: 0.8;
-            border-top: 1px solid #00ff00;
+            border-top: 1px solid var(--card-border);
             padding-top: 24px;
             margin-bottom: 0;
         }
@@ -706,42 +1253,42 @@
 
         .flow-label {
             font-size: 0.9em;
-            font-weight: bold;
-            color: #00ff00;
+            font-weight: 600;
+            color: var(--text);
             text-align: center;
         }
 
         .flow-sublabel {
             font-size: 0.75em;
-            color: #00ddaa;
+            color: var(--muted);
             text-align: center;
         }
 
         .flow-arrow {
             font-size: 20px;
-            color: #00ff00;
+            color: var(--muted);
         }
 
         /* Examples */
         .example-section {
-            background: #1a2332;
-            border-radius: 4px;
+            background: #0b1220;
+            border-radius: 12px;
             padding: 24px;
-            border: 1px solid #00ff00;
+            border: 1px solid var(--card-border);
         }
 
         .example-section h3 {
             margin-bottom: 20px;
             font-size: 1.1em;
-            color: #00ff00;
-            font-weight: bold;
+            color: var(--text);
+            font-weight: 600;
         }
 
         .example h4 {
             margin-bottom: 20px;
-            color: #ffaa00;
+            color: var(--warning);
             font-size: 1em;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .example-step {
@@ -749,7 +1296,7 @@
             gap: 15px;
             margin-bottom: 20px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #00ff00;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .example-step:last-child {
@@ -764,10 +1311,10 @@
             justify-content: center;
             width: 36px;
             height: 36px;
-            border-radius: 4px;
-            background: #00ff00;
-            color: #0a0e27;
-            font-weight: bold;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
             font-size: 16px;
             flex-shrink: 0;
         }
@@ -777,26 +1324,26 @@
         }
 
         .step-title {
-            font-weight: bold;
-            color: #00ff00;
+            font-weight: 600;
+            color: var(--text);
             margin: 0 0 8px 0;
             font-size: 0.95em;
         }
 
         .step-detail {
             font-size: 0.85em;
-            color: #00ddaa;
+            color: var(--muted);
             margin: 0 0 12px 0;
         }
 
         .step-result {
-            background: #0a0e27;
-            border: 1px solid #00ff00;
+            background: #0b1220;
+            border: 1px solid var(--card-border);
             padding: 10px;
-            border-radius: 4px;
+            border-radius: 10px;
             font-size: 0.8em;
-            color: #00ff00;
-            font-weight: bold;
+            color: var(--text);
+            font-weight: 600;
             line-height: 1.6;
         }
 
@@ -858,205 +1405,6 @@
             }
         }
 
-        /* Lightning Section Styles */
-        #lightning-section {
-            background: linear-gradient(135deg, #FF9500 0%, #FF6B00 100%);
-            color: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-top: 20px;
-            border: 2px solid #FF9500;
-        }
-
-        #lightning-section h3 {
-            margin: 0 0 8px 0;
-            color: white;
-            font-size: 1.2em;
-        }
-
-        #lightning-section .hint {
-            opacity: 0.9;
-            margin: 0 0 20px 0;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        .quick-amounts-lightning {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .quick-btn-lightning {
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid transparent;
-            border-radius: 8px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Courier New', monospace;
-        }
-
-        .quick-btn-lightning:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .quick-btn-lightning.active {
-            background: white;
-            color: #FF6B00;
-        }
-
-        #lightning-amount-usd {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 16px;
-            margin-bottom: 8px;
-            font-family: 'Courier New', monospace;
-        }
-
-        #lightning-amount-usd::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .conversion {
-            font-size: 14px;
-            opacity: 0.9;
-            margin: 0 0 16px 0;
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        #generate-invoice-btn {
-            width: 100%;
-            padding: 16px;
-            background: white;
-            color: #FF6B00;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-        }
-
-        #generate-invoice-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        #generate-invoice-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        /* Invoice Display */
-        #invoice-display {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-            color: #1a1a1a;
-        }
-
-        .invoice-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .invoice-header h4 {
-            margin: 0;
-            color: #1a1a1a;
-        }
-
-        .expires-in {
-            font-size: 14px;
-            color: #666;
-            margin: 0;
-        }
-
-        .qr-container {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 16px;
-        }
-
-        .invoice-string {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .invoice-string input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 12px;
-        }
-
-        .invoice-string .btn-secondary {
-            padding: 10px 16px;
-            background: #0057B8;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-        }
-
-        .status-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 2px solid #FFB800;
-            margin-bottom: 16px;
-        }
-
-        .status-icon {
-            font-size: 24px;
-        }
-
-        .status-text {
-            font-weight: 500;
-        }
-
-        .swap-details {
-            border-top: 1px solid #eee;
-            padding-top: 16px;
-        }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            font-size: 14px;
-        }
-
-        .detail-row span:first-child {
-            color: #666;
-        }
-
-        .detail-row span:last-child {
-            font-weight: 600;
-        }
-
         @media (min-width: 1025px) {
             .hero {
                 display: flex;
@@ -1072,41 +1420,75 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero__content">
-            <h1 class="hero__title">Support Ukraine Privately</h1>
-            <p class="hero__subtitle">
-                Send anonymous donations using zero-knowledge proofs.
-                Your support, completely private. Your impact, completely real.
-            </p>
-            <div class="hero__stats">
-                <div class="stat">
-                    <span class="stat__value">[+]</span>
-                    <span class="stat__label">Donations Protected</span>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__content">
+                <div class="hero__eyebrow">Privacy Toolkit · 6 steps · ~7 min</div>
+                <h1 class="hero__title">Starknet Privacy Toolkit</h1>
+                <p class="hero__subtitle">
+                    A full-stack tutorial that combines Tongo private transfers and Garaga‑verified ZK badges.
+                    Create a private balance, transfer securely, then generate a proof‑backed badge on Sepolia.
+                </p>
+                <div class="hero__actions">
+                    <a class="btn-primary" href="#quick-start">Start tutorial</a>
+                    <a class="btn-ghost" href="#security-faq">Security FAQ</a>
+                    <a class="btn-ghost" href="https://hackmd.io/@espejelomar/ry6fLA2-bx" target="_blank" rel="noopener">Read Guide ↗</a>
                 </div>
-                <div class="stat">
-                    <span class="stat__value">[ENC]</span>
-                    <span class="stat__label">Privacy Guaranteed</span>
+                <div class="hero__meta">
+                    <span>Private transfers</span>
+                    <span>Starknet-native</span>
+                    <span>ZK badges</span>
                 </div>
-                <div class="stat">
-                    <span class="stat__value">[>>]</span>
-                    <span class="stat__label">Instant Transfer</span>
+                <div class="hero__links">
+                    <span>Made by Omar Espejel</span>
+                    <a href="https://x.com/omarespejel" target="_blank" rel="noopener noreferrer">@omarespejel</a>
+                    <a href="https://github.com/omarespejel" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
             </div>
+        </section>
+        <!-- Quick Start Tutorial -->
+        <div class="card" id="quick-start" style="margin-bottom: 24px;">
+            <div class="card__header">
+                <h2>Quick Start (6 steps)</h2>
+                <p class="card__subtitle">Follow these steps in order for a smooth first run · <a href="https://hackmd.io/@espejelomar/ry6fLA2-bx" target="_blank" rel="noopener" style="color: var(--accent);">Detailed guide ↗</a></p>
+            </div>
+            <ul class="tutorial-steps">
+                <li class="tutorial-step">
+                    <span class="step-index">Step 1</span>
+                    <span class="step-text">Connect your wallet and choose a network. Mainnet uses USDC; Sepolia uses STRK.</span>
+                </li>
+                <li class="tutorial-step">
+                    <span class="step-index">Step 2</span>
+                    <span class="step-text">Save your Tongo private key when prompted. Share your public key to receive private transfers.</span>
+                </li>
+                <li class="tutorial-step">
+                    <span class="step-index">Step 3</span>
+                    <span class="step-text">Fund your Tongo account to create a private balance. Funding is public; later transfers are private.</span>
+                </li>
+                <li class="tutorial-step">
+                    <span class="step-index">Step 4</span>
+                    <span class="step-text">Send a private transfer using the recipient’s Tongo public key. The amount is encrypted.</span>
+                </li>
+                <li class="tutorial-step">
+                    <span class="step-index">Step 5</span>
+                    <span class="step-text">If you receive funds, rollover pending to current. Withdraw from current balance to your wallet.</span>
+                </li>
+                <li class="tutorial-step">
+                    <span class="step-index">Step 6</span>
+                    <span class="step-text">Generate a Garaga‑verified badge proof on Sepolia to complete the privacy toolkit flow.</span>
+                </li>
+            </ul>
         </div>
-    </section>
 
-    <div class="container">
         <!-- Wallet Connection Panel -->
         <div class="card" style="margin-bottom: 24px;">
             <div class="card__header">
-                <h2>Wallet Connection</h2>
-                <p class="card__subtitle">Connect your Starknet wallet to start sending private donations</p>
+                <h2>Step 1 · Wallet Connection</h2>
+                <p class="card__subtitle">Connect your Starknet wallet to start the tutorial flow</p>
             </div>
-            <p style="color: #00ddaa; font-size: 0.85em; margin-bottom: 15px; line-height: 1.5;">
-                Connect your Starknet wallet (Braavos or Argent X) to send private donations to Ukraine. 
-                Your wallet will be used to sign transactions, but donation amounts remain <strong style="color: #00ff00;">private and encrypted</strong> using zero-knowledge proofs.
+            <p class="text-muted" style="font-size: 0.85em; margin-bottom: 15px; line-height: 1.5;">
+                Connect Braavos or Argent X to sign transactions. Amounts remain <strong class="text-accent">private and encrypted</strong> using zero-knowledge proofs.
             </p>
             <div class="info-row">
                 <span class="label">Network:</span>
@@ -1126,20 +1508,30 @@
         <!-- Account Overview -->
         <div class="card" style="margin-bottom: 24px;">
             <div class="card__header">
-                <h2>Account Overview</h2>
-                <p class="card__subtitle">Your Tongo account information for sending donations to Ukraine</p>
+                <h2>Step 2 · Key & Account Overview</h2>
+                <p class="card__subtitle">Save your Tongo key and share your public key to receive transfers</p>
             </div>
                 <div class="info-row">
                     <span class="label">Tongo Public Key:</span>
-                    <div class="value" id="publicKey">Not initialized</div>
+                    <div class="value-row">
+                        <div class="value" id="publicKey">Not initialized</div>
+                        <div class="inline-actions">
+                            <button class="secondary small" onclick="copyPublicKey()" id="copyPublicKeyBtn" disabled>Copy</button>
+                            <button class="secondary small" onclick="showPublicKeyQr()" id="sharePublicKeyBtn" disabled>Share QR</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="info-row">
                 <span class="label">Starknet Address:</span>
                 <div class="value" id="starknetAddress">Not connected</div>
                 </div>
                 <div class="info-row">
-                <span class="label">Wallet Balance:</span>
+                <span class="label" id="walletBalanceLabel">Wallet Balance:</span>
                 <div class="value" id="walletBalance">-</div>
+                </div>
+                <div class="info-row">
+                <span class="label">Tongo Rate:</span>
+                <div class="value" id="tongoRate">-</div>
                 </div>
             <button onclick="refreshState()" id="refreshBtn" disabled class="secondary">Refresh State</button>
             </div>
@@ -1153,28 +1545,28 @@
                             <span class="icon">[READY]</span>
                             Current Balance
                         </h3>
-                        <p class="balance-subtitle">Money YOU can send</p>
+                <p class="balance-subtitle">Balance YOU can send</p>
                     </div>
                     
                     <div class="balance-value" id="currentBalanceDisplay">0.00 USDC</div>
                     
                     <div class="balance-description">
                         <p class="description-text">
-                            This is your <strong>spendable</strong> encrypted balance. You can send donations 
+                            This is your <strong>spendable</strong> encrypted balance. You can send private transfers
                             from this amount right now.
                         </p>
                     </div>
 
                     <div class="balance-action">
-                        <button class="secondary" onclick="document.getElementById('donationAmount').focus()">Send Donation</button>
+                        <button class="secondary" onclick="document.getElementById('donationAmount').focus()">Send Transfer</button>
                     </div>
 
                     <details class="balance-details">
                         <summary>How it works</summary>
                         <ul>
-                            <li>You fund this account with USDC</li>
+                            <li>You fund this account with USDC or STRK</li>
                             <li>Amount is encrypted with ZK proofs</li>
-                            <li>You can send anonymous donations anytime</li>
+                            <li>You can send private transfers anytime</li>
                             <li>Decreases each time you send</li>
                         </ul>
                     </details>
@@ -1186,7 +1578,7 @@
                             <span class="icon">[PENDING]</span>
                             Pending Balance
                         </h3>
-                        <p class="balance-subtitle">Money OTHERS sent to you</p>
+                <p class="balance-subtitle">Funds OTHERS sent to you</p>
                     </div>
                     
                     <div class="balance-value" id="pendingBalanceDisplay">0.00 USDC</div>
@@ -1201,15 +1593,18 @@
                     <div class="balance-action">
                         <button class="secondary" onclick="rollover()" id="rolloverBtn" disabled>Rollover (nothing to rollover)</button>
                     </div>
+                    
+                    <!-- Operation Status Feedback -->
+                    <div id="rolloverStatusBanner" class="operation-status" style="display: none;"></div>
 
                     <details class="balance-details">
                         <summary>How it works</summary>
                         <ul>
-                            <li>Someone sends you an anonymous donation</li>
+                            <li>Someone sends you a private transfer</li>
                             <li>It arrives in your Pending balance</li>
                             <li>Click "Rollover" to move it to Current balance</li>
                             <li>Then you can spend it or send it forward</li>
-                            <li>Complete chain of anonymous giving</li>
+                            <li>Private flow stays intact end-to-end</li>
                         </ul>
                     </details>
                 </div>
@@ -1217,7 +1612,7 @@
 
             <!-- Visual Flow Diagram -->
             <div class="balance-flow">
-                <h3>How Donations Flow Through Your Account</h3>
+                <h3>How Transfers Flow Through Your Account</h3>
                 <div class="flow-diagram">
                     <div class="flow-step">
                         <div class="flow-icon">[FUND]</div>
@@ -1232,16 +1627,16 @@
                     <div class="flow-arrow">→</div>
                     <div class="flow-step">
                         <div class="flow-icon">[SEND]</div>
-                        <div class="flow-label">Send Donation</div>
-                        <div class="flow-sublabel">(Anonymous)</div>
+                        <div class="flow-label">Send Transfer</div>
+                        <div class="flow-sublabel">(Private)</div>
                     </div>
                 </div>
 
                 <div class="flow-diagram flow-diagram--secondary">
                     <div class="flow-step">
                         <div class="flow-icon">[RECV]</div>
-                        <div class="flow-label">Receive Donation</div>
-                        <div class="flow-sublabel">(Anonymous)</div>
+                        <div class="flow-label">Receive Transfer</div>
+                        <div class="flow-sublabel">(Private)</div>
                     </div>
                     <div class="flow-arrow">→</div>
                     <div class="flow-step">
@@ -1263,17 +1658,26 @@
             <!-- Fund Account -->
             <div class="card">
                 <div class="card__header">
-                    <h2>Fund Account</h2>
-                    <p class="card__subtitle">Transfer tokens to your private donation account</p>
+                    <h2>Step 3 · Fund Private Balance</h2>
+                    <p class="card__subtitle">Transfer tokens into your Tongo account · <a href="https://hackmd.io/@espejelomar/ry6fLA2-bx#3-Fund-Your-Private-Balance" target="_blank" rel="noopener" style="color: var(--accent);">Learn more ↗</a></p>
                 </div>
-                <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Transfer tokens from your connected wallet into your Tongo account to prepare for donations to Ukraine. 
-                    <span style="color: #0057b7;">Sepolia uses STRK tokens</span>, while 
-                    <span style="color: #ffd700;">Mainnet uses USDC tokens</span>. 
-                    This creates a private balance that can be used for anonymous donations. The funding transaction itself is public on-chain, 
-                    but once funds are in your Tongo account, all subsequent donations using this balance are 
-                    <span style="color: #ffd700;">zero-knowledge encrypted</span> (amounts are hidden).
+                <p class="text-muted" style="font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
+                    Transfer tokens from your connected wallet into your Tongo account to prepare for private transfers. 
+                    <span class="text-accent">Sepolia uses STRK tokens</span>, while 
+                    <span class="text-warning">Mainnet uses native USDC</span> (Circle's official USDC token).
+                    The funding transaction itself is public on-chain, 
+                    but once funds are in your Tongo account, all subsequent transfers using this balance are 
+                    <span class="text-warning">zero-knowledge encrypted</span> (amounts are hidden).
                 </p>
+                <div class="info-row">
+                    <span class="label">Token used for funding:</span>
+                    <div class="value" id="fundTokenLabel">-</div>
+                </div>
+                <div class="info-row">
+                    <span class="label">Token contract:</span>
+                    <div class="value" id="fundTokenAddress">-</div>
+                </div>
+                <p class="text-muted" id="fundTokenHint" style="font-size: 0.75em; margin: -6px 0 12px 0; display: none;"></p>
                 <input 
                     type="number" 
                     id="fundAmount" 
@@ -1281,110 +1685,41 @@
                     min="0.1"
                     step="0.1"
                 >
-                <button onclick="fundAccount()" id="fundButton">Fund Private Account</button>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button onclick="approveTokenForTongo()" id="approveButton" class="secondary" style="flex: 1; min-width: 140px;">1. Approve Token</button>
+                    <button onclick="fundAccount()" id="fundButton" style="flex: 1; min-width: 140px;">2. Fund Account</button>
+                </div>
+                
+                <!-- Operation Status Feedback -->
+                <div id="fundStatusBanner" class="operation-status" style="display: none;"></div>
+                
+                <p class="text-muted" style="font-size: 0.75em; margin-top: 8px;">
+                    <strong>Tip:</strong> If funding fails with "NowOwner" error, click "Approve Token" first, wait for confirmation, then click "Fund Account".
+                </p>
                 <p class="privacy-notice">
-                    [+] Your donation amount stays completely private<br>
-                    [+] No one sees your identity or donation size<br>
-                    [+] Direct support for Ukraine
+                    [+] Your transfer amount stays completely private<br>
+                    [+] No one sees your identity or transfer size<br>
+                    [+] Direct support to recipients
                 </p>
             </div>
 
-            <!-- Lightning Donation Section -->
-            <div id="lightning-section" class="card" style="display: none;">
-                <div class="card__header">
-                    <h3>⚡ Donate with Bitcoin Lightning</h3>
-                    <p class="hint">Instant, low-fee Bitcoin donations</p>
-                </div>
-                
-                <!-- Amount Input -->
-                <div class="input-group">
-                    <label style="color: white; margin-bottom: 8px; display: block;">Amount (USD equivalent)</label>
-                    <div class="quick-amounts-lightning">
-                        <button class="quick-btn-lightning" data-usd="5">$5</button>
-                        <button class="quick-btn-lightning" data-usd="10">$10</button>
-                        <button class="quick-btn-lightning" data-usd="25">$25</button>
-                        <button class="quick-btn-lightning" data-usd="50">$50</button>
-                    </div>
-                    <input type="number" id="lightning-amount-usd" placeholder="Custom amount (USD)" min="1" step="1" />
-                    <p class="conversion" id="sats-conversion">≈ 0 sats</p>
-                </div>
-                
-                <!-- Generate Invoice Button -->
-                <button id="generate-invoice-btn" class="btn-primary">
-                    ⚡ Generate Lightning Invoice
-                </button>
-                
-                <!-- Invoice Display (hidden until generated) -->
-                <div id="invoice-display" style="display: none;">
-                    <div class="invoice-header">
-                        <h4>Pay this Lightning Invoice</h4>
-                        <p class="expires-in">Expires in: <span id="invoice-expiry">--:--</span></p>
-                    </div>
-                    
-                    <!-- QR Code -->
-                    <div id="qr-code-container" class="qr-container">
-                        <!-- QR code will be inserted here -->
-                    </div>
-                    
-                    <!-- Invoice String (copyable) -->
-                    <div class="invoice-string">
-                        <input type="text" id="invoice-text" readonly />
-                        <button id="copy-invoice-btn" class="btn-secondary">📋 Copy</button>
-                    </div>
-                    
-                    <!-- Status -->
-                    <div id="lightning-status" class="status-box">
-                        <span class="status-icon">⏳</span>
-                        <span class="status-text">Waiting for payment...</span>
-                    </div>
-                    
-                    <!-- Swap Details -->
-                    <div class="swap-details">
-                        <div class="detail-row">
-                            <span>You pay:</span>
-                            <span id="swap-input">-- sats</span>
-                        </div>
-                        
-                        <!-- Show intermediate step for mainnet -->
-                        <div class="detail-row" id="strk-step" style="display: none;">
-                            <span>→ Receive (STRK):</span>
-                            <span id="swap-strk">-- STRK</span>
-                        </div>
-                        <div class="detail-row" id="usdc-step" style="display: none;">
-                            <span>→ Swap to (USDC):</span>
-                            <span id="swap-usdc">~-- USDC</span>
-                        </div>
-                        
-                        <div class="detail-row" style="font-weight: 600; color: #0057B8;">
-                            <span>Final to Tongo:</span>
-                            <span id="swap-output">-- USDC</span>
-                        </div>
-                        
-                        <div class="detail-row">
-                            <span>Network fee:</span>
-                            <span id="swap-fee">-- sats</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Send Donation -->
+            <!-- Send Transfer -->
             <div class="card">
                 <div class="card__header">
-                    <h2>Send Private Donation</h2>
-                    <p class="card__subtitle">Send anonymous donations to Ukraine</p>
+                    <h2>Step 4 · Send Private Transfer</h2>
+                    <p class="card__subtitle">Send privately to any recipient · <a href="https://hackmd.io/@espejelomar/ry6fLA2-bx#4-Send-a-Private-Transfer" target="_blank" rel="noopener" style="color: var(--accent);">Learn more ↗</a></p>
                 </div>
-                <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                    Send an anonymous donation using a recipient's Tongo public key. The donation amount is 
-                    <span style="color: #ffd700;">zero-knowledge encrypted</span> on-chain, meaning only you and the recipient know the amount. 
+                <p class="text-muted" style="font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
+                    Send a private transfer using a recipient's Tongo public key. The transfer amount is 
+                    <span class="text-warning">zero-knowledge encrypted</span> on-chain, meaning only you and the recipient know the amount. 
                     The transaction appears on-chain but the value is hidden using cryptographic proofs.
                 </p>
                 
                 <!-- Max amount display -->
-                <div class="max-amount-row" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; padding: 8px; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">
-                    <span style="color: #00ddaa; font-size: 0.85em;">Available to send:</span>
-                    <span id="maxSendableAmount" style="color: #00ff00; font-weight: bold;">--</span>
-                    <button onclick="setMaxSendAmount()" style="padding: 4px 8px; font-size: 0.75em; background: rgba(0,255,0,0.2); border: 1px solid #00ff00; border-radius: 4px; color: #00ff00; cursor: pointer;">MAX</button>
+                <div class="max-row" style="margin-bottom: 10px;">
+                    <span class="text-muted">Available to send:</span>
+                    <span id="maxSendableAmount" class="max-value">--</span>
+                    <button onclick="setMaxSendAmount()" class="secondary small">MAX</button>
                 </div>
                 
                 <input 
@@ -1392,6 +1727,7 @@
                     id="recipientKey" 
                     placeholder="Recipient Tongo Public Key (base58)"
                 >
+                <div id="recipientKeyStatus" class="input-status"></div>
                 <input 
                     type="number" 
                     id="donationAmount" 
@@ -1399,84 +1735,19 @@
                     min="0.1"
                     step="0.1"
                 >
-                <button onclick="sendDonation()">Send Private Donation</button>
-            </div>
-
-            <!-- Badge Section -->
-            <div class="card" id="badge-section" style="display: none;">
-                <div class="card__header">
-                    <h2>🏅 Donation Badges</h2>
-                    <p class="hint" style="color: #ffaa00; font-size: 0.85em; margin-bottom: 12px;">
-                        ⚠️ Badges are currently on <strong>Sepolia testnet only</strong>. Mainnet support is coming soon.
-                        <br>
-                        <small style="color: rgba(255,255,255,0.8);">
-                            Your Tongo funding and donations follow the network you selected above, but badge generation and verification always run on Sepolia until the mainnet verifier is deployed.
-                        </small>
-                    </p>
-                    <p class="card__subtitle">Prove your generosity without revealing amounts</p>
-                    <div id="badge-status-banner" style="display: none; margin-top: 10px; padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: rgba(255,255,255,0.9); font-size: 0.85em;"></div>
-                </div>
-                <div style="background: rgba(0,255,0,0.1); border: 1px solid #00ff00; padding: 10px; margin-bottom: 20px; border-radius: 4px; color: #c8ffce;">
-                    ✅ Verifier Contract: <code>0x022b20fef3764d09293c5b377bc399ae7490e60665797ec6654d478d74212669</code> (Sepolia)<br>
-                    <small>On-chain verification tested and working</small>
-                </div>
+                <button onclick="sendDonation()" id="sendTransferBtn">Send Private Transfer</button>
                 
-                <!-- Current Badge Display -->
-                <div id="current-badge" class="badge-display">
-                    <span id="badge-icon">⚪</span>
-                    <span id="badge-name">No Badge</span>
-                </div>
-                
-                <!-- Claim Badge Form -->
-                <div class="badge-claim-form">
-                    <h3>Claim a Badge</h3>
-                    <p style="font-size: 0.85em; color: #888; margin-bottom: 16px; line-height: 1.5;">
-                        Generate a ZK proof that you donated a minimum amount.<br>
-                        Your actual donation amount stays private!
-                    </p>
-                    
-                    <div class="form-group">
-                        <label>Select Badge Tier:</label>
-                        <select id="badge-tier-select">
-                            <option value="1">🥉 Bronze ($10+ donation)</option>
-                            <option value="2">🥈 Silver ($100+ donation)</option>
-                            <option value="3">🥇 Gold ($1000+ donation)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Your Donation Amount ($):</label>
-                        <input type="number" id="badge-donation-amount" placeholder="e.g., 150" min="10" step="1">
-                        <small style="color: #888;">This amount stays private - only used locally to generate proof</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Your Secret Key:</label>
-                        <input type="password" id="badge-secret" placeholder="A secret only you know">
-                        <small style="color: #888;">Used to bind your identity to the proof. Keep it safe!</small>
-                    </div>
-                    
-                    <button id="generate-badge-proof" onclick="generateBadgeProof()">
-                        🔐 Generate ZK Proof
-                    </button>
-                    
-                    <div id="badge-proof-status" style="display: none; margin-top: 16px;">
-                        <div class="status-message"></div>
-                    </div>
-                    
-                    <button id="claim-badge-btn" onclick="claimBadge()" style="display: none;">
-                        🏅 Claim Badge On-Chain
-                    </button>
-                </div>
+                <!-- Operation Status Feedback -->
+                <div id="transferStatusBanner" class="operation-status" style="display: none;"></div>
             </div>
 
             <!-- Withdraw -->
             <div class="card">
                 <div class="card__header">
-                    <h2>Withdraw Funds</h2>
-                    <p class="card__subtitle">Withdraw tokens back to your wallet</p>
+                    <h2>Step 5 · Withdraw Funds</h2>
+                    <p class="card__subtitle">Withdraw tokens from your private balance back to your wallet</p>
                 </div>
-                <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
+                <p class="text-muted" style="font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
                     Withdraw tokens from your Tongo account back to your connected wallet. 
                     Only funds in your Current Balance can be withdrawn. If you have a Pending Balance, 
                     use the Rollover function first to move it to Current Balance before withdrawing.
@@ -1489,6 +1760,166 @@
                     step="0.1"
                 >
                 <button onclick="withdraw()">Withdraw to Wallet</button>
+                <button onclick="ragequit()" id="ragequitBtn" class="secondary danger">Ragequit (Withdraw All)</button>
+                <p class="danger-hint">Emergency only: withdraws your full current balance in one tx.</p>
+            </div>
+
+            <!-- Badge Section - Full Width -->
+            <div class="card" id="badge-section" style="display: none; grid-column: 1 / -1;">
+                <div class="card__header">
+                    <h2>Step 6 · ZK Badge</h2>
+                    <p class="card__subtitle">Prove your transfer tier with zero-knowledge cryptography · <a href="https://hackmd.io/@espejelomar/ry6fLA2-bx#6-Claim-a-ZK-Badge-with-Garaga" target="_blank" rel="noopener" style="color: var(--accent);">How it works ↗</a></p>
+                </div>
+                
+                <!-- Network Notice -->
+                <div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: rgba(79, 70, 229, 0.1); border-radius: 8px; margin-bottom: 16px; font-size: 0.85em;">
+                    <span style="color: var(--accent);">ℹ️</span>
+                    <span class="text-muted">Badges run on <strong style="color: var(--text);">Sepolia testnet</strong> • Verified by <strong style="color: var(--accent);">Garaga</strong></span>
+                </div>
+                
+                <!-- Proof Backend Status -->
+                <div id="proof-backend-status" class="badge-status-inline checking">
+                    <span class="status-dot"></span>
+                    <span><strong>Proof Server:</strong> Checking...</span>
+                </div>
+                
+                <!-- Badge Grid - Horizontal -->
+                <div class="badge-section-grid">
+                    <!-- Current Badge -->
+                    <div class="badge-current-card">
+                        <span id="badge-icon" class="badge-icon-large">⚪</span>
+                        <div>
+                            <div id="badge-name" class="badge-tier-name">No Badge</div>
+                            <div class="badge-description">Earn by proving transfers</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tiers -->
+                    <div class="badge-tiers-preview">
+                        <div class="badge-tier-item" data-tier="1">
+                            <span class="tier-icon">🥉</span>
+                            <div class="tier-info">
+                                <div class="tier-name">Bronze</div>
+                                <div class="tier-threshold">$10+</div>
+                            </div>
+                        </div>
+                        <div class="badge-tier-item" data-tier="2">
+                            <span class="tier-icon">🥈</span>
+                            <div class="tier-info">
+                                <div class="tier-name">Silver</div>
+                                <div class="tier-threshold">$100+</div>
+                            </div>
+                        </div>
+                        <div class="badge-tier-item" data-tier="3">
+                            <span class="tier-icon">🥇</span>
+                            <div class="tier-info">
+                                <div class="tier-name">Gold</div>
+                                <div class="tier-threshold">$1000+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Claim Badge Form -->
+                <div class="badge-claim-form">
+                    <h3>Generate Proof & Claim Badge</h3>
+                    <p class="text-muted" style="font-size: 0.85em; margin-bottom: 16px; line-height: 1.5;">
+                        Your actual transfer amount stays <strong style="color: var(--accent);">completely private</strong>. 
+                        The proof only reveals that you met the threshold.
+                    </p>
+                    
+                    <div class="form-group">
+                        <label>Badge Tier</label>
+                        <select id="badge-tier-select">
+                            <option value="1">🥉 Bronze — $10+ transfer</option>
+                            <option value="2">🥈 Silver — $100+ transfer</option>
+                            <option value="3">🥇 Gold — $1000+ transfer</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Transfer Amount (USD)</label>
+                        <input type="number" id="badge-donation-amount" placeholder="Your actual transfer amount" min="10" step="1">
+                        <small>🔒 Stays private — only used locally for proof generation</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Secret Passphrase</label>
+                        <input type="password" id="badge-secret" placeholder="A memorable phrase only you know">
+                        <small>🔑 Binds your identity to the badge — keep it safe!</small>
+                    </div>
+                    
+                    <button id="generate-badge-proof" onclick="generateBadgeProof()">
+                        Generate ZK Proof
+                    </button>
+                    
+                    <div id="badge-proof-status" class="badge-proof-result" style="display: none;">
+                        <div class="status-message"></div>
+                    </div>
+                    
+                    <button id="claim-badge-btn" onclick="claimBadge()" style="display: none; margin-top: 12px;">
+                        Claim Badge On-Chain
+                    </button>
+                </div>
+                
+                <!-- Verifier Contract Link (visible) -->
+                <div class="verifier-link" style="margin-top: 24px; padding: 16px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <span style="color: #10b981;">✓</span>
+                        <strong style="color: var(--text); font-size: 0.95em;">On-Chain Verifier</strong>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                        <code style="font-size: 0.8em; color: var(--muted); word-break: break-all; flex: 1; min-width: 200px;">0x022b20fef3764d09293c5b377bc399ae7490e60665797ec6654d478d74212669</code>
+                        <a href="https://sepolia.starkscan.co/contract/0x022b20fef3764d09293c5b377bc399ae7490e60665797ec6654d478d74212669" 
+                           target="_blank" 
+                           rel="noopener" 
+                           style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; color: #6ee7b7; text-decoration: none; font-size: 0.85em; white-space: nowrap;">
+                            View on Starkscan ↗
+                        </a>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.8em; color: var(--muted);">
+                        Noir + Barretenberg (Ultra Honk) • Garaga-generated Cairo verifier
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security & FAQ -->
+            <div class="card faq" id="security-faq">
+                <div class="card__header">
+                    <h2>Security & FAQ</h2>
+                    <p class="card__subtitle">How privacy works, what it doesn’t hide, and recovery options</p>
+                </div>
+                <details>
+                    <summary>How secure is this tutorial setup?</summary>
+                    <p>
+                        Tongo uses zero-knowledge proofs and encrypted balances on Starknet. Your transfer amounts stay private,
+                        but public metadata like wallet addresses, timing, and fund/withdraw amounts remain visible on-chain.
+                        Security depends on correct client usage and the underlying cryptography.
+                    </p>
+                </details>
+                <details>
+                    <summary>How does this compare to Tornado Cash?</summary>
+                    <p>
+                        Tornado Cash is a pool-based mixer on L1 with fixed denominations. Tongo is account-based on Starknet,
+                        with encrypted balances and private transfers. Both provide privacy for amounts, but on-chain metadata
+                        (addresses, timing) can still be observed. This tutorial uses direct wallet transactions (no relayers).
+                    </p>
+                </details>
+                <details>
+                    <summary>What if Tongo or this frontend disappears?</summary>
+                    <p>
+                        The contract stays on-chain. With your Tongo private key and any Starknet RPC, you can use the SDK/CLI
+                        to interact directly. If needed, use the <strong>Ragequit</strong> action to withdraw your full balance.
+                        Always back up your Tongo private key.
+                    </p>
+                </details>
+                <details>
+                    <summary>Can I bypass privacy or “disable” the security?</summary>
+                    <p>
+                        We don’t provide bypasses. If you need transparency, use a standard public transfer instead:
+                        withdraw from Tongo and then send tokens normally, or disclose details off-chain.
+                    </p>
+                </details>
             </div>
 
             <!-- Transaction Status -->
@@ -1504,9 +1935,9 @@
             <!-- Logs -->
             <div class="log-panel">
             <h2 style="margin-bottom: 10px;">Operation Logs</h2>
-            <p style="color: #00ddaa; font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
-                Detailed log of all donation operations to Ukraine, transactions, and status messages. Use this to track 
-                what's happening with your donations and debug any issues. <span style="color: #ffd700;">All donations are private and encrypted.</span>
+            <p class="text-muted" style="font-size: 0.8em; margin-bottom: 15px; line-height: 1.4;">
+                Detailed log of all private transfer operations, transactions, and status messages. Use this to track 
+                what's happening with your transfers and debug any issues. <span class="text-warning">All transfers are private and encrypted.</span>
             </p>
                 <div id="logs"></div>
             </div>
@@ -1516,16 +1947,30 @@
     <div id="keyBackupModal" class="modal">
         <div class="modal-content">
             <h2>IMPORTANT: Save Your Tongo Private Key</h2>
-            <p style="margin-bottom: 15px; color: #ffaa00;">
+            <p class="text-warning" style="margin-bottom: 15px;">
                 A new Tongo private key has been generated. <strong>You must save this key</strong> to access your Tongo account in the future.
             </p>
-            <p style="margin-bottom: 15px; color: #ff0000;">
+            <p class="text-danger" style="margin-bottom: 15px;">
                 WARNING: If you lose this key, you will lose access to your Tongo balance permanently!
             </p>
             <div class="key-display" id="modalKeyDisplay"></div>
             <button onclick="copyTongoKey()">Copy Key</button>
             <button onclick="downloadTongoKey()">Download as .txt</button>
-            <button onclick="closeKeyModal()" style="background: rgba(0, 255, 0, 0.2);">I've Saved It</button>
+            <button onclick="closeKeyModal()" class="secondary">I've Saved It</button>
+        </div>
+    </div>
+
+    <!-- Tongo Public Key QR Modal -->
+    <div id="publicKeyQrModal" class="modal">
+        <div class="modal-content">
+            <h2>Share Your Tongo Public Key</h2>
+            <p class="text-muted" style="margin-bottom: 12px;">
+                Scan this QR code or copy the key to share your Tongo address.
+            </p>
+            <div class="key-display" id="publicKeyQrText"></div>
+            <div id="publicKeyQrContainer" class="qr-container"></div>
+            <button onclick="copyPublicKey()">Copy Public Key</button>
+            <button onclick="closePublicKeyQr()" class="secondary">Close</button>
         </div>
     </div>
 
@@ -1533,24 +1978,6 @@
         import { TongoService } from '../tongo-service.ts';
         import { connectWallet as connectWalletSDK, disconnectWallet as disconnectWalletSDK, getConnectedAccount, createProvider, getNetworkConfig, NETWORKS } from '../wallet-config.ts';
         import { getOrCreateTongoKey, hasTongoKey, saveTongoKey } from '../tongo-key-manager.ts';
-        import { 
-            initializeSwapper,
-            createLightningToStarknetSwap,
-            waitForLightningPaymentAndClaim,
-            getLightningSwapLimits,
-            getClaimableSwaps,
-            createStarknetSigner,
-            usdToSats,
-            satsToUSD,
-            fetchBTCPrice,
-            isAtomiqAvailable,
-            getAtomiqError
-        } from '../lightning-service.ts';
-        import { 
-            buildStrkToUsdcSwap,
-            formatUsdcAmount,
-            formatStrkAmount
-        } from '../avnu-service.ts';
         import { BadgeService, BadgeTier } from '../badge-service.ts';
         import { hash, RpcProvider } from 'starknet';
         
@@ -1568,8 +1995,6 @@
         };
         /** @type {import('./badge-service.ts').BadgeProof | null} */
         let pendingBadgeProof = null;
-        const LIGHTNING_ENABLED = false; // Temporary flag to hide Lightning donations
-
         // Get current network from select or localStorage
         function getCurrentNetwork() {
             // Check localStorage first for persistence
@@ -1677,13 +2102,44 @@
             status.classList.remove('hidden');
         }
 
-        function hideLightningFeature(reason = 'Lightning donations are temporarily disabled while we fix the integration.') {
-            const section = document.getElementById('lightning-section');
-            if (section) {
-                section.remove();
+        /**
+         * Show operation status banner for a specific step
+         * @param {string} bannerId - The ID of the banner element
+         * @param {string} type - 'loading' | 'success' | 'error'
+         * @param {string} message - The message to display
+         * @param {string} [txHash] - Optional transaction hash for link
+         */
+        function showOperationStatus(bannerId, type, message, txHash = null) {
+            const banner = document.getElementById(bannerId);
+            if (!banner) return;
+            
+            const icons = {
+                loading: '⏳',
+                success: '✅',
+                error: '❌'
+            };
+            
+            let html = `
+                <span class="status-icon">${icons[type] || '📋'}</span>
+                <span class="status-message">${message}</span>
+            `;
+            
+            if (txHash && type === 'success') {
+                const explorerUrl = currentNetwork === 'mainnet' 
+                    ? `https://starkscan.co/tx/${txHash}`
+                    : `https://sepolia.starkscan.co/tx/${txHash}`;
+                html += `<a href="${explorerUrl}" target="_blank" class="status-link">View TX →</a>`;
             }
-            if (reason) {
-                addLog(`[LIGHTNING] ${reason}`, 'warn');
+            
+            banner.innerHTML = html;
+            banner.className = `operation-status ${type}`;
+            banner.style.display = 'flex';
+        }
+        
+        function hideOperationStatus(bannerId) {
+            const banner = document.getElementById(bannerId);
+            if (banner) {
+                banner.style.display = 'none';
             }
         }
 
@@ -1728,6 +2184,106 @@
             a.click();
             URL.revokeObjectURL(url);
             addLog('Key downloaded', 'success');
+        }
+
+        // Show Tongo public key QR modal
+        window.showPublicKeyQr = function() {
+            const modal = document.getElementById('publicKeyQrModal');
+            const keyEl = document.getElementById('publicKey');
+            const key = service?.getPublicKey?.() || keyEl?.textContent?.trim();
+            if (!key || key === 'Not initialized' || key.startsWith('Error')) {
+                addLog('Public key not available yet. Connect wallet first.', 'warn');
+                return;
+            }
+            const qrText = document.getElementById('publicKeyQrText');
+            if (qrText) qrText.textContent = key;
+            const qrContainer = document.getElementById('publicKeyQrContainer');
+            if (qrContainer) {
+                qrContainer.innerHTML = `
+                    <img 
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(key)}" 
+                        alt="Tongo Public Key QR Code"
+                        style="width: 220px; height: 220px; border-radius: 8px;"
+                    />
+                `;
+            }
+            modal.classList.add('active');
+        }
+
+        // Close public key QR modal
+        window.closePublicKeyQr = function() {
+            const modal = document.getElementById('publicKeyQrModal');
+            modal.classList.remove('active');
+        }
+
+        // Copy public key to clipboard
+        window.copyPublicKey = async function() {
+            const key = service?.getPublicKey?.() || document.getElementById('publicKey')?.textContent?.trim();
+            if (!key || key === 'Not initialized') {
+                addLog('Public key not available yet. Connect wallet first.', 'warn');
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(key);
+                addLog('Public key copied to clipboard', 'success');
+            } catch (error) {
+                addLog(`Failed to copy public key: ${error.message}`, 'error');
+            }
+        }
+
+        // Recipient key validation helpers
+        function setRecipientKeyStatus(message, status = '') {
+            const statusEl = document.getElementById('recipientKeyStatus');
+            if (!statusEl) return;
+            statusEl.textContent = message;
+            statusEl.className = `input-status${status ? ` ${status}` : ''}`;
+        }
+
+        function basicRecipientKeyFormatError(value) {
+            const trimmed = value.trim();
+            if (!trimmed) return '';
+            if (trimmed.startsWith('0x')) {
+                const hex = trimmed.slice(2);
+                if (!/^[0-9a-fA-F]+$/.test(hex)) {
+                    return 'Invalid hex characters in public key.';
+                }
+                if (hex.length !== 128) {
+                    return 'Hex key must be 128 chars (x+y) or use base58.';
+                }
+            } else {
+                const base58Re = /^[1-9A-HJ-NP-Za-km-z]+$/;
+                if (!base58Re.test(trimmed)) {
+                    return 'Invalid base58 characters in public key.';
+                }
+            }
+            return '';
+        }
+
+        function validateRecipientKeyInput(value) {
+            const trimmed = value.trim();
+            if (!trimmed) {
+                setRecipientKeyStatus('');
+                return { valid: false };
+            }
+
+            const basicError = basicRecipientKeyFormatError(trimmed);
+            if (basicError) {
+                setRecipientKeyStatus(basicError, 'invalid');
+                return { valid: false, error: basicError };
+            }
+
+            if (service?.validatePublicKeyFormat) {
+                const result = service.validatePublicKeyFormat(trimmed);
+                if (!result.valid) {
+                    setRecipientKeyStatus(result.error || 'Invalid public key.', 'invalid');
+                    return { valid: false, error: result.error || 'Invalid public key.' };
+                }
+                setRecipientKeyStatus('Valid Tongo public key', 'valid');
+                return { valid: true };
+            }
+
+            setRecipientKeyStatus('Format looks ok (connect wallet to fully validate)', 'warn');
+            return { valid: true };
         }
 
         // Connect wallet
@@ -1822,29 +2378,8 @@
                 document.getElementById('connectWalletBtn').classList.add('hidden');
                 document.getElementById('disconnectWalletBtn').classList.remove('hidden');
                 
-                // Initialize Lightning (disabled in this build)
-                if (LIGHTNING_ENABLED) {
-                    try {
-                        await showLightningSection();
-                    } catch (lightningError) {
-                        console.warn('[CONNECT] Lightning initialization failed (non-critical):', lightningError);
-                        addLog('[LIGHTNING] ⚠️ Lightning service unavailable - you can still use USDC donations', 'warn');
-                    }
-                } else {
-                    addLog('[LIGHTNING] Lightning donations are temporarily disabled in this build.', 'info');
-                }
-                
                 // Initialize Tongo service
                 await initializeTongoService();
-                
-                // Try to recover pending swaps (disabled when Lightning is off)
-                if (LIGHTNING_ENABLED) {
-                    try {
-                        await recoverPendingSwaps();
-                    } catch (recoveryError) {
-                        console.warn('[CONNECT] Swap recovery skipped:', recoveryError);
-                    }
-                }
                 
             } catch (error) {
                 // Clear loading indicator on error
@@ -1903,16 +2438,35 @@
                 document.getElementById('disconnectWalletBtn').classList.add('hidden');
                 document.getElementById('starknetAddress').textContent = 'Not connected';
                 document.getElementById('publicKey').textContent = 'Not initialized';
+                document.getElementById('tongoRate').textContent = '-';
+                const fundTokenLabel = document.getElementById('fundTokenLabel');
+                const fundTokenAddress = document.getElementById('fundTokenAddress');
+                const fundTokenHint = document.getElementById('fundTokenHint');
+                if (fundTokenLabel) fundTokenLabel.textContent = '-';
+                if (fundTokenAddress) fundTokenAddress.textContent = '-';
+                if (fundTokenHint) {
+                    fundTokenHint.textContent = '';
+                    fundTokenHint.style.display = 'none';
+                }
+                const copyPublicKeyBtn = document.getElementById('copyPublicKeyBtn');
+                const sharePublicKeyBtn = document.getElementById('sharePublicKeyBtn');
+                if (copyPublicKeyBtn) copyPublicKeyBtn.disabled = true;
+                if (sharePublicKeyBtn) sharePublicKeyBtn.disabled = true;
+                const ragequitBtn = document.getElementById('ragequitBtn');
+                if (ragequitBtn) {
+                    ragequitBtn.disabled = true;
+                    ragequitBtn.textContent = 'Ragequit (Withdraw All)';
+                }
+                const recipientKeyStatus = document.getElementById('recipientKeyStatus');
+                if (recipientKeyStatus) {
+                    recipientKeyStatus.textContent = '';
+                    recipientKeyStatus.className = 'input-status';
+                }
                 const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
                 document.getElementById('currentBalanceDisplay').textContent = `0.00 ${tokenName}`;
                 document.getElementById('pendingBalanceDisplay').textContent = `0.00 ${tokenName}`;
                 document.getElementById('rolloverBtn').disabled = true;
                 document.getElementById('rolloverBtn').textContent = 'Rollover (nothing to rollover)';
-                
-                // Hide Lightning section and cleanup
-                const lightningSection = document.getElementById('lightning-section');
-                if (lightningSection) lightningSection.style.display = 'none';
-                cleanupLightningState();
                 
                 // Disable buttons
                 document.getElementById('refreshBtn').disabled = true;
@@ -1923,577 +2477,6 @@
                 addLog(`Disconnect failed: ${error.message}`, 'error');
             }
         };
-
-        // ============================================
-        // LIGHTNING DONATIONS
-        // ============================================
-        
-        // Current BTC price (fetched from API)
-        let btcPriceUSD = 95000;
-        
-        // Active swap state
-        let activeSwap = null;
-        let expiryInterval = null;
-        
-        // Show Lightning section when wallet is connected
-        async function showLightningSection() {
-            if (!LIGHTNING_ENABLED) {
-                hideLightningFeature();
-                return;
-            }
-            const section = document.getElementById('lightning-section');
-            if (!section) return;
-            
-            section.style.display = 'block';
-            
-            // Show loading state initially
-            const originalContent = section.innerHTML;
-            
-            try {
-                addLog('[LIGHTNING] Initializing Atomiq service...', 'info');
-                
-                const swapper = await initializeSwapper(currentNetwork);
-                
-                if (!swapper || !isAtomiqAvailable()) {
-                    // Atomiq is unavailable - show alternative options
-                    const error = getAtomiqError() || 'Service unavailable';
-                    console.warn('[LIGHTNING] Atomiq not available:', error);
-                    addLog(`[LIGHTNING] ⚠️ Lightning service temporarily unavailable: ${error}`, 'warn');
-                    
-                    // Update UI to show unavailable state with alternatives
-                    section.innerHTML = `
-                        <div class="card__header">
-                            <h3>⚡ Donate with Bitcoin Lightning</h3>
-                            <p class="hint">Instant, low-fee Bitcoin donations</p>
-                        </div>
-                        
-                        <div style="background: rgba(255, 184, 0, 0.2); padding: 16px; border-radius: 8px; margin: 16px 0; border: 2px solid #FFB800;">
-                            <p style="margin: 0 0 8px 0; color: white; font-weight: 600;">⚠️ <strong>Lightning service temporarily unavailable</strong></p>
-                            <p style="margin: 0; font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
-                                The Atomiq intermediary nodes are offline. This is a temporary issue on their end.
-                            </p>
-                        </div>
-                        
-                        <p style="margin-top: 16px; color: white; font-weight: 600;"><strong>Alternative: Bridge Bitcoin manually</strong></p>
-                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
-                            <a href="https://app.garden.finance/swap/?from=BTC&to=STARKNET_USDC" 
-                               target="_blank"
-                               style="display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.2); border-radius: 10px; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s;">
-                                <span style="font-size: 24px;">🌱</span>
-                                <div>
-                                    <strong>Garden Finance</strong><br>
-                                    <small style="opacity: 0.8;">Bridge native BTC → USDC</small>
-                                </div>
-                            </a>
-                            
-                            <a href="https://starkgate.starknet.io" 
-                               target="_blank"
-                               style="display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.2); border-radius: 10px; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s;">
-                                <span style="font-size: 24px;">🌉</span>
-                                <div>
-                                    <strong>StarkGate</strong><br>
-                                    <small style="opacity: 0.8;">Bridge from Ethereum</small>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <p style="font-size: 0.85em; opacity: 0.8; margin-top: 16px; color: rgba(255, 255, 255, 0.9);">
-                            After bridging, return here to fund your Tongo account with USDC.
-                        </p>
-                    `;
-                    return;
-                }
-                
-                // Atomiq is available - restore normal UI if it was replaced
-                if (section.innerHTML !== originalContent && !section.querySelector('#lightning-amount-usd')) {
-                    // Reload the page or restore original content
-                    // For now, just log that it's available
-                    addLog('[LIGHTNING] ✅ Atomiq service ready', 'success');
-                } else {
-                    addLog('[LIGHTNING] ✅ Atomiq service ready', 'success');
-                }
-                
-            } catch (error) {
-                console.error('[LIGHTNING] Error initializing:', error);
-                const errorMsg = error instanceof Error ? error.message : String(error);
-                addLog(`[LIGHTNING] Error: ${errorMsg}`, 'error');
-                
-                // Show unavailable state on error too
-                if (!isAtomiqAvailable()) {
-                    section.innerHTML = `
-                        <div class="card__header">
-                            <h3>⚡ Donate with Bitcoin Lightning</h3>
-                            <p class="hint">Service temporarily unavailable</p>
-                        </div>
-                        <div style="background: rgba(255, 184, 0, 0.2); padding: 16px; border-radius: 8px; margin: 16px 0;">
-                            <p style="margin: 0; color: white;">⚠️ Lightning service is temporarily unavailable. Please use regular USDC funding instead.</p>
-                        </div>
-                    `;
-                }
-            }
-        }
-        
-        // Recover pending swaps on page load
-        async function recoverPendingSwaps() {
-            if (!LIGHTNING_ENABLED) {
-                return;
-            }
-            if (!isAtomiqAvailable()) {
-                console.log('[LIGHTNING] Skipping swap recovery - Atomiq not available');
-                return;
-            }
-            
-            if (!walletAccount) return;
-            
-            try {
-                const swapper = await initializeSwapper(currentNetwork);
-                if (!swapper) return;
-                
-                const claimable = await getClaimableSwaps(currentNetwork);
-                
-                if (claimable && claimable.length > 0) {
-                    console.log('[LIGHTNING] Found claimable swaps:', claimable);
-                    addLog(`⚠️ Found ${claimable.length} pending swap(s) to recover`, 'warn');
-                    // TODO: Show recovery UI to user
-                    // For now, just log it
-                }
-            } catch (error) {
-                // Don't show error to user - Lightning is optional
-                console.warn('[LIGHTNING] Could not check for pending swaps:', error);
-            }
-        }
-        
-        // Fetch BTC price on initialization
-        async function initializeBTCPrice() {
-            try {
-                btcPriceUSD = await fetchBTCPrice();
-                console.log('[LIGHTNING] BTC price fetched:', btcPriceUSD);
-            } catch (error) {
-                console.warn('[LIGHTNING] Could not fetch BTC price, using fallback:', error);
-                btcPriceUSD = 95000;
-            }
-        }
-        
-        // Quick amount buttons
-        if (LIGHTNING_ENABLED) {
-            document.querySelectorAll('.quick-btn-lightning[data-usd]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const usd = parseInt((e.target).dataset.usd || '0');
-                    const input = document.getElementById('lightning-amount-usd');
-                    if (input) {
-                        input.value = usd.toString();
-                        updateSatsConversion(usd);
-                        
-                        // Highlight selected
-                        document.querySelectorAll('.quick-btn-lightning').forEach(b => b.classList.remove('active'));
-                        (e.target).classList.add('active');
-                    }
-                });
-            });
-        }
-        
-        // Update sats conversion on input change
-        if (LIGHTNING_ENABLED) {
-            const lightningAmountInput = document.getElementById('lightning-amount-usd');
-            if (lightningAmountInput) {
-                lightningAmountInput.addEventListener('input', (e) => {
-                    const usd = parseFloat((e.target).value) || 0;
-                    updateSatsConversion(usd);
-                });
-            }
-        }
-        
-        function updateSatsConversion(usd) {
-            if (!LIGHTNING_ENABLED) {
-                return;
-            }
-            const sats = usdToSats(usd, btcPriceUSD);
-            const conversionEl = document.getElementById('sats-conversion');
-            if (conversionEl) {
-                conversionEl.textContent = `≈ ${sats.toLocaleString()} sats`;
-            }
-        }
-        
-        // Generate Lightning Invoice
-        const generateInvoiceBtn = document.getElementById('generate-invoice-btn');
-        if (LIGHTNING_ENABLED && generateInvoiceBtn) {
-            generateInvoiceBtn.addEventListener('click', async () => {
-                // Check if Atomiq is available first
-                if (!isAtomiqAvailable()) {
-                    const error = getAtomiqError() || 'Service unavailable';
-                    addLog(`[LIGHTNING] ⚠️ Lightning service unavailable: ${error}`, 'error');
-                    alert('Lightning service is temporarily unavailable. Please use regular USDC funding or try again later.');
-                    return;
-                }
-                
-                const amountInput = document.getElementById('lightning-amount-usd');
-                const usdAmount = parseFloat(amountInput?.value || '0');
-                
-                if (!usdAmount || usdAmount < 1) {
-                    alert('Please enter a valid amount (minimum $1)');
-                    return;
-                }
-                if (!walletAccount) {
-                    alert('Please connect your wallet first');
-                    return;
-                }
-                
-                const btn = document.getElementById('generate-invoice-btn');
-                btn.disabled = true;
-                btn.textContent = '⏳ Generating...';
-                
-                try {
-                    // Convert USD to satoshis
-                    const amountSats = usdToSats(usdAmount, btcPriceUSD);
-                    
-                    console.log('[LIGHTNING] Creating swap for', amountSats, 'sats (~$' + usdAmount + ')');
-                    addLog(`[LIGHTNING] Creating swap for ${amountSats.toLocaleString()} sats (~$${usdAmount})`, 'info');
-                    
-                    // Create the Lightning → Starknet swap
-                    const swapDetails = await createLightningToStarknetSwap(
-                        amountSats,
-                        walletAccount.address,
-                        currentNetwork
-                    );
-                    
-                    activeSwap = swapDetails;
-                    
-                    // Display invoice
-                    displayInvoice(swapDetails);
-                    
-                    // Start listening for payment
-                    listenForPayment(swapDetails);
-                    
-                } catch (error) {
-                    console.error('[LIGHTNING] Error creating swap:', error);
-                    const errorMsg = error instanceof Error ? error.message : String(error);
-                    
-                    // Check if it's an API/network error
-                    if (errorMsg.includes('404') || errorMsg.includes('network') || errorMsg.includes('fetch') || errorMsg.includes('unavailable')) {
-                        addLog(`[LIGHTNING] Atomiq API unavailable. Please try again later.`, 'error');
-                        alert('Lightning service is temporarily unavailable. Please try again later or use regular USDC funding.');
-                    } else {
-                        addLog(`[LIGHTNING] Failed to create invoice: ${errorMsg}`, 'error');
-                        alert('Failed to create Lightning invoice: ' + errorMsg);
-                    }
-                } finally {
-                    btn.disabled = false;
-                    btn.textContent = '⚡ Generate Lightning Invoice';
-                }
-            });
-        }
-        
-        function displayInvoice(swapDetails) {
-            // Show invoice section
-            const invoiceDisplay = document.getElementById('invoice-display');
-            if (invoiceDisplay) invoiceDisplay.style.display = 'block';
-            
-            // Set invoice text
-            const invoiceText = document.getElementById('invoice-text');
-            if (invoiceText) invoiceText.value = swapDetails.lightningInvoice;
-            
-            // Generate QR code (using a simple library or API)
-            const qrContainer = document.getElementById('qr-code-container');
-            if (qrContainer) {
-                // Use QR code API
-                qrContainer.innerHTML = `
-                    <img 
-                        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(swapDetails.qrCodeData)}" 
-                        alt="Lightning Invoice QR Code"
-                        style="width: 200px; height: 200px; border-radius: 8px;"
-                    />
-                `;
-            }
-            
-            // Display swap details
-            const inputEl = document.getElementById('swap-input');
-            const outputEl = document.getElementById('swap-output');
-            const feeEl = document.getElementById('swap-fee');
-            const strkStep = document.getElementById('strk-step');
-            const usdcStep = document.getElementById('usdc-step');
-            const strkEl = document.getElementById('swap-strk');
-            const usdcEl = document.getElementById('swap-usdc');
-            
-            // Log raw output for debugging
-            console.log('[LIGHTNING-DEBUG] Raw output from SDK:', {
-                raw: swapDetails.outputAmount,
-                decimals: swapDetails.outputDecimals,
-                token: swapDetails.outputToken,
-                needsSwapToUsdc: swapDetails.needsSwapToUsdc,
-                estimatedUsdc: swapDetails.estimatedUsdcAmount
-            });
-            
-            if (inputEl) inputEl.textContent = `${Number(swapDetails.inputSats).toLocaleString()} sats`;
-            
-            // Show STRK → USDC conversion for mainnet
-            if (swapDetails.needsSwapToUsdc) {
-                // Mainnet: Show full flow
-                if (strkStep) strkStep.style.display = 'flex';
-                if (usdcStep) usdcStep.style.display = 'flex';
-                if (strkEl) strkEl.textContent = `${formatStrkAmount(BigInt(swapDetails.outputAmount))} STRK`;
-                if (usdcEl && swapDetails.estimatedUsdcAmount) {
-                    usdcEl.textContent = `~${formatUsdcAmount(BigInt(swapDetails.estimatedUsdcAmount))} USDC`;
-                }
-                if (outputEl) {
-                    const usdcValue = swapDetails.estimatedUsdcAmount 
-                        ? formatUsdcAmount(BigInt(swapDetails.estimatedUsdcAmount))
-                        : '--';
-                    outputEl.textContent = `~${usdcValue} USDC`;
-                }
-            } else {
-                // Sepolia: Direct STRK
-                if (strkStep) strkStep.style.display = 'none';
-                if (usdcStep) usdcStep.style.display = 'none';
-                if (outputEl) {
-                    outputEl.textContent = `${formatStrkAmount(BigInt(swapDetails.outputAmount))} STRK`;
-                }
-            }
-            
-            if (feeEl) feeEl.textContent = `${Number(swapDetails.fee).toLocaleString()} sats`;
-            
-            // Start expiry countdown
-            startExpiryCountdown(swapDetails.expiryTimestamp);
-        }
-        
-        function startExpiryCountdown(expiryTimestamp) {
-            // Cleanup existing interval
-            if (expiryInterval) {
-                clearInterval(expiryInterval);
-                expiryInterval = null;
-            }
-            
-            const updateExpiry = () => {
-                const remaining = Math.max(0, expiryTimestamp - Date.now());
-                const minutes = Math.floor(remaining / 60000);
-                const seconds = Math.floor((remaining % 60000) / 1000);
-                
-                const expiryEl = document.getElementById('invoice-expiry');
-                if (expiryEl) {
-                    expiryEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-                    
-                    if (remaining <= 60000) {
-                        expiryEl.style.color = '#E74C3C'; // Red when < 1 min
-                    }
-                }
-                
-                if (remaining <= 0) {
-                    if (expiryInterval) {
-                        clearInterval(expiryInterval);
-                        expiryInterval = null;
-                    }
-                    updateLightningStatus('expired', 'Invoice expired');
-                }
-            };
-            
-            updateExpiry();
-            expiryInterval = setInterval(updateExpiry, 1000);
-        }
-        
-        // Cleanup Lightning state
-        function cleanupLightningState() {
-            if (expiryInterval) {
-                clearInterval(expiryInterval);
-                expiryInterval = null;
-            }
-            activeSwap = null;
-        }
-        
-        async function listenForPayment(swapDetails) {
-            // Guard against wallet disconnection
-            if (!walletAccount) {
-                updateLightningStatus('error', 'Wallet disconnected');
-                addLog('[LIGHTNING] Wallet disconnected during payment wait', 'error');
-                return;
-            }
-            
-            updateLightningStatus('waiting', 'Waiting for Lightning payment...');
-            
-            try {
-                // Create Starknet signer from wallet
-                const config = NETWORKS[currentNetwork];
-                const signer = createStarknetSigner(walletAccount);
-                
-                // Wait for payment and claim
-                const result = await waitForLightningPaymentAndClaim(
-                    swapDetails.swap,
-                    signer,
-                    (status, details) => {
-                        console.log('[LIGHTNING] Status update:', status, details);
-                        
-                        switch (status) {
-                            case 'waiting':
-                                updateLightningStatus('waiting', 'Waiting for Lightning payment...');
-                                break;
-                            case 'received':
-                                updateLightningStatus('received', 'Payment received! Claiming STRK...');
-                                addLog('[LIGHTNING] Payment received!', 'success');
-                                break;
-                            case 'committed':
-                                updateLightningStatus('processing', 'Processing on Starknet...');
-                                addLog('[LIGHTNING] Commit transaction sent', 'info');
-                                break;
-                            case 'claimed':
-                                updateLightningStatus('success', 'STRK claimed! Preparing to fund Tongo...');
-                                addLog('[LIGHTNING] STRK claimed successfully!', 'success');
-                                break;
-                            case 'swapping':
-                                updateLightningStatus('swapping', 'Swapping STRK → USDC...');
-                                break;
-                            case 'confirming':
-                                updateLightningStatus('confirming', 'Waiting for swap confirmation...');
-                                break;
-                            case 'expired':
-                                updateLightningStatus('expired', 'Invoice expired');
-                                addLog('[LIGHTNING] Invoice expired', 'warn');
-                                break;
-                            case 'error':
-                                updateLightningStatus('error', details?.message || 'An error occurred');
-                                addLog(`[LIGHTNING] Error: ${details?.message || 'Unknown error'}`, 'error');
-                                break;
-                        }
-                    }
-                );
-                
-                if (result.success) {
-                    // Now fund Tongo with the received tokens!
-                    await fundTongoWithReceivedTokens(swapDetails.outputAmount, swapDetails.needsSwapToUsdc);
-                } else {
-                    addLog(`[LIGHTNING] Swap failed: ${result.error}`, 'error');
-                }
-            } catch (error) {
-                console.error('[LIGHTNING] Payment error:', error);
-                const errorMsg = error instanceof Error ? error.message : String(error);
-                updateLightningStatus('error', errorMsg);
-                addLog(`[LIGHTNING] Error: ${errorMsg}`, 'error');
-            }
-        }
-        
-        async function fundTongoWithReceivedTokens(strkAmount, needsSwapToUsdc) {
-            try {
-                if (!service) {
-                    throw new Error('Tongo service not initialized');
-                }
-                if (!walletAccount) {
-                    throw new Error('Wallet not connected');
-                }
-
-                // MAINNET: Need to swap STRK → USDC first
-                if (needsSwapToUsdc && currentNetwork === 'mainnet') {
-                    updateLightningStatus('swapping', 'Swapping STRK → USDC via AVNU...');
-                    addLog('[LIGHTNING] Swapping STRK to USDC for Tongo...', 'info');
-                    const strkBigInt = BigInt(strkAmount);
-                    
-                    // Get swap calls from AVNU
-                    const swapCalls = await buildStrkToUsdcSwap(
-                        strkBigInt,
-                        walletAccount.address,
-                        0.01 // 1% slippage
-                    );
-
-                    // Execute swap
-                    addLog('[LIGHTNING] Executing AVNU swap...', 'info');
-                    addLog('Please approve the swap transaction in your wallet', 'info');
-                    const provider = createProvider(currentNetwork);
-                    const swapTx = await walletAccount.execute(swapCalls);
-                    addLog(`[LIGHTNING] Swap TX: ${swapTx.transaction_hash}`, 'info');
-                    
-                    // Wait for swap confirmation
-                    updateLightningStatus('confirming', 'Waiting for swap confirmation...');
-                    await provider.waitForTransaction(swapTx.transaction_hash);
-                    addLog('[LIGHTNING] Swap confirmed! USDC received.', 'success');
-                    
-                    // Small delay to ensure balance is updated
-                    await new Promise(r => setTimeout(r, 2000));
-                    
-                    // Now fund Tongo with USDC
-                    updateLightningStatus('funding', 'Funding Tongo with USDC...');
-                    
-                    // Get the USDC balance (should now have the swapped amount)
-                    const usdcBalance = await service.getWalletBalance();
-                    addLog(`[LIGHTNING] USDC balance: ${(Number(usdcBalance) / 1e6).toFixed(2)} USDC`, 'info');
-                    
-                    // Fund Tongo with USDC
-                    const txHash = await service.fundDonationAccount(usdcBalance);
-                    
-                    updateLightningStatus('complete', `Success! TX: ${txHash.substring(0, 20)}...`);
-                    addLog(`[LIGHTNING] Tongo funded! TX: ${txHash}`, 'success');
-                } else {
-                    // SEPOLIA: Direct STRK funding (no swap needed)
-                    updateLightningStatus('funding', 'Funding Tongo with STRK...');
-                    addLog('[LIGHTNING] Funding Tongo with STRK (testnet)...', 'info');
-                    const amountBigInt = BigInt(strkAmount);
-                    const txHash = await service.fundDonationAccount(amountBigInt);
-                    updateLightningStatus('complete', `Success! TX: ${txHash.substring(0, 20)}...`);
-                    addLog(`[LIGHTNING] Tongo funded! TX: ${txHash}`, 'success');
-                }
-
-                // Refresh balances
-                await service.refreshState();
-                await updateState();
-                
-                // Cleanup state
-                cleanupLightningState();
-                
-                // Clear invoice display after success
-                setTimeout(() => {
-                    const invoiceDisplay = document.getElementById('invoice-display');
-                    if (invoiceDisplay) invoiceDisplay.style.display = 'none';
-                }, 5000);
-            } catch (error) {
-                console.error('[LIGHTNING] Fund error:', error);
-                const errorMsg = error instanceof Error ? error.message : String(error);
-                updateLightningStatus('error', errorMsg);
-                addLog(`[LIGHTNING] Error: ${errorMsg}`, 'error');
-            }
-        }
-        
-        function updateLightningStatus(status, message) {
-            const statusBox = document.getElementById('lightning-status');
-            const statusIcon = statusBox?.querySelector('.status-icon');
-            const statusText = statusBox?.querySelector('.status-text');
-            
-            if (!statusBox || !statusIcon || !statusText) return;
-            
-            const icons = {
-                waiting: '⏳',
-                received: '✅',
-                processing: '⚙️',
-                funding: '🔐',
-                complete: '🎉',
-                expired: '⏰',
-                error: '❌'
-            };
-            
-            const colors = {
-                waiting: '#FFB800',
-                received: '#2ECC71',
-                processing: '#0057B8',
-                funding: '#0057B8',
-                complete: '#2ECC71',
-                expired: '#E74C3C',
-                error: '#E74C3C'
-            };
-            
-            statusIcon.textContent = icons[status] || '❓';
-            statusText.textContent = message;
-            statusBox.style.borderColor = colors[status] || '#ccc';
-        }
-        
-        // Copy invoice to clipboard
-        const copyInvoiceBtn = document.getElementById('copy-invoice-btn');
-        if (LIGHTNING_ENABLED && copyInvoiceBtn) {
-            copyInvoiceBtn.addEventListener('click', () => {
-                const invoiceText = document.getElementById('invoice-text');
-                if (invoiceText) {
-                    navigator.clipboard.writeText(invoiceText.value);
-                    const btn = document.getElementById('copy-invoice-btn');
-                    if (btn) {
-                        btn.textContent = '✅ Copied!';
-                        setTimeout(() => { btn.textContent = '📋 Copy'; }, 2000);
-                    }
-                }
-            });
-        }
 
         // Initialize Tongo service
         async function initializeTongoService() {
@@ -2535,6 +2518,18 @@
                     tongoContractAddress: networkConfig.tongoContractAddress,
                     tokenAddress: networkConfig.strkAddress,
                 });
+
+                // Network sanity check (prevent wrong RPC/network mismatch)
+                try {
+                    const chainId = await provider.getChainId();
+                    if (chainId !== networkConfig.chainId) {
+                        const warning = `RPC chainId mismatch: expected ${networkConfig.chainId}, got ${chainId}`;
+                        console.warn('[INIT] ' + warning);
+                        addLog(`[WARN] ${warning}`, 'warn');
+                    }
+                } catch (chainError) {
+                    console.warn('[INIT] Could not verify chainId:', chainError);
+                }
 
                 console.log('[INIT] Wallet account for TongoService:', {
                     address: walletAccount.address,
@@ -2640,45 +2635,35 @@
             }
         }
 
-        // Check for existing wallet connection on load
+        // Check for existing wallet connection on load (silent - no popups)
         async function checkExistingConnection() {
             try {
-                console.log('Checking for existing wallet connection...');
+                console.log('[APP] Checking for existing wallet connection (silent)...');
+                
+                // Small delay to let wallet extensions fully initialize
+                await new Promise(r => setTimeout(r, 500));
+                
                 walletAccount = await getConnectedAccount();
-                console.log('Existing account:', walletAccount);
-                if (walletAccount) {
+                
+                if (walletAccount && walletAccount.address) {
+                    console.log('[APP] Found existing connection:', walletAccount.address);
                     addLog('Found existing wallet connection', 'info');
                     document.getElementById('walletAddress').textContent = 
                         `${walletAccount.address.slice(0, 10)}...${walletAccount.address.slice(-8)}`;
                     document.getElementById('connectWalletBtn').classList.add('hidden');
                     document.getElementById('disconnectWalletBtn').classList.remove('hidden');
-                    // Initialize Lightning when enabled
-                    if (LIGHTNING_ENABLED) {
-                        try {
-                            await showLightningSection();
-                        } catch (lightningError) {
-                            console.warn('[CONNECT] Lightning initialization failed (non-critical):', lightningError);
-                        }
-                    }
                     
                     await initializeTongoService();
                     
                     // Initialize badge service
                     await initBadgeService();
-                    
-                    // Try to recover pending swaps (only when Lightning is enabled)
-                    if (LIGHTNING_ENABLED) {
-                        try {
-                            await recoverPendingSwaps();
-                        } catch (recoveryError) {
-                            console.warn('[CONNECT] Swap recovery skipped:', recoveryError);
-                        }
-                    }
                 } else {
+                    console.log('[APP] No existing connection found');
                     addLog('Connect your wallet to start', 'info');
                 }
             } catch (error) {
-                console.error('Error checking existing connection:', error);
+                console.error('[APP] Error checking existing connection:', error);
+                addLog('Connect your wallet to start', 'info');
             }
         }
 
@@ -2697,15 +2682,8 @@
             }
         });
 
-        // Pre-initialize wallet module on page load (faster wallet detection)
-        if (typeof window !== 'undefined') {
-            // Pre-load wallet config module in background
-            import('./wallet-config.ts').then(() => {
-                console.log('[APP] Wallet module pre-loaded');
-            }).catch(err => {
-                console.warn('[APP] Failed to pre-load wallet module:', err);
-            });
-        }
+        // Wallet module will be loaded lazily when user clicks Connect
+        // Pre-loading disabled to prevent unwanted wallet popups
 
         // Attach button listeners immediately
         attachButtonListeners();
@@ -2719,12 +2697,7 @@
         window.addEventListener('load', async () => {
             try {
                 console.log('[APP] Page loaded, initializing...');
-                addLog('Tongo Donation Demo loaded', 'info');
-                addLog('Pre-loading wallet module for faster connection...', 'info');
-                
-                if (!LIGHTNING_ENABLED) {
-                    hideLightningFeature('Lightning donations are temporarily disabled while we stabilize the Lightning integration.');
-                }
+                addLog('Privacy Toolkit loaded', 'info');
                 
                 // Ensure button listeners are attached
                 attachButtonListeners();
@@ -2733,10 +2706,9 @@
                 const disableAutoReconnect = localStorage.getItem('tongo-disable-auto-reconnect') === 'true';
                 if (disableAutoReconnect) {
                     console.log('[APP] Auto-reconnect disabled (set via localStorage)');
-                    addLog('Auto-reconnect disabled - click "Connect Wallet" manually', 'info');
+                    addLog('Click "Connect Wallet" to start', 'info');
                 } else {
-                    // Note: This may trigger a silent wallet reconnect
-                    // If you see two wallet prompts, set localStorage.setItem('tongo-disable-auto-reconnect', 'true') to disable
+                    // Silent check for existing connection - no popups
                     await checkExistingConnection();
                 }
             } catch (error) {
@@ -2808,6 +2780,73 @@
             disconnectWallet: window.disconnectWallet
         };
 
+        // Separate approve function to work around multicall simulation issues
+        window.approveTokenForTongo = async function() {
+            if (!isInitialized || !service || !walletAccount) {
+                addLog('Service not initialized. Please connect wallet first.', 'error');
+                setStatus('Connect wallet first', 'error');
+                return;
+            }
+
+            const amountInput = parseFloat(document.getElementById('fundAmount').value);
+            if (!amountInput || amountInput <= 0) {
+                addLog('Enter a valid amount first (e.g., 1 for 1 USDC)', 'error');
+                return;
+            }
+
+            try {
+                const networkConfig = getNetworkConfig(currentNetwork);
+                const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
+                const tokenDecimals = currentNetwork === 'mainnet' ? 6 : 18;
+                
+                // Convert to token units and add 10% buffer for safety
+                const amountToken = BigInt(Math.floor(amountInput * Math.pow(10, tokenDecimals) * 1.1));
+                
+                setStatus('Approving...', 'loading');
+                addLog(`[APPROVE] Approving ${amountInput.toFixed(2)} ${tokenName} (+ 10% buffer) for Tongo contract...`, 'info');
+                addLog(`[APPROVE] Token: ${networkConfig.strkAddress}`, 'info');
+                addLog(`[APPROVE] Spender: ${networkConfig.tongoContractAddress}`, 'info');
+                
+                // Build approve call manually
+                const approveCall = {
+                    contractAddress: networkConfig.strkAddress,
+                    entrypoint: 'approve',
+                    calldata: [
+                        networkConfig.tongoContractAddress, // spender
+                        amountToken.toString(), // amount low
+                        '0' // amount high
+                    ]
+                };
+                
+                addLog('Please confirm the approve transaction in your wallet...', 'info');
+                
+                const tx = await walletAccount.execute([approveCall]);
+                
+                addLog(`[OK] Approve tx submitted! Hash: ${tx.transaction_hash.slice(0, 20)}...`, 'success');
+                const explorerUrl = currentNetwork === 'mainnet' 
+                    ? `https://starkscan.co/tx/${tx.transaction_hash}` 
+                    : `https://sepolia.starkscan.co/tx/${tx.transaction_hash}`;
+                addLog(`View on Starkscan: ${explorerUrl}`, 'info');
+                
+                addLog('[WAIT] Waiting for confirmation (10 seconds)...', 'info');
+                await new Promise(r => setTimeout(r, 10000));
+                
+                addLog('[OK] Approval likely confirmed! Now click "Fund Account" to fund.', 'success');
+                setStatus('Approved! Now click Fund Account', 'success');
+                
+            } catch (error) {
+                const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+                console.error('[APPROVE] Error:', error);
+                addLog(`[ERROR] Approve failed: ${errorMsg}`, 'error');
+                
+                if (errorMsg.includes('rejected') || errorMsg.includes('cancelled')) {
+                    addLog('You rejected the transaction in your wallet', 'info');
+                }
+                
+                setStatus('Approve failed', 'error');
+            }
+        };
+
         window.fundAccount = async function() {
             if (!isInitialized || !service) {
                 addLog('Service not initialized. Please connect wallet first.', 'error');
@@ -2826,14 +2865,35 @@
                 const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
                 const tokenSymbol = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
                 const tokenDecimals = currentNetwork === 'mainnet' ? 6 : 18; // USDC has 6 decimals, STRK has 18
+                const networkConfig = getNetworkConfig(currentNetwork);
                 
                 setStatus('Funding...', 'loading');
+                showOperationStatus('fundStatusBanner', 'loading', `Funding ${amountInput.toFixed(2)} ${tokenSymbol}... Please confirm in wallet.`);
                 addLog(`[FUND] Funding ${amountInput.toFixed(2)} ${tokenSymbol}...`, 'info');
                 addLog(`Note: ${currentNetwork === 'mainnet' ? 'Mainnet uses USDC tokens (6 decimals)' : 'Sepolia uses STRK tokens (18 decimals)'}`, 'info');
+                addLog(`[FUND] Token address: ${networkConfig.strkAddress}`, 'info');
                 addLog('Please approve ' + tokenSymbol + ' and confirm fund transaction in your wallet', 'info');
                 
                 // CRITICAL: Convert to token decimals (USDC: 6, STRK: 18)
                 const amountToken = BigInt(Math.floor(amountInput * Math.pow(10, tokenDecimals)));
+                
+                // Pre-check wallet balance for clearer errors
+                try {
+                    const walletBalance = await service.getWalletBalance();
+                    const walletBalanceStr = (Number(walletBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
+                    addLog(`[CHECK] ${tokenSymbol} balance: ${walletBalanceStr} ${tokenSymbol}`, 'info');
+                    if (currentNetwork === 'mainnet' && walletBalance === 0n) {
+                        addLog(`[INFO] Your wallet shows 0 USDC. Make sure you have native USDC (Circle).`, 'warn');
+                        addLog(`Token address: ${networkConfig.strkAddress}`, 'info');
+                    }
+                    if (walletBalance < amountToken) {
+                        addLog(`[ERROR] Insufficient ${tokenSymbol} balance: ${walletBalanceStr} ${tokenSymbol} available.`, 'error');
+                        setStatus(`Insufficient ${tokenSymbol} balance`, 'error');
+                        return;
+                    }
+                } catch (balanceError) {
+                    addLog('[WARN] Could not read wallet balance. Proceeding with funding...', 'warn');
+                }
                 
                 console.log('[FUND] User input:', amountInput, tokenSymbol);
                 console.log('[FUND] Converted to', tokenDecimals + '-decimal:', amountToken.toString());
@@ -2851,6 +2911,8 @@
                     ? `https://starkscan.co/tx/${tx}` 
                     : `https://sepolia.starkscan.co/tx/${tx}`;
                 addLog(`View on Starkscan: ${explorerUrl}`, 'info');
+                
+                showOperationStatus('fundStatusBanner', 'success', `Successfully funded ${amountInput.toFixed(2)} ${tokenSymbol}!`, tx);
                 
                 document.getElementById('fundAmount').value = '';
                 
@@ -2874,8 +2936,13 @@
                 const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
                 
                 // Provide debugging hints
-                if (errorMsg.includes('NotOwner') || errorMsg.includes('NowOwner')) {
-                    addLog('[HINT] Check: 1) You have ' + tokenName + ' on ' + currentNetwork + ', 2) Network is "' + (currentNetwork === 'mainnet' ? 'Mainnet' : 'Sepolia') + '" (not ' + (currentNetwork === 'mainnet' ? 'testnet' : 'mainnet') + '), 3) Reload page', 'warn');
+                if (errorMsg.includes('not deployed')) {
+                    addLog('[HINT] Wallet RPC says contract not deployed. This is a wallet RPC sync issue.', 'warn');
+                    addLog('[FIX] In wallet settings, try changing Sepolia RPC to Alchemy or Infura.', 'warn');
+                    addLog('[FIX] Or switch to mainnet which was working.', 'warn');
+                } else if (errorMsg.includes('NotOwner') || errorMsg.includes('NowOwner')) {
+                    addLog('[HINT] This is an approval error. Try clicking "Approve Token" first, wait for confirmation, then "Fund Account".', 'warn');
+                    addLog('[HINT] Also check: 1) You have ' + (currentNetwork === 'mainnet' ? 'native USDC' : 'STRK') + ', 2) Correct network selected', 'warn');
                 } else if (errorMsg.includes('Insufficient balance')) {
                     addLog('[HINT] You need more ' + tokenName + '. Send ' + tokenName + ' from exchange to your wallet on ' + currentNetwork + '.', 'warn');
                 } else if (errorMsg.includes('Proof') || errorMsg.includes('proof')) {
@@ -2886,6 +2953,7 @@
                 }
                 
                 setStatus('[ERROR] Fund failed', 'error');
+                showOperationStatus('fundStatusBanner', 'error', `Fund failed: ${errorMsg.slice(0, 60)}${errorMsg.length > 60 ? '...' : ''}`);
             }
         };
 
@@ -2903,6 +2971,12 @@
                 addLog('Enter recipient Tongo public key (base58 or hex)', 'error');
                 return;
             }
+
+            const validation = validateRecipientKeyInput(recipient);
+            if (!validation.valid) {
+                addLog(validation.error || 'Invalid recipient public key', 'error');
+                return;
+            }
             
             if (!amount || amount <= 0) {
                 addLog('Enter a valid amount', 'error');
@@ -2910,7 +2984,8 @@
             }
             
             try {
-                setStatus('Sending donation...', 'loading');
+                setStatus('Sending transfer...', 'loading');
+                showOperationStatus('transferStatusBanner', 'loading', `Sending ${amount.toFixed(2)} privately... Confirm in wallet.`);
                 
                 // Determine decimals based on current network
                 const tokenDecimals = currentNetwork === 'mainnet' ? 6 : 18; // USDC vs STRK
@@ -2920,28 +2995,31 @@
                 const amountToken = BigInt(Math.floor(amount * Math.pow(10, tokenDecimals)));
                 
                 addLog(`[SEND] Sending ${amount.toFixed(2)} ${tokenName} (amount hidden on-chain)...`, 'info');
-                addLog('[ENCRYPT] This donation will be ZK-encrypted. Amount is HIDDEN!', 'info');
+                addLog('[ENCRYPT] This transfer will be ZK-encrypted. Amount is HIDDEN!', 'info');
                 addLog('Please approve the transaction in your wallet', 'info');
                 
                 const tx = await service.sendPrivateDonation(recipient, amountToken);
                 
-                addLog(`[OK] Donation sent! TX: ${tx.slice(0, 20)}...`, 'success');
+                addLog(`[OK] Transfer sent! TX: ${tx.slice(0, 20)}...`, 'success');
                 const explorerUrl = currentNetwork === 'mainnet' 
                     ? `https://starkscan.co/tx/${tx}` 
                     : `https://sepolia.starkscan.co/tx/${tx}`;
                 addLog(`View on Starkscan: ${explorerUrl}`, 'info');
                 addLog('[ENCRYPT] Amount is encrypted on-chain', 'info');
+                
+                showOperationStatus('transferStatusBanner', 'success', `Transfer sent! Amount is hidden on-chain.`, tx);
+                
                 document.getElementById('recipientKey').value = '';
                 document.getElementById('donationAmount').value = '';
                 
                 // Wait a bit for transaction to be indexed
                 await new Promise(r => setTimeout(r, 3000));
                 await refreshState();
-                setStatus('[OK] Donation sent privately!', 'success');
+                setStatus('[OK] Transfer sent privately!', 'success');
             } catch (error) {
                 const errorMsg = error instanceof Error ? error.message : 'Unknown error';
                 console.error('[SEND] Error:', error);
-                addLog(`[ERROR] Donation failed: ${errorMsg}`, 'error');
+                addLog(`[ERROR] Transfer failed: ${errorMsg}`, 'error');
                 
                 if (errorMsg.includes('Insufficient balance')) {
                     addLog('[HINT] You don\'t have enough balance in your Tongo account. Fund first!', 'warn');
@@ -2951,7 +3029,8 @@
                     addLog('Transaction cancelled by user', 'info');
                 }
                 
-                setStatus('[ERROR] Donation failed', 'error');
+                setStatus('[ERROR] Transfer failed', 'error');
+                showOperationStatus('transferStatusBanner', 'error', `Transfer failed: ${errorMsg.slice(0, 50)}${errorMsg.length > 50 ? '...' : ''}`);
             }
         };
 
@@ -3016,6 +3095,7 @@
             
             try {
                 setStatus('Rolling over... Waiting for wallet approval...', 'loading');
+                showOperationStatus('rolloverStatusBanner', 'loading', 'Rolling over pending balance... Confirm in wallet.');
                 addLog(`Rolling over pending balance to current balance...`, 'info');
                 addLog('Please approve the transaction in your wallet', 'info');
                 
@@ -3027,6 +3107,8 @@
                     : `https://sepolia.starkscan.co/tx/${tx}`;
                 addLog(`View on explorer: ${explorerUrl}`, 'info');
                 
+                showOperationStatus('rolloverStatusBanner', 'success', 'Pending balance moved to current!', tx);
+                
                 // Wait a bit for transaction to be indexed
                 await new Promise(r => setTimeout(r, 3000));
                 await refreshState();
@@ -3035,10 +3117,49 @@
                 const errorMsg = error instanceof Error ? error.message : 'Unknown error';
                 addLog(`Rollover failed: ${errorMsg}`, 'error');
                 setStatus('Rollover failed', 'error');
+                showOperationStatus('rolloverStatusBanner', 'error', `Rollover failed: ${errorMsg.slice(0, 50)}${errorMsg.length > 50 ? '...' : ''}`);
                 
                 if (errorMsg.includes('user rejected') || errorMsg.includes('cancelled')) {
                     addLog('Transaction cancelled by user', 'info');
                 }
+            }
+        };
+
+        window.ragequit = async function() {
+            if (!isInitialized || !service) {
+                addLog('Service not initialized. Please connect wallet first.', 'error');
+                setStatus('Connect wallet first', 'error');
+                return;
+            }
+
+            const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
+            const confirmMsg = `Emergency only.\n\nThis will withdraw your FULL current balance to your wallet and reveal the amount on-chain.\n\nProceed with ragequit?`;
+            if (!confirm(confirmMsg)) {
+                addLog('Ragequit cancelled by user', 'info');
+                return;
+            }
+
+            try {
+                setStatus('Ragequit in progress...', 'loading');
+                addLog(`[RAGEQUIT] Withdrawing full ${tokenName} balance...`, 'warn');
+                addLog('Please approve the transaction in your wallet', 'info');
+
+                const tx = await service.ragequitAll();
+
+                addLog(`[OK] Ragequit submitted! TX: ${tx.slice(0, 20)}...`, 'success');
+                const explorerUrl = currentNetwork === 'mainnet'
+                    ? `https://starkscan.co/tx/${tx}`
+                    : `https://sepolia.starkscan.co/tx/${tx}`;
+                addLog(`View on Starkscan: ${explorerUrl}`, 'info');
+
+                // Wait a bit for transaction to be indexed
+                await new Promise(r => setTimeout(r, 3000));
+                await refreshState();
+                setStatus('[OK] Ragequit complete', 'success');
+            } catch (error) {
+                const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+                addLog(`Ragequit failed: ${errorMsg}`, 'error');
+                setStatus('Ragequit failed', 'error');
             }
         };
 
@@ -3047,10 +3168,29 @@
                 const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
                 document.getElementById('publicKey').textContent = 'Not initialized';
                 document.getElementById('walletBalance').textContent = '-';
+                document.getElementById('tongoRate').textContent = '-';
+                    const fundTokenLabel = document.getElementById('fundTokenLabel');
+                    const fundTokenAddress = document.getElementById('fundTokenAddress');
+                    const fundTokenHint = document.getElementById('fundTokenHint');
+                    if (fundTokenLabel) fundTokenLabel.textContent = '-';
+                    if (fundTokenAddress) fundTokenAddress.textContent = '-';
+                    if (fundTokenHint) {
+                        fundTokenHint.textContent = '';
+                        fundTokenHint.style.display = 'none';
+                    }
                 document.getElementById('currentBalanceDisplay').textContent = `0.00 ${tokenName}`;
                 document.getElementById('pendingBalanceDisplay').textContent = `0.00 ${tokenName}`;
                 document.getElementById('rolloverBtn').disabled = true;
                 document.getElementById('rolloverBtn').textContent = 'Rollover (nothing to rollover)';
+                const copyPublicKeyBtn = document.getElementById('copyPublicKeyBtn');
+                const sharePublicKeyBtn = document.getElementById('sharePublicKeyBtn');
+                if (copyPublicKeyBtn) copyPublicKeyBtn.disabled = true;
+                if (sharePublicKeyBtn) sharePublicKeyBtn.disabled = true;
+                const ragequitBtn = document.getElementById('ragequitBtn');
+                if (ragequitBtn) {
+                    ragequitBtn.disabled = true;
+                    ragequitBtn.textContent = 'Ragequit (Withdraw All)';
+                }
                 return;
             }
             
@@ -3074,10 +3214,24 @@
             document.getElementById('publicKey').textContent = state.tongoPublicKey;
             document.getElementById('starknetAddress').textContent = 
                 `${state.starknetAddress.slice(0, 10)}...${state.starknetAddress.slice(-8)}`;
+            const copyPublicKeyBtn = document.getElementById('copyPublicKeyBtn');
+            const sharePublicKeyBtn = document.getElementById('sharePublicKeyBtn');
+            const hasPublicKey = !!state.tongoPublicKey && !state.tongoPublicKey.startsWith('Error');
+            if (copyPublicKeyBtn) copyPublicKeyBtn.disabled = !hasPublicKey;
+            if (sharePublicKeyBtn) sharePublicKeyBtn.disabled = !hasPublicKey;
             
             // Determine token name and decimals based on network
             const tokenName = currentNetwork === 'mainnet' ? 'USDC' : 'STRK';
             const tokenDecimals = currentNetwork === 'mainnet' ? 6 : 18; // USDC has 6 decimals, STRK has 18
+            const networkConfig = getNetworkConfig(currentNetwork);
+            const fundTokenLabel = document.getElementById('fundTokenLabel');
+            const fundTokenAddress = document.getElementById('fundTokenAddress');
+            if (fundTokenLabel) {
+                fundTokenLabel.textContent = `${currentNetwork === 'mainnet' ? 'USDC (Native, Circle)' : 'STRK (testnet)'}`;
+            }
+            if (fundTokenAddress) {
+                fundTokenAddress.textContent = networkConfig.strkAddress;
+            }
             
             // Convert Tongo units to token amounts for display
             try {
@@ -3105,6 +3259,14 @@
                     rolloverBtn.disabled = true;
                     rolloverBtn.textContent = 'Rollover (nothing to rollover)';
                 }
+
+                // Update ragequit button state
+                const ragequitBtn = document.getElementById('ragequitBtn');
+                if (ragequitBtn) {
+                    const hasBalance = state.currentBalance > 0n;
+                    ragequitBtn.disabled = !hasBalance;
+                    ragequitBtn.textContent = hasBalance ? 'Ragequit (Withdraw All)' : 'Ragequit (No balance)';
+                }
             } catch (e) {
                 // Fallback: use raw values if conversion fails
                 console.warn('[UPDATE-STATE] Could not convert Tongo units, using raw values:', e);
@@ -3112,20 +3274,60 @@
                 const pendingBalanceStr = (Number(state.pendingBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
                 document.getElementById('currentBalanceDisplay').textContent = `${currentBalanceStr} ${tokenName}`;
                 document.getElementById('pendingBalanceDisplay').textContent = `${pendingBalanceStr} ${tokenName}`;
+                const ragequitBtn = document.getElementById('ragequitBtn');
+                if (ragequitBtn) {
+                    const hasBalance = state.currentBalance > 0n;
+                    ragequitBtn.disabled = !hasBalance;
+                    ragequitBtn.textContent = hasBalance ? 'Ragequit (Withdraw All)' : 'Ragequit (No balance)';
+                }
             }
             
             // Update wallet balance
             try {
                 const walletBalance = await service.getWalletBalance();
                 const walletBalanceStr = (Number(walletBalance) / Math.pow(10, tokenDecimals)).toFixed(tokenDecimals === 6 ? 2 : 6);
-                document.getElementById('walletBalance').textContent = `${walletBalanceStr} ${tokenName}`;
+                const walletBalanceLabel = document.getElementById('walletBalanceLabel');
+                if (walletBalanceLabel) {
+                    walletBalanceLabel.textContent = currentNetwork === 'mainnet' ? 'Wallet USDC Balance:' : 'Wallet STRK Balance:';
+                }
+                document.getElementById('walletBalance').textContent = `${walletBalanceStr} ${currentNetwork === 'mainnet' ? 'USDC' : 'STRK'}`;
+                const fundTokenHint = document.getElementById('fundTokenHint');
+                if (fundTokenHint) {
+                    if (currentNetwork === 'mainnet' && walletBalance === 0n) {
+                        fundTokenHint.innerHTML = `<strong>0 USDC detected!</strong> You need native USDC (Circle) to fund. Acquire USDC via an exchange or bridge from another chain.`;
+                        fundTokenHint.style.display = 'block';
+                    } else {
+                        fundTokenHint.textContent = '';
+                        fundTokenHint.style.display = 'none';
+                    }
+                }
             } catch (error) {
                 console.error('[UPDATE-STATE] Failed to fetch wallet balance:', error);
                 document.getElementById('walletBalance').textContent = 'Error';
+                const fundTokenHint = document.getElementById('fundTokenHint');
+                if (fundTokenHint) {
+                    fundTokenHint.textContent = 'Unable to read wallet balance. Check RPC or token address.';
+                    fundTokenHint.style.display = 'block';
+                }
+            }
+
+            // Update Tongo rate display
+            try {
+                const rateDisplay = await service.getRateDisplay();
+                document.getElementById('tongoRate').textContent = rateDisplay;
+            } catch (error) {
+                console.warn('[UPDATE-STATE] Failed to fetch rate:', error);
+                document.getElementById('tongoRate').textContent = 'Unavailable';
             }
             
             // Update max sendable amount
             await updateMaxSendable();
+
+            // Re-validate recipient key if user already typed one
+            const recipientKeyInput = document.getElementById('recipientKey');
+            if (recipientKeyInput && recipientKeyInput.value) {
+                validateRecipientKeyInput(recipientKeyInput.value);
+            }
         }
         
         // Update max sendable display
@@ -3169,6 +3371,19 @@
                 addLog('Could not set max amount: ' + errorMsg, 'error');
                 console.error('[SET-MAX] Error:', e);
             }
+        }
+
+        // Live-validate recipient public key format
+        const recipientKeyInput = document.getElementById('recipientKey');
+        if (recipientKeyInput) {
+            recipientKeyInput.addEventListener('input', (e) => {
+                const value = (e.target && e.target.value) ? e.target.value : '';
+                validateRecipientKeyInput(value);
+            });
+            recipientKeyInput.addEventListener('blur', (e) => {
+                const value = (e.target && e.target.value) ? e.target.value : '';
+                validateRecipientKeyInput(value);
+            });
         }
 
         // Handle network change
@@ -3216,12 +3431,61 @@
             try {
                 const sepoliaProvider = createProvider('sepolia');
                 badgeService = new BadgeService(sepoliaProvider, 'sepolia');
+                
+                // Wait for async contract initialization (fetches ABI from chain)
+                await badgeService.ensureInitialized();
+                
                 setBadgeStatus('Connected to Sepolia badge verifier ✅', 'success');
                 await refreshBadgeStatus();
+                
+                // Check proof backend health
+                checkProofBackendHealth();
             } catch (error) {
                 badgeService = null;
                 console.warn('[BADGE] Could not initialize badge service:', error);
                 setBadgeStatus('Badge verifier unavailable. Please stay on Sepolia or try again later.', 'error');
+            }
+        }
+
+        async function checkProofBackendHealth() {
+            const statusEl = document.getElementById('proof-backend-status');
+            if (!statusEl) return;
+            
+            // Local proof backend (run `bun run api`)
+            const PROOF_BACKEND_URL = 'http://localhost:3001/api/generate-proof';
+            
+            // Show checking state
+            statusEl.className = 'badge-status-inline checking';
+            statusEl.innerHTML = `<span class="status-dot"></span><span><strong>Proof Server:</strong> Checking...</span>`;
+            
+            try {
+                // Simple OPTIONS request to check if server is reachable
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+                
+                const response = await fetch(PROOF_BACKEND_URL, {
+                    method: 'OPTIONS',
+                    signal: controller.signal,
+                });
+                clearTimeout(timeoutId);
+                
+                // If we get here without CORS error, server is online
+                statusEl.className = 'badge-status-inline online';
+                statusEl.innerHTML = `
+                    <span class="status-dot"></span>
+                    <span><strong>Proof Server:</strong> Online</span>
+                    <span style="margin-left: auto; font-size: 0.85em; opacity: 0.7;">Ready to generate proofs</span>
+                `;
+                console.log('[BADGE] Proof backend is online');
+            } catch (error) {
+                // Server unreachable
+                statusEl.className = 'badge-status-inline offline';
+                statusEl.innerHTML = `
+                    <span class="status-dot"></span>
+                    <span style="flex: 1;"><strong>Proof Server:</strong> Offline — <a href="https://github.com/codespaces" target="_blank" style="color: inherit; text-decoration: underline;">Start Codespace</a></span>
+                    <button onclick="checkProofBackendHealth()" class="secondary" style="padding: 6px 12px; font-size: 0.8em;">Retry</button>
+                `;
+                console.log('[BADGE] Proof backend is offline');
             }
         }
 
@@ -3234,24 +3498,45 @@
                 
                 const iconEl = document.getElementById('badge-icon');
                 const nameEl = document.getElementById('badge-name');
+                const descEl = document.querySelector('.badge-current-card .badge-description');
+                
+                // Update tier items to show which one is earned
+                document.querySelectorAll('.badge-tier-item').forEach(item => {
+                    const itemTier = parseInt(item.dataset.tier);
+                    if (itemTier <= tier && tier > 0) {
+                        item.classList.add('active');
+                        // Add checkmark if not already there
+                        if (!item.querySelector('.tier-check')) {
+                            item.insertAdjacentHTML('beforeend', '<span class="tier-check">✓</span>');
+                        }
+                    } else {
+                        item.classList.remove('active');
+                        const check = item.querySelector('.tier-check');
+                        if (check) check.remove();
+                    }
+                });
                 
                 if (iconEl && nameEl) {
                     if (tier === BadgeTier.NONE) {
                         iconEl.textContent = '⚪';
                         nameEl.textContent = 'No Badge Yet';
+                        if (descEl) descEl.textContent = 'Complete a transfer and generate a proof to earn your first badge';
                     } else if (tier === BadgeTier.BRONZE) {
                         iconEl.textContent = '🥉';
-                        nameEl.textContent = 'Bronze Donor';
+                        nameEl.textContent = 'Bronze';
+                        if (descEl) descEl.textContent = 'Verified $10+ private transfer';
                     } else if (tier === BadgeTier.SILVER) {
                         iconEl.textContent = '🥈';
-                        nameEl.textContent = 'Silver Donor';
+                        nameEl.textContent = 'Silver';
+                        if (descEl) descEl.textContent = 'Verified $100+ private transfer';
                     } else if (tier === BadgeTier.GOLD) {
                         iconEl.textContent = '🥇';
-                        nameEl.textContent = 'Gold Donor';
+                        nameEl.textContent = 'Gold';
+                        if (descEl) descEl.textContent = 'Verified $1000+ private transfer';
                     }
                 }
                 
-                addLog(`[BADGE] Current badge: ${tierName}`, 'info');
+                console.log(`[BADGE] Current badge: ${tierName}`);
             } catch (e) {
                 console.warn('[BADGE] Could not fetch badge status:', e);
             }
@@ -3280,7 +3565,7 @@
             
             // Validation
             if (!amountDollars || amountDollars < 10) {
-                addLog('[BADGE] Please enter a valid donation amount ($10+)', 'error');
+                addLog('[BADGE] Please enter a valid transfer amount ($10+)', 'error');
                 return;
             }
             
@@ -3317,7 +3602,7 @@
                 
                 if (statusDiv) {
                     statusDiv.innerHTML = `
-                        <div class="status-message" style="color: #00ff00;">
+                        <div class="status-message success">
                             ✅ Proof generated successfully!<br>
                             <small>Tier: ${badgeService.getTierName(tier)}</small>
                         </div>
@@ -3333,10 +3618,28 @@
             } catch (error) {
                 const errorMsg = error instanceof Error ? error.message : String(error);
                 
+                // Check for network/CORS errors (proof backend down)
+                const isNetworkError = errorMsg.includes('Failed to fetch') || 
+                                       errorMsg.includes('NetworkError') ||
+                                       errorMsg.includes('ERR_FAILED') ||
+                                       errorMsg.includes('CORS');
+                
                 if (statusDiv) {
-                    statusDiv.innerHTML = `<div class="status-message" style="color: #ff4444;">❌ ${errorMsg}</div>`;
+                    if (isNetworkError) {
+                        statusDiv.innerHTML = `
+                            <div class="status-message error">
+                                ❌ Proof backend unavailable<br>
+                                <small>The ZK proof generation server is currently offline.
+                                You can run it locally with <code>bun run api</code>.</small>
+                            </div>`;
+                    } else {
+                        statusDiv.innerHTML = `<div class="status-message error">❌ ${errorMsg}</div>`;
+                    }
                 }
                 
+                if (isNetworkError) {
+                    addLog('[BADGE] Proof backend offline. To run locally: bun run api', 'warn');
+                }
                 addLog(`[BADGE] Error: ${errorMsg}`, 'error');
             }
         };
@@ -3361,7 +3664,7 @@
                 
                 if (statusDiv) {
                     statusDiv.innerHTML = `
-                        <div class="status-message" style="color: #00ff00;">
+                        <div class="status-message success">
                             ✅ Badge claimed!<br>
                             <small>TX: ${txHash.slice(0, 20)}...</small>
                         </div>
@@ -3384,7 +3687,7 @@
                 const errorMsg = error instanceof Error ? error.message : String(error);
                 
                 if (statusDiv) {
-                    statusDiv.innerHTML = `<div class="status-message" style="color: #ff4444;">❌ ${errorMsg}</div>`;
+                    statusDiv.innerHTML = `<div class="status-message error">❌ ${errorMsg}</div>`;
                 }
                 
                 addLog(`[BADGE] Claim error: ${errorMsg}`, 'error');

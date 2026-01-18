@@ -8,7 +8,7 @@ This package contains the Garaga-generated Ultra Keccak Honk verifier and the cu
 - [Scarb](https://docs.swmansion.com/scarb/) `2.9.2`
 - [Starknet Foundry](https://foundry-rs.github.io/starknet-foundry/) (`sncast`, `snforge`) for deploys/tests
 
-Install the pinned versions (see `../BADGE_SETUP.md` for the downgrade notes).
+Install the pinned versions listed in the root README and `../zk-badges/README.md`.
 
 ## Project Layout
 
@@ -39,7 +39,7 @@ After deploying the verifier, deploy `DonationBadge` with the verifier address a
 
 ## Secrets & Accounts
 
-- `./.secrets` is intentionally gitignored. Copy `.secrets.example` (or create one) with your own RPC URL + deployer account.
+- `./.secrets` is intentionally gitignored. Create one locally with your own RPC URL + deployer account.
 - `snfoundry.toml` references Starknet Foundry profiles (`[sncast.sepolia]`). Ensure the referenced account exists in `~/.starknet_accounts`.
 
 ## Notes

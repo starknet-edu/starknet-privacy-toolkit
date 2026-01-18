@@ -6,6 +6,7 @@ __tests__/
 
 # Dev files
 .env.example
+env.example
 debug.log
 
 # Config
@@ -36,6 +37,14 @@ bun-debug.log*
 *.tmp
 *.temp
 *-context-*.txt
+tmp/
+temp-commitment/
+zk-artifacts.zip
+zk-proof-artifacts.zip
+.cursor/
+.cursorrules
+
+
 
 
 

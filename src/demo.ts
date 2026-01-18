@@ -2,14 +2,16 @@ import { TongoService } from './tongo-service';
 import { starknetAccount, provider, TONGO_CONTRACT_ADDRESS, STRK_ADDRESS } from './config';
 
 async function runDemoDonationFlow() {
-  if (!starknetAccount || !provider) {
-    throw new Error('STARKNET_ACCOUNT_ADDRESS and STARKNET_PRIVATE_KEY must be set in .env');
-  }
-
   console.log('='.repeat(60));
   console.log('🎭 TONGO PRIVATE DONATION DEMO');
   console.log('='.repeat(60));
   
+  if (!starknetAccount || !provider) {
+    throw new Error(
+      'Missing Starknet account or provider. Check STARKNET_ACCOUNT_ADDRESS and STARKNET_PRIVATE_KEY in .env.'
+    );
+  }
+
   const service = new TongoService(
     starknetAccount.address,
     starknetAccount,

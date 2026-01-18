@@ -7,16 +7,20 @@
   "scripts": {
     "build": "tsc",
     "build:web": "vite build",
-    "build:deploy": "vite build",
     "dev": "bun run src/demo.ts",
     "dev:web": "vite",
+    "api": "bun run api/server.ts",
     "serve": "bunx http-server . -p 8080",
     "demo": "bun run build && bun run dist/demo.js",
+    "tongo:init": "bun run scripts/tongo-init.ts",
+    "preflight:tx": "bun run src/tx-preflight.ts",
+    "garaga:smoke": "bun run scripts/garaga-smoke.ts",
+    "garaga:verify": "bun run scripts/garaga-verify.ts",
+    "check:health": "bun run scripts/health-check.ts",
+    "template:quickstart": "bun run template/quickstart.ts",
+    "check": "bun run type-check",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit",
-    "deploy": "bun run build:deploy && npx wrangler pages deploy dist --project-name=tongo-ukraine",
-    "deploy:login": "npx wrangler login",
-    "deploy:build": "bun run build:deploy"
+    "type-check": "tsc --noEmit"
   },
   "keywords": [
     "starknet",
@@ -28,9 +32,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@atomiqlabs/chain-starknet": "^7.0.23",
-    "@atomiqlabs/sdk": "^7.0.6",
-    "@fatsolutions/tongo-sdk": "^1.3.0",
+    "@fatsolutions/tongo-sdk": "^1.3.1",
     "circomlibjs": "^0.1.7",
     "dotenv": "^17.2.3",
     "get-starknet": "^3.3.3",

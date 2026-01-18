@@ -1,3 +1,61 @@
+# Render Deployment Guide
+
+This repo can be deployed on Render using two services:
+1) a **Static Site** for the Vite frontend, and
+2) an optional **Web Service** for the proof API (`api/server.ts`).
+
+---
+
+## Static Site (frontend)
+
+1. Create a **Static Site** in Render.
+2. Build command:
+   ```bash
+   bun install && bun run build:web
+   ```
+3. Publish directory:
+   ```
+   dist
+   ```
+4. Add a rewrite so SPA routes resolve to `index.html`:
+   - Source: `/*`
+   - Destination: `/index.html`
+   - Status: `200`
+
+---
+
+## Web Service (proof API)
+
+Only needed if you want on-demand proof generation from the UI.
+
+1. Create a **Web Service** in Render.
+2. Build command:
+   ```bash
+   bun install
+   ```
+3. Start command:
+   ```bash
+   bun run api
+   ```
+4. Environment variables:
+   - Render sets `PORT` automatically (the server honors it).
+   - Ensure the host has Noir/Barretenberg/Garaga in `$PATH` if you want real proof generation.
+
+---
+
+## Wiring the UI to the API
+
+By default, the UI points to `http://localhost:3001/api/generate-proof`.
+If you deploy the API on Render, update:
+- `src/badge-service.ts` (`proofBackendUrl`)
+- `src/web/index.html` (`PROOF_BACKEND_URL`)
+
+---
+
+## Notes
+
+- If you don’t need badge proofs, you can skip the API service entirely.
+- The frontend can still be served as a single static app with no backend.
 # 🚀 Cloudflare Pages Deployment Guide
 
 ## 📇 On-chain Deployment Records
@@ -181,7 +239,6 @@ After deployment, verify:
 - [ ] Network switching works (Mainnet/Sepolia)
 - [ ] No console errors
 - [ ] Mobile responsive
-- [ ] Lightning section displays (when wallet connected)
 
 ---
 
@@ -232,7 +289,7 @@ Once connected to GitHub, every push to `main` auto-deploys:
 ```bash
 # Make changes
 git add .
-git commit -m "feat: add Lightning donations"
+git commit -m "feat: update donation flow"
 git push
 
 # Cloudflare automatically:
